@@ -1,0 +1,266 @@
+<!-- ===== MEMORIES SECTION (fragment). All ids/classes/keyframes/vars are prefixed mem-. ===== -->
+<style>
+.mem-root,.mem-lb{
+  --mem-night:#04201A;--mem-em:#0E4B3B;--mem-gold:#C9A24B;--mem-gold2:#E9CF8B;--mem-ivory:#F7F1E3;
+  --mem-nast:'Nastaliq','Noto Nastaliq Urdu',serif;
+  --mem-naskh:'Naskh','Noto Naskh Arabic',serif;
+}
+.mem-root{position:relative;display:block;direction:rtl;text-align:center;padding:36px 0 44px;overflow:hidden;-webkit-text-size-adjust:100%;color:var(--mem-ivory);font-family:var(--mem-naskh);box-sizing:border-box}
+.mem-root *,.mem-root *:before,.mem-root *:after,.mem-lb *{box-sizing:border-box}
+.mem-wrap{max-width:760px;margin:0 auto;padding:0 18px}
+
+/* heading */
+.mem-head{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;margin:0 0 14px}
+.mem-title{margin:0 12px;padding:6px 0;font-family:var(--mem-nast);font-weight:700;font-size:26px;line-height:2.3;color:var(--mem-gold);text-shadow:0 0 18px rgba(201,162,75,.35);white-space:nowrap}
+.mem-line{-webkit-flex:1 1 0;flex:1 1 0;min-width:10px;height:1px}
+.mem-line-r{background:linear-gradient(to left,rgba(201,162,75,0),var(--mem-gold))}
+.mem-line-l{background:linear-gradient(to right,rgba(201,162,75,0),var(--mem-gold))}
+
+/* featured */
+.mem-stage{-webkit-perspective:900px;perspective:900px;width:100%;max-width:300px;margin:0 auto;padding:10px 0 22px}
+.mem-feat{display:block;width:100%;margin:0;padding:0;border:0;background:none;font:inherit;color:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;text-align:center}
+.mem-feat:focus{outline:none}
+.mem-feat:focus-visible .mem-frame{box-shadow:0 0 0 3px var(--mem-gold2),0 24px 50px rgba(0,0,0,.55)}
+.mem-card{display:block;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-transition:-webkit-transform .25s ease-out;transition:transform .25s ease-out;will-change:transform}
+.mem-frame{display:block;padding:3px;border-radius:9px;background:linear-gradient(135deg,#F3DFA2 0%,#C9A24B 35%,#8C6A22 60%,#E9CF8B 100%);box-shadow:0 24px 50px rgba(0,0,0,.55),0 0 46px rgba(201,162,75,.22)}
+.mem-paper{display:block;padding:11px 11px 0;border-radius:6px;background:linear-gradient(160deg,#FBF6E8,#EFE4C8)}
+.mem-photo{position:relative;display:block;width:100%;height:0;padding-top:133.3333%;overflow:hidden;border-radius:2px;background:var(--mem-night);box-shadow:inset 0 0 0 1px rgba(4,32,26,.5)}
+.mem-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;-webkit-transform-origin:55% 35%;transform-origin:55% 35%;-webkit-animation:mem-kb 16s ease-in-out infinite alternate;animation:mem-kb 16s ease-in-out infinite alternate;will-change:transform}
+.mem-sheen{position:absolute;top:0;left:0;width:55%;height:100%;pointer-events:none;background:linear-gradient(100deg,rgba(233,207,139,0) 0%,rgba(255,244,210,.55) 50%,rgba(233,207,139,0) 100%);-webkit-transform:translateX(-170%) skewX(-18deg);transform:translateX(-170%) skewX(-18deg);-webkit-animation:mem-sweep 7s ease-in-out infinite;animation:mem-sweep 7s ease-in-out infinite}
+.mem-cap{display:block;padding:8px 6px 12px;font-family:var(--mem-naskh);font-weight:600;font-size:16px;line-height:2.1;color:#16372E}
+@-webkit-keyframes mem-kb{from{-webkit-transform:scale(1) translate(0,0)}to{-webkit-transform:scale(1.14) translate(-2%,1.5%)}}
+@keyframes mem-kb{from{transform:scale(1) translate(0,0)}to{transform:scale(1.14) translate(-2%,1.5%)}}
+@-webkit-keyframes mem-sweep{0%,55%{-webkit-transform:translateX(-170%) skewX(-18deg)}85%,100%{-webkit-transform:translateX(330%) skewX(-18deg)}}
+@keyframes mem-sweep{0%,55%{transform:translateX(-170%) skewX(-18deg)}85%,100%{transform:translateX(330%) skewX(-18deg)}}
+
+/* marquees */
+.mem-rows{margin-top:6px}
+.mem-marq-b{margin-top:16px}
+.mem-rowlbl{font-family:"Nastaliq";font-weight:700;font-size:24px;line-height:2.1;color:var(--mem-gold2);text-align:center;margin:10px 0 0}
+.mem-tile.mem-tile-photo{width:150px}
+.mem-tile-photo .mem-lbl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:6px;padding-right:6px}
+.mem-marq{position:relative;direction:ltr;width:100%;overflow:hidden;padding:8px 0;margin:0 0 6px;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%)}
+.mem-track{display:-webkit-flex;display:flex;width:-webkit-max-content;width:max-content;-webkit-animation:mem-slide 44s linear infinite;animation:mem-slide 44s linear infinite;will-change:transform}
+.mem-marq-b .mem-track{-webkit-animation-direction:reverse;animation-direction:reverse;-webkit-animation-duration:52s;animation-duration:52s}
+.mem-set{display:-webkit-flex;display:flex;-webkit-flex-shrink:0;flex-shrink:0}
+.mem-marq.mem-hold .mem-track{-webkit-animation-play-state:paused;animation-play-state:paused}
+@media (hover:hover){.mem-marq:hover .mem-track{-webkit-animation-play-state:paused;animation-play-state:paused}}
+@-webkit-keyframes mem-slide{from{-webkit-transform:translateX(0)}to{-webkit-transform:translateX(-50%)}}
+@keyframes mem-slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.mem-tile{display:block;position:relative;-webkit-flex:0 0 auto;flex:0 0 auto;width:138px;margin:0 14px 0 0;padding:0;border:1px solid rgba(201,162,75,.55);border-radius:16px;overflow:hidden;color:var(--mem-gold2);font:inherit;text-align:center;direction:rtl;box-shadow:0 10px 24px rgba(0,0,0,.4);-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent}
+button.mem-tile{cursor:pointer}
+.mem-t-em{background:linear-gradient(165deg,#12604B 0%,#0E4B3B 45%,#06271F 100%)}
+.mem-t-night{background:linear-gradient(165deg,#0B3A45 0%,#06232B 50%,#03120F 100%)}
+.mem-t-green{background:linear-gradient(165deg,#145A3A 0%,#0B3B2A 50%,#04201A 100%)}
+.mem-art{display:block;position:relative;height:128px;padding:12px 12px 4px;background:radial-gradient(circle at 50% 46%,rgba(233,207,139,.22),rgba(233,207,139,0) 62%)}
+.mem-ico{display:block;width:100%;height:100%;fill:none;stroke:#E9CF8B;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.mem-ico .mem-f{fill:rgba(201,162,75,.2)}
+.mem-ico .mem-fd{fill:rgba(2,14,11,.55)}
+.mem-ico .mem-fg{fill:rgba(54,170,108,.42)}
+.mem-ico .mem-s{fill:#E9CF8B;stroke:none}
+.mem-ico .mem-dim{opacity:.5}
+.mem-lbl{display:block;padding:0 6px 4px;font-family:var(--mem-naskh);font-weight:600;font-size:14px;line-height:2.1;color:var(--mem-gold2);background:linear-gradient(to top,rgba(0,0,0,.28),rgba(0,0,0,0))}
+.mem-tile-photo .mem-art{padding:0;height:200px;background:var(--mem-night)}
+.mem-tile-photo .mem-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+
+/* lightbox */
+.mem-lb{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483000;padding:64px 14px 20px;background:rgba(2,12,9,.95);-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;-webkit-flex-direction:column;flex-direction:column;direction:rtl;text-align:center;font-family:var(--mem-naskh)}
+.mem-lb.mem-open{display:-webkit-flex;display:flex;-webkit-animation:mem-fade .25s ease-out;animation:mem-fade .25s ease-out}
+.mem-lb-img{display:block;max-width:100%;max-height:calc(100vh - 150px);max-height:calc(100dvh - 150px);width:auto;height:auto;object-fit:contain;border:2px solid var(--mem-gold);border-radius:6px;box-shadow:0 0 60px rgba(201,162,75,.25)}
+.mem-lb-cap{margin:10px 0 0;font-weight:600;font-size:16px;line-height:2.1;color:var(--mem-gold2)}
+.mem-lb-x{position:absolute;top:12px;left:12px;width:46px;height:46px;margin:0;padding:0;border:1px solid var(--mem-gold);border-radius:50%;background:rgba(4,32,26,.85);cursor:pointer;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center}
+.mem-lb-x svg{display:block;width:20px;height:20px;stroke:var(--mem-gold2);stroke-width:2;stroke-linecap:round;fill:none}
+.mem-lb-x:focus-visible{outline:2px solid var(--mem-gold2);outline-offset:2px}
+@-webkit-keyframes mem-fade{from{opacity:0}to{opacity:1}}
+@keyframes mem-fade{from{opacity:0}to{opacity:1}}
+
+@media (min-width:768px){
+  .mem-root{padding:56px 0 64px}
+  .mem-title{font-size:34px;margin:0 20px}
+  .mem-stage{max-width:340px}
+  .mem-tile{width:168px;margin-right:18px}
+  .mem-tile.mem-tile-photo{width:180px}
+  .mem-art{height:158px;padding:14px 14px 4px}
+  .mem-tile-photo .mem-art{height:240px;padding:0}
+  .mem-lbl{font-size:15px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .mem-photo img,.mem-sheen,.mem-track,.mem-lb.mem-open{-webkit-animation:none !important;animation:none !important}
+  .mem-sheen{display:none}
+  .mem-card{-webkit-transition:none;transition:none;-webkit-transform:none !important;transform:none !important}
+  .mem-marq{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .mem-marq::-webkit-scrollbar{display:none}
+  .mem-dup{display:none !important}
+  .mem-track{-webkit-transform:none !important;transform:none !important;padding:0 18px}
+}
+</style>
+
+<section class="mem-root" id="mem-root" dir="rtl" aria-labelledby="mem-h">
+  <div class="mem-wrap">
+    <div class="mem-head">
+      <span class="mem-line mem-line-r" aria-hidden="true"></span>
+      <h2 class="mem-title" id="mem-h">سفرِ عمرہ کی یادیں</h2>
+      <span class="mem-line mem-line-l" aria-hidden="true"></span>
+    </div>
+
+    <div class="mem-stage" id="mem-stage">
+      <button type="button" class="mem-feat" id="mem-feat" aria-haspopup="dialog" aria-label="تصویر بڑی کر کے دیکھیں">
+        <span class="mem-card" id="mem-card">
+          <span class="mem-frame"><span class="mem-paper">
+            <span class="mem-photo">
+              <img id="mem-img" src="data:image/jpeg;base64,{{M1}}" alt="سفرِ عمرہ کی یاد — حرمِ مکی" width="900" height="1200" decoding="async">
+              <span class="mem-sheen" aria-hidden="true"></span>
+            </span>
+            <span class="mem-cap">حرمِ مکی، خانہ کعبہ کے سامنے</span>
+          </span></span>
+        </span>
+      </button>
+    </div>
+
+    <!-- ===== PLACEHOLDER HOOK: second photo =====
+         When a second photo exists, add a second featured card here (or a tile in a marquee set below),
+         e.g. <img src="data:image/jpeg;base64,M2" alt="..."> inside the same .mem-frame/.mem-paper/.mem-photo structure.
+         Nothing is rendered for it now. Delete this comment once used. -->
+  </div>
+
+  <div class="mem-rows">
+    <div class="mem-marq mem-marq-a" aria-label="یادوں کی قطار">
+      <div class="mem-track">
+        <div class="mem-set">
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="خانہ کعبہ کے سامنے" aria-label="خانہ کعبہ کے سامنے — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-mem-src="m1" alt="خانہ کعبہ کے سامنے" decoding="async"></span><span class="mem-lbl">خانہ کعبہ کے سامنے</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مطاف میں" aria-label="مطاف میں — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="L" src="data:image/jpeg;base64,{{P_L}}" alt="مطاف میں" decoding="async"></span><span class="mem-lbl">مطاف میں</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی ﷺ" aria-label="مسجدِ نبوی ﷺ — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="A" src="data:image/jpeg;base64,{{P_A}}" alt="مسجدِ نبوی ﷺ" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی ﷺ</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="زیارات کا سفر" aria-label="زیارات کا سفر — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="D" src="data:image/jpeg;base64,{{P_D}}" alt="زیارات کا سفر" decoding="async"></span><span class="mem-lbl">زیارات کا سفر</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="خانہ کعبہ کے سامنے" aria-label="خانہ کعبہ کے سامنے — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-mem-src="m1" alt="خانہ کعبہ کے سامنے" decoding="async"></span><span class="mem-lbl">خانہ کعبہ کے سامنے</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مطاف میں" aria-label="مطاف میں — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="L" alt="مطاف میں" decoding="async"></span><span class="mem-lbl">مطاف میں</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی ﷺ" aria-label="مسجدِ نبوی ﷺ — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="A" alt="مسجدِ نبوی ﷺ" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی ﷺ</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="زیارات کا سفر" aria-label="زیارات کا سفر — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="D" alt="زیارات کا سفر" decoding="async"></span><span class="mem-lbl">زیارات کا سفر</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="mem-marq mem-marq-b" aria-label="یادوں کی قطار">
+      <div class="mem-track">
+        <div class="mem-set">
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="گنبدِ خضریٰ کے سامنے" aria-label="گنبدِ خضریٰ کے سامنے — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="G" src="data:image/jpeg;base64,{{P_G}}" alt="گنبدِ خضریٰ کے سامنے" decoding="async"></span><span class="mem-lbl">گنبدِ خضریٰ کے سامنے</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی کا صحن" aria-label="مسجدِ نبوی کا صحن — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="F" src="data:image/jpeg;base64,{{P_F}}" alt="مسجدِ نبوی کا صحن" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی کا صحن</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی، شام کے وقت" aria-label="مسجدِ نبوی، شام کے وقت — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="J" src="data:image/jpeg;base64,{{P_J}}" alt="مسجدِ نبوی، شام کے وقت" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی، شام کے وقت</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ قباء" aria-label="مسجدِ قباء — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="K" src="data:image/jpeg;base64,{{P_K}}" alt="مسجدِ قباء" decoding="async"></span><span class="mem-lbl">مسجدِ قباء</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="گنبدِ خضریٰ کے سامنے" aria-label="گنبدِ خضریٰ کے سامنے — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="G" alt="گنبدِ خضریٰ کے سامنے" decoding="async"></span><span class="mem-lbl">گنبدِ خضریٰ کے سامنے</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی کا صحن" aria-label="مسجدِ نبوی کا صحن — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="F" alt="مسجدِ نبوی کا صحن" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی کا صحن</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی، شام کے وقت" aria-label="مسجدِ نبوی، شام کے وقت — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="J" alt="مسجدِ نبوی، شام کے وقت" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی، شام کے وقت</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ قباء" aria-label="مسجدِ قباء — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="K" alt="مسجدِ قباء" decoding="async"></span><span class="mem-lbl">مسجدِ قباء</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mem-lb" id="mem-lb" role="dialog" aria-modal="true" aria-label="تصویر">
+    <button type="button" class="mem-lb-x" id="mem-lb-x" aria-label="بند کریں"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4L16 16M16 4L4 16"/></svg></button>
+    <img class="mem-lb-img" id="mem-lb-img" alt="سفرِ عمرہ کی یاد — حرمِ مکی">
+    <p class="mem-lb-cap">حرمِ مکی، خانہ کعبہ کے سامنے</p>
+  </div>
+</section>
+
+<script>
+(function () {
+  var root = document.getElementById('mem-root');
+  if (!root) { return; }
+  var feat = document.getElementById('mem-feat');
+  var card = document.getElementById('mem-card');
+  var stage = document.getElementById('mem-stage');
+  var img = document.getElementById('mem-img');
+  var lb = document.getElementById('mem-lb');
+  var lbImg = document.getElementById('mem-lb-img');
+  var lbX = document.getElementById('mem-lb-x');
+  var rmq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var i, j, n;
+
+  // Keep the lightbox outside any transformed/masked ancestor so position:fixed is reliable.
+  document.body.appendChild(lb);
+
+  var refs = root.querySelectorAll('img[data-src-from]');
+  for (i = 0; i < refs.length; i++) { var o = root.querySelector('img[data-k="' + refs[i].getAttribute('data-src-from') + '"]'); if (o) { refs[i].setAttribute('src', o.getAttribute('src')); } }
+  // Seamless loop: duplicate each set once (clones hidden from AT and keyboard).
+  var sets = root.querySelectorAll('.mem-set');
+  for (i = 0; i < sets.length; i++) {
+    var dup = sets[i].cloneNode(true);
+    dup.className += ' mem-dup';
+    dup.setAttribute('aria-hidden', 'true');
+    var f = dup.querySelectorAll('button');
+    for (j = 0; j < f.length; j++) { f[j].setAttribute('tabindex', '-1'); }
+    sets[i].parentNode.appendChild(dup);
+  }
+
+  // Reuse the single embedded photo for the tile imgs (avoids repeating the base64 payload).
+  var src = img ? img.getAttribute('src') : '';
+  var tiles = root.querySelectorAll('img[data-mem-src]');
+  for (i = 0; i < tiles.length; i++) { tiles[i].setAttribute('src', src); }
+
+  // Lightbox
+  var lastFocus = null;
+  var prevOverflow = '';
+  var lbCap = lb.querySelector('.mem-lb-cap');
+  function openLb(from) {
+    lastFocus = from || null;
+    var im = from && from.querySelector ? from.querySelector('img') : null;
+    var cap = from && from.getAttribute ? from.getAttribute('data-cap') : null;
+    lbImg.setAttribute('src', im && im.getAttribute('src') ? im.getAttribute('src') : src);
+    if (lbCap) { lbCap.textContent = cap || 'حرمِ مکی، خانہ کعبہ کے سامنے'; }
+    lbImg.setAttribute('alt', cap || 'سفرِ عمرہ کی یاد');
+    lb.className = 'mem-lb mem-open';
+    prevOverflow = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = 'hidden';
+    try { lbX.focus(); } catch (e) {}
+  }
+  function closeLb() {
+    if (lb.className.indexOf('mem-open') < 0) { return; }
+    lb.className = 'mem-lb';
+    document.documentElement.style.overflow = prevOverflow;
+    if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+  }
+  feat.addEventListener('click', function () { openLb(feat); });
+  root.addEventListener('click', function (e) {
+    var t = e.target;
+    while (t && t !== root) {
+      if (t.getAttribute && t.getAttribute('data-mem-open')) { openLb(t); return; }
+      t = t.parentNode;
+    }
+  });
+  lbX.addEventListener('click', function (e) { e.stopPropagation(); closeLb(); });
+  lb.addEventListener('click', function (e) { if (e.target !== lbImg) { closeLb(); } });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' || e.keyCode === 27) { closeLb(); }
+  });
+
+  // Pause marquees while touched
+  var marqs = root.querySelectorAll('.mem-marq');
+  function holdOn(m) { if (m._memT) { clearTimeout(m._memT); m._memT = 0; } m.className = m.className.replace(/\s*mem-hold/g, '') + ' mem-hold'; }
+  function holdOff(m) { if (m._memT) { clearTimeout(m._memT); } m._memT = setTimeout(function () { m.className = m.className.replace(/\s*mem-hold/g, ''); m._memT = 0; }, 700); }
+  function bind(m) {
+    m.addEventListener('touchstart', function () { holdOn(m); }, { passive: true });
+    m.addEventListener('touchend', function () { holdOff(m); }, { passive: true });
+    m.addEventListener('touchcancel', function () { holdOff(m); }, { passive: true });
+  }
+  for (n = 0; n < marqs.length; n++) { bind(marqs[n]); }
+
+  // 3D tilt (mouse devices only)
+  var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (fine && stage && card) {
+    stage.addEventListener('mousemove', function (e) {
+      if (rmq && rmq.matches) { return; }
+      var r = stage.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - 0.5;
+      var py = (e.clientY - r.top) / r.height - 0.5;
+      var tf = 'rotateY(' + (px * 12).toFixed(2) + 'deg) rotateX(' + (-py * 10).toFixed(2) + 'deg)';
+      card.style.webkitTransform = tf;
+      card.style.transform = tf;
+    });
+    stage.addEventListener('mouseleave', function () {
+      card.style.webkitTransform = '';
+      card.style.transform = '';
+    });
+  }
+})();
+</script>
