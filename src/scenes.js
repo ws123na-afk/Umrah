@@ -51,12 +51,12 @@ function latheMinaret(h,r){var p=[[.001,0],[r*1.35,0],[r*1.35,h*.15],[r,h*.165],
 /* ======================= MAKKAH ======================= */
 function makkah(host){
   var renderer=makeRenderer(host,true),env=envMap(renderer,true);
-  var scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x05241c,MOB?0.03:0.034);
-  var cam=new THREE.PerspectiveCamera(MOB?54:40,1,.1,300);cam.userData.shift=MOB?0.1:0.07;
+  var scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x041a14,MOB?0.042:0.04);
+  var cam=new THREE.PerspectiveCamera(MOB?54:40,1,.1,300);cam.userData.shift=MOB?0.17:0.09;
   stars(scene,MOB?450:700,90);
 
   scene.add(new THREE.HemisphereLight(0x9ec4d8,0x2a1d0e,.32));
-  var spot=new THREE.SpotLight(0xfff0d2,2.4,40,.42,.75,1.1);spot.position.set(3.5,10,5);spot.target.position.set(0,.6,0);scene.add(spot,spot.target);
+  var spot=new THREE.SpotLight(0xffe2b0,2.1,40,.38,.85,1.1);spot.position.set(3.5,10,5);spot.target.position.set(0,.6,0);scene.add(spot,spot.target);
   if(renderer.shadowMap.enabled){spot.castShadow=true;spot.shadow.mapSize.set(MOB?1024:2048,MOB?1024:2048);spot.shadow.bias=-.0004;spot.shadow.radius=4;}
   var moon=new THREE.DirectionalLight(0xaecbff,.35);moon.position.set(-6,9,-5);scene.add(moon);
   for(var i=0;i<4;i++){var a=i/4*Math.PI*2+.4,pl=new THREE.PointLight(0xffc77a,.8,15,2);pl.position.set(Math.cos(a)*6.4,1.8,Math.sin(a)*6.4);scene.add(pl);}
@@ -66,9 +66,10 @@ function makkah(host){
   for(var v=0;v<300;v++){fx.strokeStyle='rgba(140,130,110,'+(Math.random()*.07)+')';fx.lineWidth=Math.random()*2.2;fx.beginPath();var X=Math.random()*S,Y=Math.random()*S;fx.moveTo(X,Y);for(var k=0;k<6;k++){X+=(Math.random()-.5)*130;Y+=(Math.random()-.5)*130;fx.lineTo(X,Y);}fx.stroke();}
   fx.strokeStyle='rgba(120,105,80,.16)';fx.lineWidth=1.2;for(var rr=S*.05;rr<C;rr+=S/70){fx.beginPath();fx.arc(C,C,rr,0,7);fx.stroke();}
   for(var q=0;q<160;q++){var an=q/160*Math.PI*2;fx.beginPath();fx.moveTo(C+Math.cos(an)*S*.05,C+Math.sin(an)*S*.05);fx.lineTo(C+Math.cos(an)*C,C+Math.sin(an)*C);fx.stroke();}
-  var floor=new THREE.Mesh(new THREE.CircleGeometry(24,128),new THREE.MeshStandardMaterial({map:tex(fc),color:0x6f6c64,roughness:.5,metalness:0,envMap:env,envMapIntensity:.35}));
+  var floor=new THREE.Mesh(new THREE.CircleGeometry(24,128),new THREE.MeshStandardMaterial({map:tex(fc),color:0x7c7466,roughness:.5,metalness:0,envMap:env,envMapIntensity:.35}));
   floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
 
+  var gg=new THREE.Mesh(new THREE.PlaneGeometry(13,13),new THREE.MeshBasicMaterial({map:glowTex('rgba(255,214,140,.9)'),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:.55,fog:false}));gg.rotation.x=-Math.PI/2;gg.position.y=.012;scene.add(gg);
   /* Kaaba */
   var KW=1.25,KD=1.1,KH=1.36,BASE=.07,res=MOB?512:1024;
   function face(w,h,door,top){var W=res,H=Math.round(res*h/w),c=cnv(W,H),x=c.getContext('2d'),m=cnv(W,H),mx=m.getContext('2d');
