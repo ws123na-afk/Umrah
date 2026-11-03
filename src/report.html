@@ -194,7 +194,7 @@
     var list = d.list || [];
     $('replies').innerHTML = list.length ? list.map(function (r) {
       var rtl = /[؀-ۿ]/;
-      return '<tr><td' + (rtl.test(r.name) ? ' dir="rtl"' : '') + '>' + esc(r.name) + '</td><td>' + (r.attending ? 'Yes' : 'No') + '</td><td class="num">' + (r.attending ? esc(r.guests) : '–') + '</td><td' + (rtl.test(r.message || '') ? ' dir="rtl"' : '') + '>' + esc(r.message || '') + '</td><td>' + (r.guest ? '<b>' + esc(r.guest) + '</b><br>' : '') + '<small>' + esc(r.device || '') + '</small></td><td>' + esc(when(r.at)) + '</td></tr>';
+      return '<tr><td' + (rtl.test(r.name) ? ' dir="rtl"' : '') + '>' + esc(r.name) + '</td><td>' + (r.attending ? 'Yes' : 'No') + '</td><td class="num">' + (r.attending ? esc(r.guests) : '0') + '</td><td' + (rtl.test(r.message || '') ? ' dir="rtl"' : '') + '>' + esc(r.message || '') + '</td><td>' + (r.guest ? '<b>' + esc(r.guest) + '</b><br>' : '') + '<small>' + esc(r.device || '') + '</small></td><td>' + esc(when(r.at)) + '</td></tr>';
     }).join('') : '<tr><td colspan="6">No replies yet. Share the invitation link and replies will appear here.</td></tr>';
 
     var keys = Object.keys(ev).sort(function (a, b) { return ev[b] - ev[a]; });

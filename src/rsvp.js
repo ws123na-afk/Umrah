@@ -165,6 +165,7 @@
       doneTxt.textContent = summary(row);
       stForm.hidden = true; stDone.hidden = false;
       document.getElementById('rsvpDoneClose').focus();
+      if (row.attending && window.UMRAH_FX && UMRAH_FX.burst) { try { var rb = document.getElementById('rsvpDoneClose').getBoundingClientRect(); UMRAH_FX.burst(rb.left + rb.width / 2, rb.top); } catch (e) {} }
       paintStatus();
     }).catch(function () {
       errBox.hidden = false;

@@ -1,10 +1,10 @@
 /* ============================================================
-   Invitation settings — edit here, then run: python3 build.py
+   Invitation settings: edit here, then run: python3 build.py
    ============================================================ */
 window.UMRAH_CONFIG = {
   /* Live address of the site (no trailing slash). Used for the
      WhatsApp / Facebook link preview picture and share links.   */
-  siteUrl: 'https://umrah.vercel.app',
+  siteUrl: 'https://umrah-psi.vercel.app',
 
   /* Supabase project that stores replies and click counts.
      supabaseKey = the project's *publishable* (anon) key.
@@ -12,7 +12,7 @@ window.UMRAH_CONFIG = {
      never read them (see supabase/umrah.sql).
      Leave the key empty to switch storage off completely.      */
   supabaseUrl: 'https://lvubaodrrxgaeetogwao.supabase.co',
-  supabaseKey: '',
+  supabaseKey: 'sb_publishable__vVRhzofqqkGxIZ98xSS-Q_0xc5NfFk',
 
   /* Count anonymous clicks (visits, calls, WhatsApp, maps…).   */
   tracking: true,

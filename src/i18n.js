@@ -8,7 +8,7 @@
     'کھولنے کے لیے دبائیں': 'Tap to open',
     'منظر کو چھوئیں یا گھمائیں': 'Drag to rotate the scene',
     'اور خیرات کا پروگرام': 'and Khairat Program',
-    'جمعرات 05 نومبر 2026، دوپہر 12 سے 2 بجے': 'Thu, 05 Nov 2026 · 12 – 2 PM',
+    'جمعرات 05 نومبر 2026، دوپہر 12 سے 2 بجے': 'Thu, 05 Nov 2026, 12 to 2 PM',
     'میرج ہٹ ویڈنگ ہال، پشاور': 'Marriage Hut Wedding Hall, Peshawar',
     'شرکت کی تصدیق کریں': 'Confirm attendance',
     'معزز مہمان': 'Honoured guest',
@@ -24,6 +24,7 @@
     'حرمِ مکی، خانہ کعبہ کے سامنے': 'Masjid al-Haram, in front of the Kaaba',
     'خانہ کعبہ کے سامنے': 'In front of the Kaaba',
     'مطاف میں': 'In the Mataf',
+    'مطاف میں، خانہ کعبہ کے سامنے': 'In the Mataf, in front of the Kaaba',
     'مسجدِ نبوی ﷺ': 'Masjid an-Nabawi ﷺ',
     'زیارات کا سفر': 'Visiting the holy sites',
     'گنبدِ خضریٰ کے سامنے': 'In front of the Green Dome',
@@ -100,7 +101,7 @@
     'آپ کا جواب: ان شاء اللہ تشریف لائیں گے': 'Your reply: coming, in sha Allah',
     'افراد': 'people',
     /* attributes */
-    'تقریبِ تکمیلِ عمرہ — دعوت نامہ': 'Umrah Completion Celebration — Invitation',
+    'تقریبِ تکمیلِ عمرہ کا دعوت نامہ': 'Invitation to the Umrah Completion Celebration',
     'خانہ کعبہ کے گرد طواف کا متحرک منظر': 'Animated scene of tawaf around the Kaaba',
     'خانہ کعبہ کے گرد طواف کا تھری ڈی منظر': '3D scene of tawaf around the Kaaba',
     'تصویر بڑی کر کے دیکھیں': 'View larger',
@@ -123,10 +124,10 @@
     'کاپی نہیں ہو سکا': 'Could not copy',
     'پتہ کاپی ہو گیا': 'Address copied',
     'کاپی نہیں ہو سکا، براہِ کرم پتہ خود نقل کر لیں': 'Could not copy. Please copy the address manually',
-    'تقریبِ تکمیلِ عمرہ اور خیرات کا پروگرام — جمعرات 05 نومبر 2026، دوپہر 12 سے 2 بجے، میرج ہٹ ویڈنگ ہال، پشاور':
-      'Umrah completion celebration and khairat program — Thursday 05 November 2026, 12 to 2 PM, Marriage Hut Wedding Hall, Peshawar',
-    'جمعرات 05 نومبر 2026، دوپہر 12 سے 2 بجے — میرج ہٹ ویڈنگ ہال، سرکلر روڈ، پشاور':
-      'Thursday 05 November 2026, 12 to 2 PM — Marriage Hut Wedding Hall, Circular Road, Peshawar'
+    'تقریبِ تکمیلِ عمرہ اور خیرات کا پروگرام، جمعرات 05 نومبر 2026، دوپہر 12 سے 2 بجے، میرج ہٹ ویڈنگ ہال، پشاور':
+      'Umrah completion celebration and khairat program, Thursday 05 November 2026, 12 to 2 PM, Marriage Hut Wedding Hall, Peshawar',
+    'جمعرات 05 نومبر 2026، دوپہر 12 سے 2 بجے، میرج ہٹ ویڈنگ ہال، سرکلر روڈ، پشاور':
+      'Thursday 05 November 2026, 12 to 2 PM, Marriage Hut Wedding Hall, Circular Road, Peshawar'
   };
   var WA_EN = 'Assalamu alaikum! In sha Allah we will attend the Umrah completion celebration.';
   var lang = 'ur';
@@ -137,11 +138,9 @@
   function norm(s) { return s.replace(/\s+/g, ' ').trim(); }
   function tr(s) {
     if (D[s]) { return D[s]; }
-    if (s.indexOf(' — ') > -1) {
-      var parts = s.split(' — '), out = [], ok = false;
-      for (var i = 0; i < parts.length; i++) { var e = D[parts[i]]; if (e) { ok = true; } out.push(e || parts[i]); }
-      return ok ? out.join(' — ') : null;
-    }
+    var SUF = '، تصویر بڑی کر کے دیکھیں';
+    if (s.length > SUF.length && s.slice(-SUF.length) === SUF) { var head = s.slice(0, -SUF.length); return (D[head] || head) + ', view larger'; }
+    if (s.indexOf('سفرِ عمرہ کی یاد، ') === 0) { var tail = s.slice('سفرِ عمرہ کی یاد، '.length); return 'A memory of the Umrah journey, ' + (D[tail] || tail); }
     return null;
   }
   window.T = function (s) { return lang === 'en' ? (D[s] || s) : s; };
@@ -183,7 +182,7 @@
       if (toEn) { var e = tr(norm(m.getAttribute('content') || '')); if (e) { if (o === undefined) { orig.set(m, m.getAttribute('content')); } m.setAttribute('content', e); } }
       else if (o !== undefined) { m.setAttribute('content', o); orig.delete(m); }
     });
-    if (toEn) { if (orig.get(document) === undefined) { orig.set(document, document.title); } document.title = D['تقریبِ تکمیلِ عمرہ — دعوت نامہ']; }
+    if (toEn) { if (orig.get(document) === undefined) { orig.set(document, document.title); } document.title = D['تقریبِ تکمیلِ عمرہ کا دعوت نامہ']; }
     else if (orig.get(document) !== undefined) { document.title = orig.get(document); orig.delete(document); }
   }
   function setDir(toEn) {

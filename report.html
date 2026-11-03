@@ -22,12 +22,12 @@
   code{font-size:.9em;color:#E9CF8B}
 </style>
 <script>/* ============================================================
-   Invitation settings — edit here, then run: python3 build.py
+   Invitation settings: edit here, then run: python3 build.py
    ============================================================ */
 window.UMRAH_CONFIG = {
   /* Live address of the site (no trailing slash). Used for the
      WhatsApp / Facebook link preview picture and share links.   */
-  siteUrl: 'https://umrah.vercel.app',
+  siteUrl: 'https://umrah-psi.vercel.app',
 
   /* Supabase project that stores replies and click counts.
      supabaseKey = the project's *publishable* (anon) key.
@@ -35,7 +35,7 @@ window.UMRAH_CONFIG = {
      never read them (see supabase/umrah.sql).
      Leave the key empty to switch storage off completely.      */
   supabaseUrl: 'https://lvubaodrrxgaeetogwao.supabase.co',
-  supabaseKey: '',
+  supabaseKey: 'sb_publishable__vVRhzofqqkGxIZ98xSS-Q_0xc5NfFk',
 
   /* Count anonymous clicks (visits, calls, WhatsApp, maps…).   */
   tracking: true,
@@ -226,7 +226,7 @@ window.UMRAH_CONFIG = {
     var list = d.list || [];
     $('replies').innerHTML = list.length ? list.map(function (r) {
       var rtl = /[؀-ۿ]/;
-      return '<tr><td' + (rtl.test(r.name) ? ' dir="rtl"' : '') + '>' + esc(r.name) + '</td><td>' + (r.attending ? 'Yes' : 'No') + '</td><td class="num">' + (r.attending ? esc(r.guests) : '–') + '</td><td' + (rtl.test(r.message || '') ? ' dir="rtl"' : '') + '>' + esc(r.message || '') + '</td><td>' + (r.guest ? '<b>' + esc(r.guest) + '</b><br>' : '') + '<small>' + esc(r.device || '') + '</small></td><td>' + esc(when(r.at)) + '</td></tr>';
+      return '<tr><td' + (rtl.test(r.name) ? ' dir="rtl"' : '') + '>' + esc(r.name) + '</td><td>' + (r.attending ? 'Yes' : 'No') + '</td><td class="num">' + (r.attending ? esc(r.guests) : '0') + '</td><td' + (rtl.test(r.message || '') ? ' dir="rtl"' : '') + '>' + esc(r.message || '') + '</td><td>' + (r.guest ? '<b>' + esc(r.guest) + '</b><br>' : '') + '<small>' + esc(r.device || '') + '</small></td><td>' + esc(when(r.at)) + '</td></tr>';
     }).join('') : '<tr><td colspan="6">No replies yet. Share the invitation link and replies will appear here.</td></tr>';
 
     var keys = Object.keys(ev).sort(function (a, b) { return ev[b] - ev[a]; });
