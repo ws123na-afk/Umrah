@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#04201A">
+<title>Invitation report</title>
+<style>{{TW}}</style>
+<style>
+  html,body{margin:0;background:#04201A;color:#F7F1E3;font-family:Georgia,"Times New Roman",serif}
+  *{box-sizing:border-box}
+  a{color:#E9CF8B}
+  :focus-visible{outline:3px solid #E9CF8B;outline-offset:2px}
+  table{border-collapse:collapse;width:100%}
+  th,td{padding:10px 12px;text-align:left;vertical-align:top;border-top:1px solid rgba(201,162,75,.22)}
+  th{font-weight:600;font-size:14px;color:#E9CF8B;border-top:0}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  td[dir=rtl]{text-align:right}
+  button,input{font:inherit}
+  @media (max-width:480px){th,td{padding:8px 6px;font-size:14px}td small{font-size:12px}}
+  code{font-size:.9em;color:#E9CF8B}
+</style>
+<script>{{CONFIG}}</script>
+</head>
+<body>
+<main class="tw-mx-auto tw-max-w-3xl tw-px-4 tw-pb-16 tw-pt-8">
+  <header class="tw-mb-6 tw-flex tw-flex-wrap tw-items-end tw-justify-between tw-gap-3">
+    <div>
+      <h1 class="tw-m-0 tw-text-3xl tw-font-semibold tw-text-gold2">Invitation report</h1>
+      <p class="tw-m-0 tw-mt-1 tw-text-base tw-text-ivory/80">Replies and clicks for the Umrah completion invitation.</p>
+    </div>
+    <button id="refresh" type="button" hidden class="tw-min-h-[44px] tw-cursor-pointer tw-rounded-xl tw-border tw-border-gold/60 tw-bg-transparent tw-px-4 tw-text-base tw-text-gold2 hover:tw-bg-em">Refresh</button>
+  </header>
+
+  <!-- not configured -->
+  <section id="noConfig" hidden class="tw-rounded-2xl tw-border tw-border-gold/40 tw-bg-em/40 tw-p-5">
+    <h2 class="tw-m-0 tw-text-xl tw-text-gold2">Storage is not switched on yet</h2>
+    <p class="tw-mb-0 tw-mt-2 tw-leading-relaxed">Add the Supabase publishable key to <code>supabaseKey</code> in <code>src/config.js</code>, run <code>python3 build.py</code>, and publish. Then open this page again.</p>
+  </section>
+
+  <!-- key form -->
+  <form id="keyForm" hidden class="tw-rounded-2xl tw-border tw-border-gold/40 tw-bg-em/40 tw-p-5" novalidate>
+    <label for="key" class="tw-block tw-text-base tw-font-semibold tw-text-gold2">Report key</label>
+    <p id="keyHelp" class="tw-mb-3 tw-mt-1 tw-text-sm tw-leading-relaxed tw-text-ivory/80">The key shown after you ran <code>supabase/umrah.sql</code>. It stays on this device only.</p>
+    <input id="key" type="password" autocomplete="off" aria-describedby="keyHelp keyErr" class="tw-block tw-min-h-[48px] tw-w-full tw-rounded-xl tw-border tw-border-gold/60 tw-bg-night tw-px-3 tw-text-base tw-text-ivory">
+    <p id="keyErr" role="alert" hidden class="tw-mb-0 tw-mt-2 tw-text-sm tw-text-[#FFC9C2]"></p>
+    <button type="submit" class="tw-mt-4 tw-min-h-[48px] tw-w-full tw-cursor-pointer tw-rounded-xl tw-border-0 tw-bg-gold2 tw-px-4 tw-text-base tw-font-semibold tw-text-night">Show report</button>
+  </form>
+
+  <p id="loading" hidden role="status" class="tw-text-ivory/80">Loading the report…</p>
+
+  <section id="netErr" hidden role="alert" class="tw-rounded-2xl tw-border tw-border-[#F0A6A0]/60 tw-bg-[#7A1F2B]/30 tw-p-5">
+    <p class="tw-m-0">Couldn't load the report. Check your connection and try again.</p>
+    <button id="retry" type="button" class="tw-mt-3 tw-min-h-[44px] tw-cursor-pointer tw-rounded-xl tw-border tw-border-gold/60 tw-bg-transparent tw-px-4 tw-text-base tw-text-gold2">Try again</button>
+  </section>
+
+  <!-- report -->
+  <div id="report" hidden>
+    <section aria-labelledby="h-sum">
+      <h2 id="h-sum" class="tw-sr-only">Summary</h2>
+      <dl id="kpis" class="tw-m-0 tw-grid tw-grid-cols-2 tw-gap-3 sm:tw-grid-cols-4"></dl>
+      <p id="updated" class="tw-mb-0 tw-mt-3 tw-text-sm tw-text-ivory/70"></p>
+    </section>
+
+    <section aria-labelledby="h-rep" class="tw-mt-8">
+      <h2 id="h-rep" class="tw-mb-3 tw-text-xl tw-font-semibold tw-text-gold2">Replies</h2>
+      <div class="tw-overflow-x-auto tw-rounded-2xl tw-border tw-border-gold/30 tw-bg-em/30">
+        <table>
+          <thead><tr><th scope="col">Name</th><th scope="col">Coming?</th><th scope="col" class="num">People</th><th scope="col">Message</th><th scope="col">Link / device</th><th scope="col">When</th></tr></thead>
+          <tbody id="replies"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-ppl" class="tw-mt-8">
+      <h2 id="h-ppl" class="tw-mb-1 tw-text-xl tw-font-semibold tw-text-gold2">Guests with a personal link</h2>
+      <p class="tw-mb-3 tw-mt-0 tw-text-sm tw-leading-relaxed tw-text-ivory/75">Send each guest their own link, for example <code>yourlink/?to=Ali</code>. Their visits appear here by name.</p>
+      <div class="tw-overflow-x-auto tw-rounded-2xl tw-border tw-border-gold/30 tw-bg-em/30">
+        <table>
+          <thead><tr><th scope="col">Guest</th><th scope="col" class="num">Visits</th><th scope="col">Opened?</th><th scope="col">Replied?</th><th scope="col">Device</th><th scope="col">Last seen</th></tr></thead>
+          <tbody id="people"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-act" class="tw-mt-8">
+      <h2 id="h-act" class="tw-mb-3 tw-text-xl tw-font-semibold tw-text-gold2">What guests did</h2>
+      <div class="tw-overflow-x-auto tw-rounded-2xl tw-border tw-border-gold/30 tw-bg-em/30">
+        <table>
+          <thead><tr><th scope="col">Action</th><th scope="col" class="num">Times</th></tr></thead>
+          <tbody id="actions"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-day" class="tw-mt-8">
+      <h2 id="h-day" class="tw-mb-3 tw-text-xl tw-font-semibold tw-text-gold2">Visits per day</h2>
+      <div class="tw-overflow-x-auto tw-rounded-2xl tw-border tw-border-gold/30 tw-bg-em/30">
+        <table>
+          <thead><tr><th scope="col">Day</th><th scope="col" class="num">Visits</th></tr></thead>
+          <tbody id="days"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-dev" class="tw-mt-8">
+      <h2 id="h-dev" class="tw-mb-1 tw-text-xl tw-font-semibold tw-text-gold2">Devices</h2>
+      <p class="tw-mb-3 tw-mt-0 tw-text-sm tw-leading-relaxed tw-text-ivory/75">Counted per visitor. No IP address or location is stored.</p>
+      <div class="tw-overflow-x-auto tw-rounded-2xl tw-border tw-border-gold/30 tw-bg-em/30">
+        <table>
+          <thead><tr><th scope="col">Device</th><th scope="col" class="num">Visitors</th></tr></thead>
+          <tbody id="devices"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-src" class="tw-mt-8">
+      <h2 id="h-src" class="tw-mb-1 tw-text-xl tw-font-semibold tw-text-gold2">Where visits came from</h2>
+      <p class="tw-mb-3 tw-mt-0 tw-text-sm tw-leading-relaxed tw-text-ivory/75">"direct / app" usually means the link was opened from WhatsApp or typed in.</p>
+      <div class="tw-overflow-x-auto tw-rounded-2xl tw-border tw-border-gold/30 tw-bg-em/30">
+        <table>
+          <thead><tr><th scope="col">Source</th><th scope="col" class="num">Visits</th></tr></thead>
+          <tbody id="sources"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-rec" class="tw-mt-8">
+      <h2 id="h-rec" class="tw-mb-1 tw-text-xl tw-font-semibold tw-text-gold2">Recent activity</h2>
+      <p class="tw-mb-3 tw-mt-0 tw-text-sm tw-leading-relaxed tw-text-ivory/75">The latest 150 clicks, newest first. Unnamed visitors are shown by a short device ID.</p>
+      <div class="tw-overflow-x-auto tw-rounded-2xl tw-border tw-border-gold/30 tw-bg-em/30">
+        <table>
+          <thead><tr><th scope="col">When</th><th scope="col">Who</th><th scope="col">Did</th><th scope="col">Device</th></tr></thead>
+          <tbody id="recent"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <button id="forget" type="button" class="tw-mt-8 tw-min-h-[44px] tw-cursor-pointer tw-rounded-xl tw-border tw-border-gold/40 tw-bg-transparent tw-px-4 tw-text-sm tw-text-ivory/80">Forget the key on this device</button>
+  </div>
+</main>
+
+<script>
+(function () {
+  var C = window.UMRAH_CONFIG || {};
+  var $ = function (id) { return document.getElementById(id); };
+  var LABELS = {
+    visit: 'Visited the page', open_invite: 'Opened the invitation', rsvp_open: 'Opened the reply form',
+    wa_majid: 'WhatsApp: Abdul Majid', call_majid: 'Called Abdul Majid', wa_aimal: 'WhatsApp: Aimal Khan', call_aimal: 'Called Aimal Khan',
+    rsvp_wa_majid: 'Replied by WhatsApp to Abdul Majid', rsvp_wa_aimal: 'Replied by WhatsApp to Aimal Khan',
+    maps: 'Opened directions', copy_address: 'Copied the address', cal_google: 'Added to Google Calendar', cal_apple: 'Added to Apple Calendar',
+    share: 'Shared the invitation', copy_text: 'Copied the invitation text', lang_switch: 'Switched language', photo_open: 'Viewed a photo'
+  };
+  function store(k, v) { try { if (v === undefined) { return localStorage.getItem(k); } if (v === null) { localStorage.removeItem(k); } else { localStorage.setItem(k, v); } } catch (e) { return null; } }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function when(iso) { try { return new Date(iso).toLocaleString('en-GB', { timeZone: 'Asia/Karachi', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); } catch (e) { return iso; } }
+  function show(id) { ['noConfig', 'keyForm', 'loading', 'netErr', 'report'].forEach(function (x) { $(x).hidden = x !== id; }); $('refresh').hidden = id !== 'report'; }
+
+  if (!C.supabaseUrl || !C.supabaseKey) { show('noConfig'); return; }
+
+  var key = (location.hash || '').slice(1) || store('umrah-report-key') || '';
+  if (location.hash) { history.replaceState(null, '', location.pathname); }
+
+  function load() {
+    show('loading');
+    var h = { 'Content-Type': 'application/json', apikey: C.supabaseKey };
+    if (C.supabaseKey.indexOf('sb_') !== 0) { h.Authorization = 'Bearer ' + C.supabaseKey; }
+    fetch(C.supabaseUrl + '/rest/v1/rpc/umrah_report', { method: 'POST', headers: h, body: JSON.stringify({ p_key: key }) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, status: r.status, j: j }; }); })
+      .then(function (res) {
+        if (!res.ok && !(res.status === 403 || (res.j && res.j.code === '28000'))) { show('netErr'); $('retry').focus(); return; }
+        if (!res.ok) {
+          store('umrah-report-key', null);
+          $('keyErr').textContent = 'That key didn’t match. Copy it again from the SQL result and try once more.';
+          $('keyErr').hidden = false; show('keyForm'); $('key').focus(); return;
+        }
+        store('umrah-report-key', key); render(res.j); show('report');
+      })
+      .catch(function () { show('netErr'); $('retry').focus(); });
+  }
+
+  function render(d) {
+    var ev = d.events || {};
+    var tiles = [
+      ['Visitors', d.visitors], ['Opened the invitation', ev.open_invite || 0], ['Replies', d.replies], ['Coming', d.coming],
+      ['People coming', d.guests], ['Not coming', d.not_coming], ['Calls + WhatsApp', (ev.call_majid || 0) + (ev.call_aimal || 0) + (ev.wa_majid || 0) + (ev.wa_aimal || 0)], ['Total visits', d.visits]
+    ];
+    $('kpis').innerHTML = tiles.map(function (t) {
+      return '<div class="tw-rounded-2xl tw-border tw-border-gold/30 tw-bg-em/40 tw-p-4"><dt class="tw-text-sm tw-text-ivory/80">' + esc(t[0]) + '</dt><dd class="tw-m-0 tw-mt-1 tw-text-3xl tw-font-semibold tw-text-ivory" style="font-variant-numeric:tabular-nums">' + esc(t[1] || 0) + '</dd></div>';
+    }).join('');
+    $('updated').textContent = 'Updated ' + when(d.generated_at) + ' (Pakistan time). One reply per device: the latest one counts.';
+
+    var list = d.list || [];
+    $('replies').innerHTML = list.length ? list.map(function (r) {
+      var rtl = /[؀-ۿ]/;
+      return '<tr><td' + (rtl.test(r.name) ? ' dir="rtl"' : '') + '>' + esc(r.name) + '</td><td>' + (r.attending ? 'Yes' : 'No') + '</td><td class="num">' + (r.attending ? esc(r.guests) : '0') + '</td><td' + (rtl.test(r.message || '') ? ' dir="rtl"' : '') + '>' + esc(r.message || '') + '</td><td>' + (r.guest ? '<b>' + esc(r.guest) + '</b><br>' : '') + '<small>' + esc(r.device || '') + '</small></td><td>' + esc(when(r.at)) + '</td></tr>';
+    }).join('') : '<tr><td colspan="6">No replies yet. Share the invitation link and replies will appear here.</td></tr>';
+
+    var keys = Object.keys(ev).sort(function (a, b) { return ev[b] - ev[a]; });
+    $('actions').innerHTML = keys.length ? keys.map(function (k) { return '<tr><td>' + esc(Object.prototype.hasOwnProperty.call(LABELS, k) ? LABELS[k] : k) + '</td><td class="num">' + esc(ev[k]) + '</td></tr>'; }).join('') : '<tr><td colspan="2">No clicks yet.</td></tr>';
+
+    var yes = function (b) { return b ? 'Yes' : 'No'; };
+    var rows = function (id, arr, n, fn, empty) { $(id).innerHTML = arr && arr.length ? arr.map(fn).join('') : '<tr><td colspan="' + n + '">' + empty + '</td></tr>'; };
+    rows('people', d.people, 6, function (p) { return '<tr><td><b>' + esc(p.guest) + '</b></td><td class="num">' + esc(p.visits) + '</td><td>' + yes(p.opened > 0) + '</td><td>' + yes(p.replied) + '</td><td><small>' + esc(p.devices) + '</small></td><td>' + esc(when(p.last_seen)) + '</td></tr>'; }, 'Nobody has opened a personal link yet.');
+    rows('devices', d.devices, 2, function (x) { return '<tr><td>' + esc(x.device) + '</td><td class="num">' + esc(x.visitors) + '</td></tr>'; }, 'No visits yet.');
+    rows('sources', d.sources, 2, function (x) { return '<tr><td>' + esc(x.source) + '</td><td class="num">' + esc(x.visits) + '</td></tr>'; }, 'No visits yet.');
+    rows('recent', d.recent, 4, function (x) { return '<tr><td>' + esc(when(x.at)) + '</td><td>' + (x.guest ? '<b>' + esc(x.guest) + '</b>' : '<small>#' + esc(String(x.visitor || '').slice(-5)) + '</small>') + '</td><td>' + esc(Object.prototype.hasOwnProperty.call(LABELS, x.event) ? LABELS[x.event] : x.event) + '</td><td><small>' + esc(x.device || '') + '</small></td></tr>'; }, 'No clicks yet.');
+    var days = d.by_day || [];
+    $('days').innerHTML = days.length ? days.map(function (x) { return '<tr><td>' + esc(new Date(x.day + 'T00:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' })) + '</td><td class="num">' + esc(x.visits) + '</td></tr>'; }).join('') : '<tr><td colspan="2">No visits yet.</td></tr>';
+  }
+
+  $('keyForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = $('key').value.trim();
+    if (!v) { $('keyErr').textContent = 'Paste your report key to see the report.'; $('keyErr').hidden = false; $('key').focus(); return; }
+    $('keyErr').hidden = true; key = v; load();
+  });
+  $('key').addEventListener('input', function () { $('keyErr').hidden = true; });
+  $('retry').addEventListener('click', load);
+  $('refresh').addEventListener('click', load);
+  $('forget').addEventListener('click', function () { store('umrah-report-key', null); key = ''; $('key').value = ''; show('keyForm'); $('key').focus(); });
+
+  window.addEventListener('hashchange', function () { var h = (location.hash || '').slice(1); if (h) { key = h; history.replaceState(null, '', location.pathname); load(); } });
+  if (key) { load(); } else { show('keyForm'); $('key').focus(); }
+})();
+</script>
+</body>
+</html>

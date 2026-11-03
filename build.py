@@ -10,8 +10,22 @@ s=rd(os.path.join(S,'template.html'))
 for k in ['MEMORIES','LOCATION']: s=s.replace('{{'+k+'}}',rd(os.path.join(S,'parts',k.lower()+'.html')))
 for k,f in fonts.items(): s=s.replace('{{'+k+'}}',b64(os.path.join(F,f+'.woff2')))
 img=os.path.join(S,'img','p')
+m2=os.path.join(S,'img','p','N.jpg')
+if os.path.exists(m2):
+    s=s.replace('{{MADINA_CLS}}',' two').replace('{{MADINA2}}','        <div class="madina-photo"><img src="data:image/jpeg;base64,'+b64(m2)+'" alt="مطاف میں، خانہ کعبہ کے سامنے" decoding="async" style="object-position:50% 30%"></div>\n')
+    s=s.replace('{{MADINA_C1}}','مکہ مکرمہ اور مدینہ منورہ').replace('{{MADINA_C2}}','خانہ کعبہ اور مسجدِ نبوی ﷺ')
+else:
+    s=s.replace('{{MADINA_CLS}}','').replace('{{MADINA2}}','')
+    s=s.replace('{{MADINA_C1}}','مدینہ منورہ').replace('{{MADINA_C2}}','مسجدِ نبوی ﷺ اور گنبدِ خضریٰ')
 s=s.replace('{{M1}}',b64(os.path.join(img,'M.jpg')))
 for f in glob.glob(os.path.join(img,'*.jpg')):
     s=s.replace('{{P_'+os.path.basename(f)[0]+'}}',b64(f))
+import re
+cfg=rd(os.path.join(S,'config.js'))
+SITE=re.search(r"siteUrl:\s*'([^']+)'",cfg).group(1).rstrip('/')
+s=s.replace('{{CONFIG}}',cfg).replace('{{RSVP}}',rd(os.path.join(S,'rsvp.js'))).replace('{{FX}}',rd(os.path.join(S,'fx.js'))).replace('{{SITE}}',SITE)
+s=s.replace('{{TW}}',rd(os.path.join(S,'tw.css'))).replace('{{I18N}}',rd(os.path.join(S,'i18n.js')))
 s=s.replace('{{SCENES}}',rd(os.path.join(S,'scenes.js'))).replace('{{THREE}}',rd(os.path.join(S,'vendor','three.min.js')))
 open(os.path.join(R,'index.html'),'w',encoding='utf-8').write(s); print('index.html',len(s),'bytes')
+r=rd(os.path.join(S,'report.html')).replace('{{TW}}',rd(os.path.join(S,'tw.css'))).replace('{{CONFIG}}',cfg)
+open(os.path.join(R,'report.html'),'w',encoding='utf-8').write(r); print('report.html',len(r),'bytes')

@@ -1,0 +1,12 @@
+{
+  "name": "تقریبِ تکمیلِ عمرہ، Umrah Completion Celebration",
+  "short_name": "Umrah Invite",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#04201A",
+  "theme_color": "#04201A",
+  "lang": "ur",
+  "dir": "rtl",
+  "icons": [{ "src": "thumbnails/umrah-invite-square.jpg", "sizes": "any", "type": "image/jpeg", "purpose": "any" }]
+}

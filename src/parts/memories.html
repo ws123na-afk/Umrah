@@ -5,7 +5,7 @@
   --mem-nast:'Nastaliq','Noto Nastaliq Urdu',serif;
   --mem-naskh:'Naskh','Noto Naskh Arabic',serif;
 }
-.mem-root{position:relative;display:block;direction:rtl;text-align:center;padding:36px 0 44px;overflow:hidden;-webkit-text-size-adjust:100%;color:var(--mem-ivory);font-family:var(--mem-naskh);box-sizing:border-box}
+.mem-root{position:relative;display:block;direction:rtl;text-align:center;padding:20px 0 24px;overflow:hidden;-webkit-text-size-adjust:100%;color:var(--mem-ivory);font-family:var(--mem-naskh);box-sizing:border-box}
 .mem-root *,.mem-root *:before,.mem-root *:after,.mem-lb *{box-sizing:border-box}
 .mem-wrap{max-width:760px;margin:0 auto;padding:0 18px}
 
@@ -17,7 +17,11 @@
 .mem-line-l{background:linear-gradient(to right,rgba(201,162,75,0),var(--mem-gold))}
 
 /* featured */
-.mem-stage{-webkit-perspective:900px;perspective:900px;width:100%;max-width:300px;margin:0 auto;padding:10px 0 22px}
+.mem-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:520px;margin:0 auto;padding:6px 0 18px}
+.mem-stage{-webkit-perspective:900px;perspective:900px;width:100%;margin:0}
+.mem-pair .mem-stage:first-child .mem-frame{transform:rotate(1.2deg)}
+.mem-pair .mem-stage:last-child .mem-frame{transform:rotate(-1.2deg)}
+.mem-pair .mem-paper{padding:7px 7px 0}
 .mem-feat{display:block;width:100%;margin:0;padding:0;border:0;background:none;font:inherit;color:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;text-align:center}
 .mem-feat:focus{outline:none}
 .mem-feat:focus-visible .mem-frame{box-shadow:0 0 0 3px var(--mem-gold2),0 24px 50px rgba(0,0,0,.55)}
@@ -27,7 +31,7 @@
 .mem-photo{position:relative;display:block;width:100%;height:0;padding-top:133.3333%;overflow:hidden;border-radius:2px;background:var(--mem-night);box-shadow:inset 0 0 0 1px rgba(4,32,26,.5)}
 .mem-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;-webkit-transform-origin:55% 35%;transform-origin:55% 35%;-webkit-animation:mem-kb 16s ease-in-out infinite alternate;animation:mem-kb 16s ease-in-out infinite alternate;will-change:transform}
 .mem-sheen{position:absolute;top:0;left:0;width:55%;height:100%;pointer-events:none;background:linear-gradient(100deg,rgba(233,207,139,0) 0%,rgba(255,244,210,.55) 50%,rgba(233,207,139,0) 100%);-webkit-transform:translateX(-170%) skewX(-18deg);transform:translateX(-170%) skewX(-18deg);-webkit-animation:mem-sweep 7s ease-in-out infinite;animation:mem-sweep 7s ease-in-out infinite}
-.mem-cap{display:block;padding:8px 6px 12px;font-family:var(--mem-naskh);font-weight:600;font-size:16px;line-height:2.1;color:#16372E}
+.mem-cap{display:block;padding:6px 4px 9px;font-family:var(--mem-naskh);font-weight:600;font-size:14px;line-height:1.9;color:#16372E}
 @-webkit-keyframes mem-kb{from{-webkit-transform:scale(1) translate(0,0)}to{-webkit-transform:scale(1.14) translate(-2%,1.5%)}}
 @keyframes mem-kb{from{transform:scale(1) translate(0,0)}to{transform:scale(1.14) translate(-2%,1.5%)}}
 @-webkit-keyframes mem-sweep{0%,55%{-webkit-transform:translateX(-170%) skewX(-18deg)}85%,100%{-webkit-transform:translateX(330%) skewX(-18deg)}}
@@ -35,7 +39,7 @@
 
 /* marquees */
 .mem-rows{margin-top:6px}
-.mem-marq-b{margin-top:16px}
+.mem-marq-b{margin-top:8px}
 .mem-rowlbl{font-family:"Nastaliq";font-weight:700;font-size:24px;line-height:2.1;color:var(--mem-gold2);text-align:center;margin:10px 0 0}
 .mem-tile.mem-tile-photo{width:150px}
 .mem-tile-photo .mem-lbl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:6px;padding-right:6px}
@@ -76,13 +80,14 @@ button.mem-tile{cursor:pointer}
 @keyframes mem-fade{from{opacity:0}to{opacity:1}}
 
 @media (min-width:768px){
-  .mem-root{padding:56px 0 64px}
+  .mem-root{padding:28px 0 32px}
   .mem-title{font-size:34px;margin:0 20px}
-  .mem-stage{max-width:340px}
+  .mem-pair{gap:22px}
+  .mem-cap{font-size:15px}
   .mem-tile{width:168px;margin-right:18px}
-  .mem-tile.mem-tile-photo{width:180px}
+  .mem-tile.mem-tile-photo{width:156px}
   .mem-art{height:158px;padding:14px 14px 4px}
-  .mem-tile-photo .mem-art{height:240px;padding:0}
+  .mem-tile-photo .mem-art{height:204px;padding:0}
   .mem-lbl{font-size:15px}
 }
 
@@ -95,6 +100,31 @@ button.mem-tile{cursor:pointer}
   .mem-dup{display:none !important}
   .mem-track{-webkit-transform:none !important;transform:none !important;padding:0 18px}
 }
+/* travel companions: auto-moving, swipeable strip */
+.mem-friends{margin-top:26px}
+.mem-fr-title{font-size:24px}
+.mem-fr-sub{margin:0 0 12px;font-size:15px;line-height:1.8;color:rgba(247,241,227,.8)}
+.mem-slider{position:relative;max-width:760px;margin:0 auto}
+.mem-grid{list-style:none;margin:0;padding:4px 2px 10px;display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.mem-grid::-webkit-scrollbar{display:none}
+.mem-grid li{flex:0 0 150px;margin:0;padding:0;scroll-snap-align:start}
+.mem-gi{display:block;width:100%;aspect-ratio:1/1;padding:0;margin:0;border:1px solid rgba(201,162,75,.5);border-radius:12px;overflow:hidden;background:var(--mem-night);cursor:pointer;-webkit-appearance:none;appearance:none;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.mem-gi img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s ease-out}
+@media (hover:hover){.mem-gi:hover img{transform:scale(1.05)}}
+.mem-gi:focus-visible{outline:3px solid var(--mem-gold2);outline-offset:-3px}
+.mem-nav{position:absolute;top:calc(50% - 27px);width:44px;height:44px;border-radius:50%;border:1px solid rgba(201,162,75,.7);background:rgba(4,32,26,.88);color:var(--mem-gold2);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;z-index:2;box-shadow:0 4px 14px rgba(0,0,0,.45)}
+.mem-nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.mem-nav:focus-visible{outline:3px solid var(--mem-gold2);outline-offset:2px}
+.mem-prev{right:-4px}.mem-next{left:-4px}
+[dir="ltr"] .mem-prev{right:auto;left:-4px}[dir="ltr"] .mem-next{left:auto;right:-4px}
+[dir="ltr"] .mem-nav svg{transform:scaleX(-1)}
+@media (hover:none){.mem-nav{display:none}}
+@media (min-width:768px){
+  .mem-grid li{flex-basis:176px}
+  .mem-fr-title{font-size:30px}
+}
+@media (prefers-reduced-motion:reduce){.mem-gi img{transition:none}.mem-grid{scroll-behavior:auto}}
+
 </style>
 
 <section class="mem-root" id="mem-root" dir="rtl" aria-labelledby="mem-h">
@@ -105,12 +135,13 @@ button.mem-tile{cursor:pointer}
       <span class="mem-line mem-line-l" aria-hidden="true"></span>
     </div>
 
+    <div class="mem-pair">
     <div class="mem-stage" id="mem-stage">
-      <button type="button" class="mem-feat" id="mem-feat" aria-haspopup="dialog" aria-label="تصویر بڑی کر کے دیکھیں">
+      <button type="button" class="mem-feat" id="mem-feat" aria-haspopup="dialog" data-cap="حرمِ مکی، خانہ کعبہ کے سامنے" aria-label="حرمِ مکی، خانہ کعبہ کے سامنے، تصویر بڑی کر کے دیکھیں">
         <span class="mem-card" id="mem-card">
           <span class="mem-frame"><span class="mem-paper">
             <span class="mem-photo">
-              <img id="mem-img" src="data:image/jpeg;base64,{{M1}}" alt="سفرِ عمرہ کی یاد — حرمِ مکی" width="900" height="1200" decoding="async">
+              <img id="mem-img" src="data:image/jpeg;base64,{{M1}}" alt="حرمِ مکی، خانہ کعبہ کے سامنے" width="640" height="853" decoding="async">
               <span class="mem-sheen" aria-hidden="true"></span>
             </span>
             <span class="mem-cap">حرمِ مکی، خانہ کعبہ کے سامنے</span>
@@ -118,47 +149,86 @@ button.mem-tile{cursor:pointer}
         </span>
       </button>
     </div>
-
-    <!-- ===== PLACEHOLDER HOOK: second photo =====
-         When a second photo exists, add a second featured card here (or a tile in a marquee set below),
-         e.g. <img src="data:image/jpeg;base64,M2" alt="..."> inside the same .mem-frame/.mem-paper/.mem-photo structure.
-         Nothing is rendered for it now. Delete this comment once used. -->
+    <div class="mem-stage">
+      <button type="button" class="mem-feat" data-mem-open="1" aria-haspopup="dialog" data-cap="مطاف میں، خانہ کعبہ کے سامنے" aria-label="مطاف میں، خانہ کعبہ کے سامنے، تصویر بڑی کر کے دیکھیں">
+        <span class="mem-card">
+          <span class="mem-frame"><span class="mem-paper">
+            <span class="mem-photo">
+              <img data-src-from="L" alt="مطاف میں، خانہ کعبہ کے سامنے" width="640" height="853" decoding="async">
+              <span class="mem-sheen" aria-hidden="true"></span>
+            </span>
+            <span class="mem-cap">مطاف میں، خانہ کعبہ کے سامنے</span>
+          </span></span>
+        </span>
+      </button>
+    </div>
+    </div>
   </div>
 
   <div class="mem-rows">
     <div class="mem-marq mem-marq-a" aria-label="یادوں کی قطار">
       <div class="mem-track">
         <div class="mem-set">
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="خانہ کعبہ کے سامنے" aria-label="خانہ کعبہ کے سامنے — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-mem-src="m1" alt="خانہ کعبہ کے سامنے" decoding="async"></span><span class="mem-lbl">خانہ کعبہ کے سامنے</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مطاف میں" aria-label="مطاف میں — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="L" src="data:image/jpeg;base64,{{P_L}}" alt="مطاف میں" decoding="async"></span><span class="mem-lbl">مطاف میں</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی ﷺ" aria-label="مسجدِ نبوی ﷺ — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="A" src="data:image/jpeg;base64,{{P_A}}" alt="مسجدِ نبوی ﷺ" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی ﷺ</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="زیارات کا سفر" aria-label="زیارات کا سفر — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="D" src="data:image/jpeg;base64,{{P_D}}" alt="زیارات کا سفر" decoding="async"></span><span class="mem-lbl">زیارات کا سفر</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="خانہ کعبہ کے سامنے" aria-label="خانہ کعبہ کے سامنے — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-mem-src="m1" alt="خانہ کعبہ کے سامنے" decoding="async"></span><span class="mem-lbl">خانہ کعبہ کے سامنے</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مطاف میں" aria-label="مطاف میں — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="L" alt="مطاف میں" decoding="async"></span><span class="mem-lbl">مطاف میں</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی ﷺ" aria-label="مسجدِ نبوی ﷺ — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="A" alt="مسجدِ نبوی ﷺ" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی ﷺ</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="زیارات کا سفر" aria-label="زیارات کا سفر — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="D" alt="زیارات کا سفر" decoding="async"></span><span class="mem-lbl">زیارات کا سفر</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="خانہ کعبہ کے سامنے" aria-label="خانہ کعبہ کے سامنے، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-mem-src="m1" alt="خانہ کعبہ کے سامنے" decoding="async"></span><span class="mem-lbl">خانہ کعبہ کے سامنے</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مطاف میں" aria-label="مطاف میں، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="L" src="data:image/jpeg;base64,{{P_L}}" alt="مطاف میں" decoding="async"></span><span class="mem-lbl">مطاف میں</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی ﷺ" aria-label="مسجدِ نبوی ﷺ، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="A" src="data:image/jpeg;base64,{{P_A}}" alt="مسجدِ نبوی ﷺ" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی ﷺ</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="زیارات کا سفر" aria-label="زیارات کا سفر، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="D" src="data:image/jpeg;base64,{{P_D}}" alt="زیارات کا سفر" decoding="async"></span><span class="mem-lbl">زیارات کا سفر</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="خانہ کعبہ کے سامنے" aria-label="خانہ کعبہ کے سامنے، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-mem-src="m1" alt="خانہ کعبہ کے سامنے" decoding="async"></span><span class="mem-lbl">خانہ کعبہ کے سامنے</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مطاف میں" aria-label="مطاف میں، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="L" alt="مطاف میں" decoding="async"></span><span class="mem-lbl">مطاف میں</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی ﷺ" aria-label="مسجدِ نبوی ﷺ، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="A" alt="مسجدِ نبوی ﷺ" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی ﷺ</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="زیارات کا سفر" aria-label="زیارات کا سفر، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="D" alt="زیارات کا سفر" decoding="async"></span><span class="mem-lbl">زیارات کا سفر</span></button>
         </div>
       </div>
     </div>
     <div class="mem-marq mem-marq-b" aria-label="یادوں کی قطار">
       <div class="mem-track">
         <div class="mem-set">
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="گنبدِ خضریٰ کے سامنے" aria-label="گنبدِ خضریٰ کے سامنے — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="G" src="data:image/jpeg;base64,{{P_G}}" alt="گنبدِ خضریٰ کے سامنے" decoding="async"></span><span class="mem-lbl">گنبدِ خضریٰ کے سامنے</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی کا صحن" aria-label="مسجدِ نبوی کا صحن — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="F" src="data:image/jpeg;base64,{{P_F}}" alt="مسجدِ نبوی کا صحن" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی کا صحن</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی، شام کے وقت" aria-label="مسجدِ نبوی، شام کے وقت — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="J" src="data:image/jpeg;base64,{{P_J}}" alt="مسجدِ نبوی، شام کے وقت" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی، شام کے وقت</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ قباء" aria-label="مسجدِ قباء — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="K" src="data:image/jpeg;base64,{{P_K}}" alt="مسجدِ قباء" decoding="async"></span><span class="mem-lbl">مسجدِ قباء</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="گنبدِ خضریٰ کے سامنے" aria-label="گنبدِ خضریٰ کے سامنے — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="G" alt="گنبدِ خضریٰ کے سامنے" decoding="async"></span><span class="mem-lbl">گنبدِ خضریٰ کے سامنے</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی کا صحن" aria-label="مسجدِ نبوی کا صحن — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="F" alt="مسجدِ نبوی کا صحن" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی کا صحن</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی، شام کے وقت" aria-label="مسجدِ نبوی، شام کے وقت — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="J" alt="مسجدِ نبوی، شام کے وقت" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی، شام کے وقت</span></button>
-          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ قباء" aria-label="مسجدِ قباء — تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="K" alt="مسجدِ قباء" decoding="async"></span><span class="mem-lbl">مسجدِ قباء</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="گنبدِ خضریٰ کے سامنے" aria-label="گنبدِ خضریٰ کے سامنے، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="G" src="data:image/jpeg;base64,{{P_G}}" alt="گنبدِ خضریٰ کے سامنے" decoding="async"></span><span class="mem-lbl">گنبدِ خضریٰ کے سامنے</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی کا صحن" aria-label="مسجدِ نبوی کا صحن، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="F" src="data:image/jpeg;base64,{{P_F}}" alt="مسجدِ نبوی کا صحن" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی کا صحن</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی، شام کے وقت" aria-label="مسجدِ نبوی، شام کے وقت، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="J" src="data:image/jpeg;base64,{{P_J}}" alt="مسجدِ نبوی، شام کے وقت" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی، شام کے وقت</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ قباء" aria-label="مسجدِ قباء، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-k="K" src="data:image/jpeg;base64,{{P_K}}" alt="مسجدِ قباء" decoding="async"></span><span class="mem-lbl">مسجدِ قباء</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="گنبدِ خضریٰ کے سامنے" aria-label="گنبدِ خضریٰ کے سامنے، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="G" alt="گنبدِ خضریٰ کے سامنے" decoding="async"></span><span class="mem-lbl">گنبدِ خضریٰ کے سامنے</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی کا صحن" aria-label="مسجدِ نبوی کا صحن، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="F" alt="مسجدِ نبوی کا صحن" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی کا صحن</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ نبوی، شام کے وقت" aria-label="مسجدِ نبوی، شام کے وقت، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="J" alt="مسجدِ نبوی، شام کے وقت" decoding="async"></span><span class="mem-lbl">مسجدِ نبوی، شام کے وقت</span></button>
+          <button type="button" class="mem-tile mem-tile-photo mem-t-night" data-mem-open="1" data-cap="مسجدِ قباء" aria-label="مسجدِ قباء، تصویر بڑی کر کے دیکھیں"><span class="mem-art"><img data-src-from="K" alt="مسجدِ قباء" decoding="async"></span><span class="mem-lbl">مسجدِ قباء</span></button>
         </div>
       </div>
     </div>
   </div>
 
+  <div class="mem-wrap mem-friends">
+    <div class="mem-head">
+      <span class="mem-line mem-line-r" aria-hidden="true"></span>
+      <h3 class="mem-title mem-fr-title">سفر کے ساتھی</h3>
+      <span class="mem-line mem-line-l" aria-hidden="true"></span>
+    </div>
+    <p class="mem-fr-sub">وہ دوست جن کے ساتھ یہ مبارک سفر طے ہوا</p>
+    <div class="mem-slider">
+    <ul class="mem-grid" id="mem-grid" aria-label="سفر کے ساتھی کی تصاویر">
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="میقات ذوالحلیفہ پر، احرام میں" aria-label="میقات ذوالحلیفہ پر، احرام میں، تصویر بڑی کر کے دیکھیں"><img src="img/safar/01-t.jpg" data-full="img/safar/01.jpg" alt="میقات ذوالحلیفہ پر، احرام میں" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="خانہ کعبہ کے سامنے، دوستوں کے ساتھ" aria-label="خانہ کعبہ کے سامنے، دوستوں کے ساتھ، تصویر بڑی کر کے دیکھیں"><img src="img/safar/02-t.jpg" data-full="img/safar/02.jpg" alt="خانہ کعبہ کے سامنے، دوستوں کے ساتھ" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="جبلِ رحمت، عرفات" aria-label="جبلِ رحمت، عرفات، تصویر بڑی کر کے دیکھیں"><img src="img/safar/03-t.jpg" data-full="img/safar/03.jpg" alt="جبلِ رحمت، عرفات" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="زیارات کے دوران" aria-label="زیارات کے دوران، تصویر بڑی کر کے دیکھیں"><img src="img/safar/04-t.jpg" data-full="img/safar/04.jpg" alt="زیارات کے دوران" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="جبلِ نور اور غارِ حرا" aria-label="جبلِ نور اور غارِ حرا، تصویر بڑی کر کے دیکھیں"><img src="img/safar/05-t.jpg" data-full="img/safar/05.jpg" alt="جبلِ نور اور غارِ حرا" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="جبلِ نور کی چوٹی پر" aria-label="جبلِ نور کی چوٹی پر، تصویر بڑی کر کے دیکھیں"><img src="img/safar/06-t.jpg" data-full="img/safar/06.jpg" alt="جبلِ نور کی چوٹی پر" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="جبلِ نور سے مکہ کا منظر" aria-label="جبلِ نور سے مکہ کا منظر، تصویر بڑی کر کے دیکھیں"><img src="img/safar/07-t.jpg" data-full="img/safar/07.jpg" alt="جبلِ نور سے مکہ کا منظر" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="جبلِ نور سے شہرِ مکہ" aria-label="جبلِ نور سے شہرِ مکہ، تصویر بڑی کر کے دیکھیں"><img src="img/safar/08-t.jpg" data-full="img/safar/08.jpg" alt="جبلِ نور سے شہرِ مکہ" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="جبلِ نور پر، پیچھے حرم کے مینار" aria-label="جبلِ نور پر، پیچھے حرم کے مینار، تصویر بڑی کر کے دیکھیں"><img src="img/safar/09-t.jpg" data-full="img/safar/09.jpg" alt="جبلِ نور پر، پیچھے حرم کے مینار" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="غارِ حرا کے راستے میں" aria-label="غارِ حرا کے راستے میں، تصویر بڑی کر کے دیکھیں"><img src="img/safar/10-t.jpg" data-full="img/safar/10.jpg" alt="غارِ حرا کے راستے میں" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="خانہ کعبہ، شام کے وقت" aria-label="خانہ کعبہ، شام کے وقت، تصویر بڑی کر کے دیکھیں"><img src="img/safar/11-t.jpg" data-full="img/safar/11.jpg" alt="خانہ کعبہ، شام کے وقت" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="حرم میں، خانہ کعبہ کے سامنے" aria-label="حرم میں، خانہ کعبہ کے سامنے، تصویر بڑی کر کے دیکھیں"><img src="img/safar/12-t.jpg" data-full="img/safar/12.jpg" alt="حرم میں، خانہ کعبہ کے سامنے" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="حرم میں دوستوں کے ساتھ" aria-label="حرم میں دوستوں کے ساتھ، تصویر بڑی کر کے دیکھیں"><img src="img/safar/13-t.jpg" data-full="img/safar/13.jpg" alt="حرم میں دوستوں کے ساتھ" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="احرام میں، میقات پر" aria-label="احرام میں، میقات پر، تصویر بڑی کر کے دیکھیں"><img src="img/safar/15-t.jpg" data-full="img/safar/15.jpg" alt="احرام میں، میقات پر" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="عمرہ سے پہلے، احرام میں" aria-label="عمرہ سے پہلے، احرام میں، تصویر بڑی کر کے دیکھیں"><img src="img/safar/16-t.jpg" data-full="img/safar/16.jpg" alt="عمرہ سے پہلے، احرام میں" width="420" height="420" loading="lazy" decoding="async"></button></li>
+    </ul>
+    <button type="button" class="mem-nav mem-prev" id="mem-prev" aria-label="پچھلی تصویر"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    <button type="button" class="mem-nav mem-next" id="mem-next" aria-label="اگلی تصویر"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+    </div>
+  </div>
+
   <div class="mem-lb" id="mem-lb" role="dialog" aria-modal="true" aria-label="تصویر">
     <button type="button" class="mem-lb-x" id="mem-lb-x" aria-label="بند کریں"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4L16 16M16 4L4 16"/></svg></button>
-    <img class="mem-lb-img" id="mem-lb-img" alt="سفرِ عمرہ کی یاد — حرمِ مکی">
+    <img class="mem-lb-img" id="mem-lb-img" alt="سفرِ عمرہ کی یاد، حرمِ مکی">
     <p class="mem-lb-cap">حرمِ مکی، خانہ کعبہ کے سامنے</p>
   </div>
 </section>
@@ -182,8 +252,16 @@ button.mem-tile{cursor:pointer}
 
   var refs = root.querySelectorAll('img[data-src-from]');
   for (i = 0; i < refs.length; i++) { var o = root.querySelector('img[data-k="' + refs[i].getAttribute('data-src-from') + '"]'); if (o) { refs[i].setAttribute('src', o.getAttribute('src')); } }
-  // Seamless loop: duplicate each set once (clones hidden from AT and keyboard).
+  // Photos repeated inside a set (to fill the strip) are reachable once by keyboard and screen readers.
   var sets = root.querySelectorAll('.mem-set');
+  for (i = 0; i < sets.length; i++) {
+    var seen = {}, tl = sets[i].querySelectorAll('button[data-cap]');
+    for (j = 0; j < tl.length; j++) {
+      var k = tl[j].getAttribute('data-cap');
+      if (seen[k]) { tl[j].setAttribute('tabindex', '-1'); tl[j].setAttribute('aria-hidden', 'true'); } else { seen[k] = 1; }
+    }
+  }
+  // Seamless loop: duplicate each set once (clones hidden from AT and keyboard).
   for (i = 0; i < sets.length; i++) {
     var dup = sets[i].cloneNode(true);
     dup.className += ' mem-dup';
@@ -206,9 +284,10 @@ button.mem-tile{cursor:pointer}
     lastFocus = from || null;
     var im = from && from.querySelector ? from.querySelector('img') : null;
     var cap = from && from.getAttribute ? from.getAttribute('data-cap') : null;
-    lbImg.setAttribute('src', im && im.getAttribute('src') ? im.getAttribute('src') : src);
-    if (lbCap) { lbCap.textContent = cap || 'حرمِ مکی، خانہ کعبہ کے سامنے'; }
-    lbImg.setAttribute('alt', cap || 'سفرِ عمرہ کی یاد');
+    var full = im && im.getAttribute('data-full');
+    lbImg.setAttribute('src', full || (im && im.getAttribute('src') ? im.getAttribute('src') : src));
+    if (lbCap) { lbCap.textContent = cap || T('حرمِ مکی، خانہ کعبہ کے سامنے'); }
+    lbImg.setAttribute('alt', cap || T('سفرِ عمرہ کی یاد'));
     lb.className = 'mem-lb mem-open';
     prevOverflow = document.documentElement.style.overflow;
     document.documentElement.style.overflow = 'hidden';
@@ -233,6 +312,34 @@ button.mem-tile{cursor:pointer}
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' || e.keyCode === 27) { closeLb(); }
   });
+
+  // Companion photos: auto-advance, swipe, buttons
+  var grid = document.getElementById('mem-grid');
+  if (grid) {
+    var paused = false, onScreen = false, resumeT = 0;
+    var dirSign = function () { return getComputedStyle(grid).direction === 'rtl' ? -1 : 1; };
+    var step = function () { var li = grid.querySelector('li'); return li ? li.getBoundingClientRect().width + 10 : 160; };
+    var atEnd = function () { return Math.abs(grid.scrollLeft) + grid.clientWidth >= grid.scrollWidth - 6; };
+    var atStart = function () { return Math.abs(grid.scrollLeft) < 6; };
+    var go = function (n) {
+      if (n > 0 && atEnd()) { grid.scrollTo({ left: 0 }); return; }
+      if (n < 0 && atStart()) { grid.scrollTo({ left: dirSign() * grid.scrollWidth }); return; }
+      grid.scrollBy({ left: dirSign() * n * step() });
+    };
+    var hold = function () { paused = true; if (resumeT) { clearTimeout(resumeT); } };
+    var release = function () { if (resumeT) { clearTimeout(resumeT); } resumeT = setTimeout(function () { paused = false; }, 4000); };
+    ['pointerdown', 'touchstart', 'mouseenter', 'focusin', 'wheel'].forEach(function (ev) { grid.addEventListener(ev, hold, { passive: true }); });
+    ['pointerup', 'touchend', 'mouseleave', 'focusout'].forEach(function (ev) { grid.addEventListener(ev, release, { passive: true }); });
+    var prev = document.getElementById('mem-prev'), next = document.getElementById('mem-next');
+    if (prev) { prev.addEventListener('click', function () { hold(); go(-1); release(); }); }
+    if (next) { next.addEventListener('click', function () { hold(); go(1); release(); }); }
+    if ('IntersectionObserver' in window) { new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }, { threshold: 0.3 }).observe(grid); } else { onScreen = true; }
+    setInterval(function () {
+      if (paused || !onScreen || document.hidden || (rmq && rmq.matches)) { return; }
+      if (lb.className.indexOf('mem-open') > -1) { return; }
+      go(1);
+    }, 2800);
+  }
 
   // Pause marquees while touched
   var marqs = root.querySelectorAll('.mem-marq');
