@@ -41,7 +41,7 @@
   }
   window.UMRAH_TRACK = track;
   try { if (!sessionStorage.getItem('umrah-visit')) { sessionStorage.setItem('umrah-visit', '1'); track('visit'); } } catch (e) { track('visit'); }
-  [].forEach.call(document.querySelectorAll('.mem-tile,.mem-feat'), function (b) { b.setAttribute('data-track', 'photo_open'); });
+  [].forEach.call(document.querySelectorAll('.mem-tile,.mem-feat,.mem-gi'), function (b) { b.setAttribute('data-track', 'photo_open'); });
   document.addEventListener('click', function (e) {
     var t = e.target.closest ? e.target.closest('[data-track]') : null;
     if (t) { track(t.getAttribute('data-track')); }
