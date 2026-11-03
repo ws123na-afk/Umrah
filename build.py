@@ -10,7 +10,15 @@ s=rd(os.path.join(S,'template.html'))
 for k in ['MEMORIES','LOCATION']: s=s.replace('{{'+k+'}}',rd(os.path.join(S,'parts',k.lower()+'.html')))
 for k,f in fonts.items(): s=s.replace('{{'+k+'}}',b64(os.path.join(F,f+'.woff2')))
 img=os.path.join(S,'img','p')
-s=s.replace('{{M1}}',b64(os.path.join(img,'M.jpg')))
+import shutil, re as _re
+os.makedirs(os.path.join(R,'img','p'),exist_ok=True)
+for f in glob.glob(os.path.join(img,'*.jpg')): shutil.copy(f,os.path.join(R,'img','p',os.path.basename(f)))
+os.makedirs(os.path.join(R,'vendor'),exist_ok=True)
+shutil.copy(os.path.join(S,'vendor','three.min.js'),os.path.join(R,'vendor','three.min.js'))
+# photos as cached files, loaded lazily
+s=s.replace('src="data:image/jpeg;base64,{{M1}}"','src="img/p/M.jpg" loading="lazy"')
+s=_re.sub(r'src="data:image/jpeg;base64,\{\{P_([A-Z])\}\}"',lambda m:'src="img/p/'+m.group(1)+'.jpg" loading="lazy"',s)
+s=s.replace('<script>{{THREE}}</script>','<script src="vendor/three.min.js"></script>')
 for f in glob.glob(os.path.join(img,'*.jpg')):
     s=s.replace('{{P_'+os.path.basename(f)[0]+'}}',b64(f))
 import re
