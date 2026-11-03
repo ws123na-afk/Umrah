@@ -389,6 +389,9 @@ html[lang="en"] .card .hall.goldtext,html[lang="en"] .loc-hall{line-height:1.35;
 
 [hidden]{display:none!important}
 .madina{max-width:620px;margin-left:auto;margin-right:auto}
+.madina-pics{display:grid;grid-template-columns:1fr}
+.madina-pics.two{grid-template-columns:1fr 1fr;gap:2px}
+.madina-pics.two .madina-photo{aspect-ratio:3/4}
 .tapnote{padding:2px 12px;border-radius:14px;background:rgba(4,32,26,.78);color:#F2DC9C}
 @media (max-width:359px){.chip{font-size:13px;padding:4px 10px}}
 /* ---------- contact icons ---------- */
@@ -545,7 +548,9 @@ html[lang="en"] .rdlg-t{font-size:26px;line-height:1.3;margin-bottom:8px}
 {{MEMORIES}}
     <h2 class="sec-title reveal" id="s-madina"><i></i><span>حرمین شریفین</span><i></i></h2>
     <figure class="madina reveal" style="margin-left:0;margin-right:0">
-      <div class="madina-photo"><img src="data:image/jpeg;base64,{{P_A}}" alt="مسجدِ نبوی ﷺ اور گنبدِ خضریٰ" decoding="async"><span class="mp-sheen" aria-hidden="true"></span></div>
+      <div class="madina-pics{{MADINA_CLS}}">
+        <div class="madina-photo"><img src="data:image/jpeg;base64,{{P_A}}" alt="مسجدِ نبوی ﷺ اور گنبدِ خضریٰ" decoding="async"><span class="mp-sheen" aria-hidden="true"></span></div>
+{{MADINA2}}      </div>
       <figcaption class="cap">
         <div class="c1 goldtext">مدینہ منورہ</div>
         <div class="c2">مسجدِ نبوی ﷺ اور گنبدِ خضریٰ</div>

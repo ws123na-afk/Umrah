@@ -10,6 +10,11 @@ s=rd(os.path.join(S,'template.html'))
 for k in ['MEMORIES','LOCATION']: s=s.replace('{{'+k+'}}',rd(os.path.join(S,'parts',k.lower()+'.html')))
 for k,f in fonts.items(): s=s.replace('{{'+k+'}}',b64(os.path.join(F,f+'.woff2')))
 img=os.path.join(S,'img','p')
+m2=os.path.join(S,'img','p','N.jpg')
+if os.path.exists(m2):
+    s=s.replace('{{MADINA_CLS}}',' two').replace('{{MADINA2}}','        <div class="madina-photo"><img src="data:image/jpeg;base64,'+b64(m2)+'" alt="مسجدِ نبوی ﷺ کے سامنے" decoding="async"></div>\n')
+else:
+    s=s.replace('{{MADINA_CLS}}','').replace('{{MADINA2}}','')
 s=s.replace('{{M1}}',b64(os.path.join(img,'M.jpg')))
 for f in glob.glob(os.path.join(img,'*.jpg')):
     s=s.replace('{{P_'+os.path.basename(f)[0]+'}}',b64(f))
