@@ -182,8 +182,16 @@ button.mem-tile{cursor:pointer}
 
   var refs = root.querySelectorAll('img[data-src-from]');
   for (i = 0; i < refs.length; i++) { var o = root.querySelector('img[data-k="' + refs[i].getAttribute('data-src-from') + '"]'); if (o) { refs[i].setAttribute('src', o.getAttribute('src')); } }
-  // Seamless loop: duplicate each set once (clones hidden from AT and keyboard).
+  // Photos repeated inside a set (to fill the strip) are reachable once by keyboard and screen readers.
   var sets = root.querySelectorAll('.mem-set');
+  for (i = 0; i < sets.length; i++) {
+    var seen = {}, tl = sets[i].querySelectorAll('button[data-cap]');
+    for (j = 0; j < tl.length; j++) {
+      var k = tl[j].getAttribute('data-cap');
+      if (seen[k]) { tl[j].setAttribute('tabindex', '-1'); tl[j].setAttribute('aria-hidden', 'true'); } else { seen[k] = 1; }
+    }
+  }
+  // Seamless loop: duplicate each set once (clones hidden from AT and keyboard).
   for (i = 0; i < sets.length; i++) {
     var dup = sets[i].cloneNode(true);
     dup.className += ' mem-dup';

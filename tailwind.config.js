@@ -2,7 +2,7 @@
  *  Preflight is off so the original hand-written CSS in template.html is untouched. */
 module.exports = {
   prefix: 'tw-',
-  content: ['./src/template.html', './src/parts/*.html', './src/i18n.js'],
+  content: ['./src/template.html', './src/report.html', './src/parts/*.html', './src/i18n.js'],
   corePlugins: { preflight: false },
   theme: {
     extend: {

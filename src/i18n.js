@@ -74,9 +74,31 @@
       'We kindly ask you to join us in this blessed occasion and to remember us in your prayers.',
     'جزاکم اللہ خیراً': 'Jazakum Allahu khayran',
     'دعوت': 'Invite',
+    'مرکزی دعوت نامے پر جائیں': 'Skip to the invitation',
     'یادیں': 'Memories',
     'مدینہ': 'Madinah',
     'تفصیل': 'Details',
+    /* reply form */
+    'شرکت کی تصدیق': 'Confirm your attendance',
+    'آپ کا جواب صرف میزبانوں تک پہنچے گا۔': 'Your reply goes only to the hosts.',
+    'آپ کا نام': 'Your name',
+    'اپنا نام لکھیں تاکہ میزبان جان سکیں کون آ رہا ہے۔': 'Enter your name so the hosts know who is coming.',
+    'کیا آپ تشریف لائیں گے؟': 'Will you be able to come?',
+    'جی ہاں، ان شاء اللہ': 'Yes, in sha Allah',
+    'معذرت، اس بار نہیں': 'Sorry, not this time',
+    'کتنے افراد آئیں گے؟': 'How many people are coming?',
+    'پیغام یا دعا': 'Message or dua',
+    '(اختیاری)': '(optional)',
+    'جواب محفوظ نہیں ہو سکا۔ انٹرنیٹ چیک کر کے دوبارہ بھیجیں۔': "We couldn't save your reply. Check your internet connection and send it again.",
+    'جواب بھیجیں': 'Send reply',
+    'بعد میں': 'Later',
+    'ٹھیک ہے': 'Done',
+    'جواب تبدیل کریں': 'Change reply',
+    'اپنا جواب تبدیل کریں': 'Change your reply',
+    'بھیجا جا رہا ہے…': 'Sending…',
+    'آپ کا جواب: اس بار تشریف نہیں لا سکیں گے۔': 'Your reply: you can’t make it this time.',
+    'آپ کا جواب: ان شاء اللہ تشریف لائیں گے': 'Your reply: coming, in sha Allah',
+    'افراد': 'people',
     /* attributes */
     'تقریبِ تکمیلِ عمرہ — دعوت نامہ': 'Umrah Completion Celebration — Invitation',
     'خانہ کعبہ کے گرد طواف کا متحرک منظر': 'Animated scene of tawaf around the Kaaba',
@@ -128,7 +150,7 @@
   function textNodes(fn) {
     var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
     var n, list = [];
-    while ((n = w.nextNode())) { if (!n.parentElement || !n.parentElement.closest('script,style,noscript')) { list.push(n); } }
+    while ((n = w.nextNode())) { if (!n.parentElement || !n.parentElement.closest('script,style,noscript,[translate="no"]')) { list.push(n); } }
     list.forEach(fn);
   }
   function setNode(n, toEn) {
@@ -141,6 +163,7 @@
   }
   function setAttrs(toEn) {
     document.querySelectorAll('[aria-label],[alt],[title],[data-cap]').forEach(function (el) {
+      if (el.closest('[translate="no"]')) { return; }
       var o = orig.get(el) || {};
       ATTRS.forEach(function (a) {
         if (!el.hasAttribute(a)) { return; }

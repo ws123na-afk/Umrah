@@ -13,6 +13,12 @@ img=os.path.join(S,'img','p')
 s=s.replace('{{M1}}',b64(os.path.join(img,'M.jpg')))
 for f in glob.glob(os.path.join(img,'*.jpg')):
     s=s.replace('{{P_'+os.path.basename(f)[0]+'}}',b64(f))
+import re
+cfg=rd(os.path.join(S,'config.js'))
+SITE=re.search(r"siteUrl:\s*'([^']+)'",cfg).group(1).rstrip('/')
+s=s.replace('{{CONFIG}}',cfg).replace('{{RSVP}}',rd(os.path.join(S,'rsvp.js'))).replace('{{SITE}}',SITE)
 s=s.replace('{{TW}}',rd(os.path.join(S,'tw.css'))).replace('{{I18N}}',rd(os.path.join(S,'i18n.js')))
 s=s.replace('{{SCENES}}',rd(os.path.join(S,'scenes.js'))).replace('{{THREE}}',rd(os.path.join(S,'vendor','three.min.js')))
 open(os.path.join(R,'index.html'),'w',encoding='utf-8').write(s); print('index.html',len(s),'bytes')
+r=rd(os.path.join(S,'report.html')).replace('{{TW}}',rd(os.path.join(S,'tw.css'))).replace('{{CONFIG}}',cfg)
+open(os.path.join(R,'report.html'),'w',encoding='utf-8').write(r); print('report.html',len(r),'bytes')
