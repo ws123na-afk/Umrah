@@ -8,6 +8,8 @@
     'کھولنے کے لیے دبائیں': 'Tap to open',
     'یہاں دبائیں اور دعوت نامہ دیکھیں': 'Tap here to open your invitation',
     'محترم': 'Dear',
+    'مسجدِ نبوی ﷺ، گنبدِ خضریٰ کے سامنے': 'Masjid an-Nabawi ﷺ, in front of the Green Dome',
+    'مسجدِ نبوی ﷺ کے صحن میں': 'In the courtyard of Masjid an-Nabawi ﷺ',
     'اور اُن سب کا شکریہ جو اپنا قیمتی وقت دے کر ہماری خوشی میں شریک ہوئے': 'And thank you to everyone who gave their precious time to share our joy',
     'جو مہمان اپنا قیمتی وقت نکال کر تشریف لائیں، اُن سب کا تہہ دل سے شکریہ۔ اللہ آپ کو جزائے خیر دے۔': 'Heartfelt thanks to every guest who takes the time to join us. May Allah reward you.',
     'اس طرح کے دعوت نامے اور مزید جدید سہولیات کے لیے رابطہ کریں': 'For invitations like this and more advanced features, get in touch',
