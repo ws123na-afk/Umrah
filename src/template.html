@@ -392,6 +392,9 @@ html[lang="en"] .card .hall.goldtext,html[lang="en"] .loc-hall{line-height:1.35;
 .madina-pics{display:grid;grid-template-columns:1fr}
 .madina-pics.two{grid-template-columns:1fr 1fr;gap:2px}
 .madina-pics.two .madina-photo{aspect-ratio:3/4}
+.madina-pics.three{grid-template-columns:1fr 1fr;gap:2px}
+.madina-pics.three .madina-photo{aspect-ratio:3/4}
+.madina-pics.three .madina-photo:first-child{grid-column:1 / -1;aspect-ratio:16/10}
 .tapnote{padding:2px 12px;border-radius:14px;background:rgba(4,32,26,.78);color:#F2DC9C}
 @media (max-width:359px){.chip{font-size:13px;padding:4px 10px}}
 /* ---------- contact icons ---------- */
@@ -431,6 +434,120 @@ html[lang="en"] .card .hall.goldtext,html[lang="en"] .loc-hall{line-height:1.35;
 html[lang="en"] .rdlg-t{font-size:26px;line-height:1.3;margin-bottom:8px}
 @media (max-width:360px){.rdlg-t{font-size:23px;line-height:1.8;padding:0 46px}}
 @media (prefers-reduced-motion:reduce){.rdlg[open]{animation:none}}
+
+/* gate: make opening obvious */
+#gate{cursor:pointer}
+.seal{width:max-content;max-width:94vw}
+.hint{white-space:nowrap}
+@media (max-width:360px){.hint{font-size:14px;padding:5px 12px}.openbtn{font-size:19px;padding:0 28px}}
+.gate-glow{position:absolute;top:0;bottom:0;left:50%;width:180px;transform:translateX(-50%);z-index:2;pointer-events:none;
+  background:linear-gradient(90deg,rgba(233,207,139,0) 0%,rgba(255,236,170,.22) 38%,rgba(255,246,210,.75) 50%,rgba(255,236,170,.22) 62%,rgba(233,207,139,0) 100%);
+  animation:seam 2.8s ease-in-out infinite}
+#gate.open .gate-glow,#gate.unlocking .gate-glow{animation:none;opacity:0;transition:opacity .4s ease}
+@keyframes seam{0%,100%{opacity:.55}50%{opacity:1}}
+.openbtn{font-size:21px;min-height:60px;padding:0 40px;animation:pulse 2.4s ease-in-out infinite}
+.openbtn:hover{filter:brightness(1.06)}
+.hint{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:600;color:#F2DC9C;background:rgba(4,32,26,.9);border:1px solid rgba(201,162,75,.65);padding:6px 16px;border-radius:24px;line-height:1.8;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.hint .tap{flex:0 0 auto;animation:tapbob 1.3s ease-in-out infinite}
+@keyframes tapbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.gate-for{font-size:17px;font-weight:600;color:#F2DC9C;background:rgba(4,32,26,.88);border:1px solid rgba(201,162,75,.6);border-radius:22px;padding:4px 18px;line-height:1.9;max-width:80vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gate-for .gf-n{font-family:"Nastaliq";font-weight:700}
+html[lang="en"] .gate-for .gf-n{font-family:inherit}
+@media (min-width:900px){
+  .medal{width:230px;height:230px}
+  .medal .t{font-size:38px}
+  .openbtn{font-size:23px;min-height:64px;padding:0 48px}
+  .hint{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){.gate-glow,.openbtn,.hint .tap{animation:none}}
+
+/* ---------- Masjid an-Nabawi style doors: carved wood, brass studs, ring handles ---------- */
+.dpanel{background-color:#2E1B10!important;
+  background-image:radial-gradient(circle at 50% 50%,#FFF0BE 0,#E1BE6A 1.6px,#9C7631 3px,rgba(0,0,0,.35) 3.8px,transparent 4.6px),
+    repeating-linear-gradient(90deg,rgba(0,0,0,.16) 0 2px,transparent 2px 9px,rgba(255,220,170,.035) 9px 11px,transparent 11px 23px),
+    linear-gradient(180deg,#4B2D18 0%,#2B190D 55%,#3B2313 100%)!important;
+  background-size:44px 44px,auto,auto!important;background-position:22px 22px,0 0,0 0!important;
+  box-shadow:inset 0 0 0 3px #C9A24B,inset 0 0 0 11px #24150B,inset 0 0 0 13px rgba(201,162,75,.65),inset 0 0 60px rgba(0,0,0,.55)!important}
+.handle{width:46px!important;height:46px!important;margin-top:-23px!important;border-radius:50%!important;background:transparent!important;border:5px solid #D9B25F;box-shadow:0 0 0 2px #6E4F1A,inset 0 0 0 2px #6E4F1A,0 6px 14px rgba(0,0,0,.55)!important}
+.handle::before{content:"";position:absolute;left:50%;top:-14px;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#FFF0BE,#C9A24B 60%,#6E4F1A);box-shadow:0 2px 6px rgba(0,0,0,.5)}
+.door.l .handle{right:22px!important}.door.r .handle{left:22px!important}
+/* lock and key */
+.lock{position:absolute;left:50%;top:50%;width:86px;height:118px;z-index:4;opacity:0;transform:translate(-50%,-50%) scale(.85);pointer-events:none;
+  border-radius:43px 43px 20px 20px;background:radial-gradient(circle at 40% 30%,#FFF0BE,#D9B25F 45%,#8C6A22 100%);
+  box-shadow:0 0 0 3px #6E4F1A,0 0 0 7px rgba(201,162,75,.35),0 14px 34px rgba(0,0,0,.6);transition:opacity .35s ease-out,transform .35s ease-out}
+.keyhole{position:absolute;left:50%;top:40%;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:#1A1206;box-shadow:inset 0 2px 4px rgba(0,0,0,.8)}
+.keyhole::after{content:"";position:absolute;left:5px;top:14px;width:10px;height:26px;background:#1A1206;clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)}
+.lock::after{content:"";position:absolute;inset:-40px;border-radius:50%;background:radial-gradient(circle,rgba(255,240,190,.9),rgba(255,240,190,0) 65%);opacity:0;transform:scale(.5)}
+.key{position:absolute;left:50%;top:50%;width:48px;height:128px;margin:-16px 0 0 -24px;z-index:5;opacity:0;pointer-events:none;transform-origin:24px 16px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.55))}
+#gate.unlocking .seal{opacity:0;transform:translate(-50%,-50%) scale(.85);pointer-events:none;transition:opacity .3s ease-in,transform .3s ease-in}
+#gate.unlocking .lock{opacity:1;transform:translate(-50%,-50%) scale(1)}
+#gate.unlocking .key{animation:keyIn .6s .3s cubic-bezier(.2,.8,.2,1) forwards,keyTurn .4s .95s ease-in-out forwards}
+#gate.unlocking .lock::after{animation:lockGlow .55s 1.3s ease-out forwards}
+@keyframes keyIn{from{opacity:0;transform:translateY(38vh) scale(1.35) rotate(-20deg)}to{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+@keyframes keyTurn{from{opacity:1;transform:rotate(0)}to{opacity:1;transform:rotate(90deg)}}
+@keyframes lockGlow{0%{opacity:0;transform:scale(.5)}40%{opacity:1}100%{opacity:0;transform:scale(1.6)}}
+#gate.open .lock,#gate.open .key{opacity:0!important;transition:opacity .3s ease-in}
+@media (prefers-reduced-motion:reduce){#gate.unlocking .key,#gate.unlocking .lock::after{animation:none}}
+/* footer: thanks and credit */
+footer .f4{margin:22px auto 0;max-width:560px;font-size:clamp(16px,4.2vw,19px);line-height:1.9;color:rgba(247,241,227,.88)}
+footer .f5{margin:26px auto 0;padding-top:18px;max-width:520px;border-top:1px solid rgba(201,162,75,.3);font-size:15px;line-height:1.8;color:rgba(247,241,227,.75)}
+footer .f-link{display:inline-flex;align-items:center;gap:8px;margin-top:8px;min-height:44px;padding:6px 20px;border-radius:22px;border:1px solid rgba(201,162,75,.65);color:#F2DC9C;text-decoration:none;font-weight:600;direction:ltr;transition:background .2s ease-out}
+footer .f-link:hover{background:rgba(201,162,75,.14)}
+footer .f-link:focus-visible{outline:3px solid #F2DC9C;outline-offset:3px}
+
+/* ================= upgraded sections ================= */
+/* invite card */
+.inv-emblem{display:flex;justify-content:center;margin:-10px 0 6px;color:var(--goldd)}
+.names{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.1em .3em}
+.names .and{display:inline-flex;align-items:center;justify-content:center;width:1.25em;height:1.25em;border-radius:50%;border:1.5px solid var(--gold);background:radial-gradient(circle at 40% 35%,rgba(242,220,156,.5),rgba(201,162,75,.12));font-size:.46em;line-height:1;padding:.18em 0 0;color:var(--goldd);box-shadow:0 2px 8px rgba(156,118,49,.25)}
+.msg-k{display:block;font-weight:600;font-size:1.12em;color:var(--em);margin-bottom:2px}
+.dua-wrap{margin-top:16px}
+.dua{display:inline-block;margin:0;padding:2px 22px;border-radius:22px;border:1px solid rgba(201,162,75,.55);background:linear-gradient(90deg,rgba(201,162,75,0),rgba(201,162,75,.16) 50%,rgba(201,162,75,0))}
+.paper{box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(201,162,75,.6) inset,0 0 0 9px #F7F1E3 inset,0 0 0 10px rgba(201,162,75,.45) inset,0 0 0 14px #F7F1E3 inset,0 0 0 15px rgba(201,162,75,.25) inset}
+html[lang="en"] .names .and{font-family:inherit;font-size:.38em;padding:0}
+/* details ticket */
+.ticket{position:relative;display:grid;grid-template-columns:104px minmax(0,1fr);border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#0F4D3D 0%,#082F24 100%);border:1px solid rgba(201,162,75,.6);box-shadow:0 18px 40px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06)}
+.tk-stub{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 6px;background:linear-gradient(180deg,#FBF6E9,#EFE4C8);border-inline-end:2px dashed rgba(156,118,49,.55)}
+.tk-month{background:#7A1F2B;color:#FFF0D6;font-weight:600;font-size:14px;line-height:1.8;border-radius:10px;padding:1px 10px;white-space:nowrap}
+.tk-day{margin-top:6px;font-weight:600;font-size:54px;line-height:1.1;color:#0E4B3B;font-variant-numeric:tabular-nums}
+.tk-wd{font-family:"Nastaliq";font-weight:700;font-size:22px;line-height:2;color:var(--goldd)}
+.tk-main{display:flex;flex-direction:column;gap:12px;padding:16px 16px 16px 14px;text-align:start}
+.tk-row{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:start;padding-bottom:12px;border-bottom:1px solid rgba(201,162,75,.2)}
+.tk-ic{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#F6E1A5,#B88A3E);color:#0A3A2D;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+.tk-lb{font-size:14px;font-weight:600;line-height:1.6;color:var(--gold2)}
+.tk-v{font-size:18px;font-weight:600;line-height:1.7;color:#FFF6DC}
+.tk-hall{font-family:"Nastaliq";font-weight:700;font-size:24px;line-height:2.1;color:var(--gold2)}
+.tk-s{font-size:15px;line-height:1.8;color:rgba(247,241,227,.85)}
+.tk-cal{display:grid;grid-template-columns:1fr;gap:8px}
+.tk-cal .btn{min-height:46px;font-size:15px;border-radius:12px;padding:6px 10px;white-space:normal;line-height:1.4}
+@media (min-width:560px){.tk-cal{grid-template-columns:1fr 1fr}}
+@media (max-width:559px){
+  .ticket{grid-template-columns:minmax(0,1fr)}
+  .tk-stub{flex-direction:row;gap:14px;padding:10px 12px;border-inline-end:0;border-bottom:2px dashed rgba(156,118,49,.55)}
+  .tk-day{font-size:44px;margin:0}
+  .tk-wd{font-size:22px}
+}
+@media (min-width:720px){.ticket{grid-template-columns:170px minmax(0,1fr)}.tk-day{font-size:76px}.tk-wd{font-size:28px}.tk-main{padding:22px 24px}.tk-v{font-size:20px}.tk-hall{font-size:30px}}
+html[lang="en"] .tk-hall,html[lang="en"] .tk-wd{line-height:1.35}
+/* countdown panel */
+.count-panel{position:relative;padding:18px 14px 20px;border-radius:24px;border:1px solid rgba(201,162,75,.45);background:radial-gradient(ellipse at 50% 0%,rgba(201,162,75,.16),rgba(201,162,75,0) 60%),linear-gradient(180deg,rgba(14,75,59,.45),rgba(4,32,26,.55));box-shadow:0 18px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.05)}
+.count-when{display:inline-block;margin:0 auto 14px;padding:3px 16px;border-radius:20px;border:1px solid rgba(201,162,75,.5);font-size:15px;font-weight:600;line-height:1.8;color:var(--gold2);background:rgba(4,32,26,.6)}
+.count-panel .rsvp{margin-top:16px}
+/* contacts */
+.contacts{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+@media (min-width:600px){.contacts{grid-template-columns:1fr 1fr}}
+.contact{position:relative;padding:20px 14px 16px!important;background:linear-gradient(160deg,rgba(18,88,70,.55),rgba(6,40,31,.7))!important;border:1px solid rgba(201,162,75,.5)!important;box-shadow:0 14px 34px rgba(0,0,0,.4)}
+.mono{display:block;width:84px;height:84px;margin:0 auto 4px;border-radius:50%;object-fit:cover;object-position:50% 30%;background:#0A3A2D;box-shadow:0 0 0 4px rgba(4,32,26,.9),0 0 0 5px rgba(201,162,75,.6),0 8px 20px rgba(0,0,0,.4)}
+.contact .who{line-height:1.9!important}
+.share-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.share-row .btn{min-height:52px;font-size:15px;white-space:normal;line-height:1.4;padding:6px 10px}
+/* footer */
+.f-card{position:relative;max-width:640px;margin:0 auto;padding:26px 20px 24px;border-radius:26px;border:1px solid rgba(201,162,75,.5);background:radial-gradient(ellipse at 50% 0%,rgba(201,162,75,.14),rgba(201,162,75,0) 55%),linear-gradient(180deg,rgba(14,75,59,.35),rgba(4,32,26,.5));box-shadow:0 18px 44px rgba(0,0,0,.4)}
+.verse{margin:4px auto 0;font-family:"Naskh",serif;font-weight:600;font-size:clamp(22px,6vw,30px);line-height:2;color:#F2DC9C;direction:rtl}
+.verse-tr{margin:2px auto 0;max-width:520px;font-size:15px;line-height:1.9;color:rgba(247,241,227,.82)}
+.f-card .orn{color:var(--gold);margin:12px auto 6px;display:block}
+.f-card .f1{margin-top:6px}
+html[lang="en"] .verse-tr{line-height:1.6}
 </style>
 </head>
 <body class="locked">
@@ -441,19 +558,23 @@ html[lang="en"] .rdlg-t{font-size:26px;line-height:1.3;margin-bottom:8px}
 </button>
 
 <!-- ================= GATE ================= -->
-<div id="gate" aria-label="دعوت نامہ">
+<div id="gate" aria-label="دعوت نامہ" data-track="open_invite">
+  <div class="gate-glow" aria-hidden="true"></div>
+  <div class="lock" aria-hidden="true"><span class="keyhole"></span></div>
+  <svg class="key" viewBox="0 0 48 128" aria-hidden="true"><defs><linearGradient id="keyG" x1="0" x2="1"><stop offset="0" stop-color="#9C7631"/><stop offset=".45" stop-color="#FFF0BE"/><stop offset="1" stop-color="#B88A3E"/></linearGradient></defs><g fill="url(#keyG)" stroke="#6E4F1A" stroke-width="1.2"><rect x="20" y="10" width="8" height="74" rx="3"/><path d="M28 14h10v7h-5v6h7v8H28z"/><circle cx="24" cy="102" r="20"/></g><circle cx="24" cy="102" r="9" fill="#2B190D" stroke="#6E4F1A" stroke-width="1.2"/><g fill="none" stroke="#FFF0BE" stroke-width="1.4" opacity=".8"><circle cx="24" cy="102" r="15"/><path d="M24 84v-6M24 126v-6M6 102h6M36 102h6"/></g></svg>
   <div class="door l" aria-hidden="true"><div class="dpanel"><svg class="arch" viewBox="0 0 100 100" preserveAspectRatio="none"><use href="#archArt" xlink:href="#archArt"/></svg><svg class="dmed" viewBox="-50 -50 100 100"><use href="#medArt" xlink:href="#medArt"/></svg><svg class="dmed2" viewBox="-50 -50 100 100"><use href="#medArt" xlink:href="#medArt"/></svg><span class="handle"></span></div></div>
   <div class="door r" aria-hidden="true"><div class="dpanel"><svg class="arch" viewBox="0 0 100 100" preserveAspectRatio="none"><use href="#archArt" xlink:href="#archArt"/></svg><svg class="dmed" viewBox="-50 -50 100 100"><use href="#medArt" xlink:href="#medArt"/></svg><svg class="dmed2" viewBox="-50 -50 100 100"><use href="#medArt" xlink:href="#medArt"/></svg><span class="handle"></span></div></div>
   <div class="seal">
+    <div class="gate-for" id="gateFor" hidden><span class="gf-l">محترم</span> <span class="gf-n" id="gateForName" translate="no"></span></div>
     <div class="medal">
       <div class="t goldtext">دعوت نامہ</div>
       <div class="s">تقریبِ تکمیلِ عمرہ</div>
     </div>
-    <button class="openbtn" id="openBtn" type="button" data-track="open_invite">
+    <button class="openbtn" id="openBtn" type="button">
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M10 21v-6h4v6"/></svg>
       دعوت نامہ کھولیں
     </button>
-    <div class="hint">کھولنے کے لیے دبائیں</div>
+    <div class="hint"><svg class="tap" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V4.5a1.5 1.5 0 0 1 3 0V10"/><path d="M12 9.5a1.5 1.5 0 0 1 3 0V11"/><path d="M15 10.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.2a5 5 0 0 1-4-2L4 15.5a1.6 1.6 0 0 1 2.4-2.1L9 15"/></svg><span>یہاں دبائیں اور دعوت نامہ دیکھیں</span></div>
   </div>
 </div>
 
@@ -537,77 +658,63 @@ html[lang="en"] .rdlg-t{font-size:26px;line-height:1.3;margin-bottom:8px}
       <svg class="corner bl" viewBox="0 0 54 54" aria-hidden="true"><path d="M52 2 H22 Q2 2 2 22 V52" fill="none" stroke="currentColor" stroke-width="2"/><path d="M52 10 H26 Q10 10 10 26 V52" fill="none" stroke="currentColor" stroke-width="1" opacity=".6"/></svg>
 
       <div class="guest" id="guest" hidden><span class="g1">معزز مہمان</span> <span class="g2" id="guestName"></span><span class="g3">آپ کو خصوصی دعوت ہے</span></div>
+      <div class="inv-emblem" aria-hidden="true"><svg width="58" height="58" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="32" cy="32" r="29"/><circle cx="32" cy="32" r="25" opacity=".5"/><path d="M20 24l12-5 12 5v18l-12 5-12-5z" fill="rgba(14,75,59,.12)"/><path d="M20 24l12 5 12-5M32 29v18"/><path d="M20 30.5l12 5 12-5" stroke-width="2.4" opacity=".85"/></svg></div>
       <div class="intro">الحمدللہ! اللہ کے فضل و کرم سے ہمارے عزیز</div>
-      <h2 class="names">عبدالماجد <span class="and">اور</span> ایمل خان</h2>
-      <p class="msg">نے عمرہ کی سعادت مکمل کر لی ہے۔ اس خوشی کے موقع پر خیرات (دعوتِ طعام) کا اہتمام کیا گیا ہے، جس میں آپ کی شرکت ہمارے لیے باعثِ سعادت ہوگی۔</p>
+      <h2 class="names"><span class="nm">عبدالماجد</span><span class="and">اور</span><span class="nm">ایمل خان</span></h2>
+      <p class="msg"><strong class="msg-k">نے عمرہ کی سعادت مکمل کر لی ہے۔</strong> <span>اس خوشی کے موقع پر خیرات (دعوتِ طعام) کا اہتمام کیا گیا ہے، جس میں آپ کی شرکت ہمارے لیے باعثِ سعادت ہوگی۔</span></p>
       <svg class="orn" width="240" height="26" viewBox="0 0 240 26" aria-hidden="true"><path d="M0 13H92M148 13H240" stroke="currentColor" stroke-width="1.2"/><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="110" y="3" width="20" height="20"/><rect x="110" y="3" width="20" height="20" transform="rotate(45 120 13)"/></g><circle cx="100" cy="13" r="3" fill="currentColor"/><circle cx="140" cy="13" r="3" fill="currentColor"/></svg>
-      <div class="dua">اللہ تعالیٰ ان کا عمرہ قبول فرمائے۔ آمین</div>
+      <div class="dua-wrap"><div class="dua">اللہ تعالیٰ ان کا عمرہ قبول فرمائے۔ آمین</div></div>
     </section>
 
 
 {{MEMORIES}}
     <h2 class="sec-title reveal" id="s-madina"><i></i><span>حرمین شریفین</span><i></i></h2>
     <figure class="madina reveal" style="margin-left:0;margin-right:0">
-      <div class="madina-pics{{MADINA_CLS}}">
-{{MADINA2}}        <div class="madina-photo"><img src="data:image/jpeg;base64,{{P_A}}" alt="مسجدِ نبوی ﷺ اور گنبدِ خضریٰ" decoding="async"><span class="mp-sheen" aria-hidden="true"></span></div>
+      <div class="madina-pics two">
+        <div class="madina-photo"><img src="img/haramain/1.jpg" alt="مسجدِ نبوی ﷺ، گنبدِ خضریٰ کے سامنے" loading="lazy" decoding="async" style="object-position:50% 60%"></div>
+        <div class="madina-photo"><img src="img/haramain/2.jpg" alt="مسجدِ نبوی ﷺ کے صحن میں" loading="lazy" decoding="async" style="object-position:40% 55%"></div>
       </div>
       <figcaption class="cap">
-        <div class="c1 goldtext">{{MADINA_C1}}</div>
-        <div class="c2">{{MADINA_C2}}</div>
+        <div class="c1 goldtext">مدینہ منورہ</div>
+        <div class="c2">مسجدِ نبوی ﷺ اور گنبدِ خضریٰ</div>
       </figcaption>
     </figure>
 
     <h2 class="sec-title reveal" id="s-details"><i></i><span>تفصیلات</span><i></i></h2>
-    <div class="cards">
-      <div class="card tilt reveal">
-        <div class="lb">تاریخ</div>
-        <div class="leaf" role="img" aria-label="جمعرات 05 نومبر 2026">
-          <div class="leaf-top">نومبر 2026</div>
-          <div class="leaf-day">05</div>
-          <div class="leaf-wd">جمعرات</div>
+    <div class="ticket reveal">
+      <div class="tk-stub" role="img" aria-label="جمعرات 05 نومبر 2026">
+        <div class="tk-month">نومبر 2026</div>
+        <div class="tk-day">05</div>
+        <div class="tk-wd">جمعرات</div>
+      </div>
+      <div class="tk-main">
+        <div class="tk-row"><span class="tk-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><div class="tk-lb">وقت</div><div class="tk-v">دوپہر 12 سے 2 بجے تک</div></div></div>
+        <div class="tk-row"><span class="tk-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><div class="tk-lb">مقام</div><div class="tk-hall">میرج ہٹ ویڈنگ ہال</div><div class="tk-s">سرکلر روڈ، نزد حیدری پیٹرول پمپ، پشاور</div></div></div>
+        <div class="tk-row"><span class="tk-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17h16M5 17a7 7 0 0 1 14 0M12 8V6M10 6h4M3 20h18"/></svg></span><div><div class="tk-lb">پروگرام</div><div class="tk-v">خیرات (دعوتِ طعام)</div></div></div>
+        <div class="tk-cal">
+      <a class="btn" data-track="cal_google" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%D8%AA%D9%82%D8%B1%DB%8C%D8%A8%20%D8%AA%DA%A9%D9%85%DB%8C%D9%84%20%D8%B9%D9%85%D8%B1%DB%81%20%D8%A7%D9%88%D8%B1%20%D8%AE%DB%8C%D8%B1%D8%A7%D8%AA&amp;dates=20261105T070000Z/20261105T090000Z&amp;location=Marriage%20Hut%20Wedding%20Hall%2C%20Circular%20Road%2C%20near%20Haidri%20Petrol%20Pump%2C%20Peshawar" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>
+        گوگل کیلنڈر میں شامل کریں
+      </a>
+      <a class="btn" data-track="cal_apple" id="icsBtn" download="umrah-dawat.ics" href="#">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+        ایپل کیلنڈر میں شامل کریں
+      </a>
         </div>
-        <div class="en ltr" lang="en">Thu, 5 Nov 2026</div>
-      </div>
-      <div class="card tilt reveal d1">
-        <div class="lb">وقت</div>
-        <svg class="clock" viewBox="0 0 100 100" role="img" aria-label="دوپہر 12 سے 2 بجے تک">
-          <circle cx="50" cy="50" r="44" fill="rgba(4,32,26,.55)" stroke="#C9A24B" stroke-width="3"/>
-          <path d="M50 50 L50 10 A40 40 0 0 1 84.6 30 Z" fill="rgba(242,220,156,.28)"/>
-          <g stroke="#E9CF8B" stroke-width="2" stroke-linecap="round"><path d="M50 8v6M92 50h-6M50 92v-6M8 50h6"/></g>
-          <g class="hands"><line x1="50" y1="50" x2="50" y2="20" stroke="#FFF3C9" stroke-width="3.4" stroke-linecap="round"/><line x1="50" y1="50" x2="84.6" y2="30" stroke="#F2DC9C" stroke-width="2.4" stroke-linecap="round" opacity=".0"/></g>
-          <line class="mh" x1="50" y1="50" x2="50" y2="16" stroke="#F2DC9C" stroke-width="2.2" stroke-linecap="round"/>
-          <circle cx="50" cy="50" r="4" fill="#C9A24B"/>
-        </svg>
-        <div class="v1">دوپہر</div>
-        <div class="v2 sm">12:00 بجے سے<br>2:00 بجے تک</div>
-        <div class="en ltr" lang="en">12:00 to 2:00 PM</div>
-      </div>
-      <div class="card full tilt reveal d2">
-        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
-        <div class="lb">مقام</div>
-        <div class="hall goldtext">میرج ہٹ ویڈنگ ہال</div>
-        <div class="en hl ltr" lang="en">Marriage Hut Wedding Hall</div>
-        <div class="addr">سرکلر روڈ، نزد حیدری پیٹرول پمپ</div>
-        <div class="city">پشاور</div>
-        <div class="en ltr" lang="en">Circular Road, near Haidri Petrol Pump, Peshawar</div>
-      </div>
-      <div class="card full tilt reveal d3">
-        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17h16M5 17a7 7 0 0 1 14 0M12 8V6M10 6h4M3 20h18"/></svg></div>
-        <div class="lb">پروگرام</div>
-        <div class="v2 sm">خیرات (دعوتِ طعام)</div>
-        <div class="en ltr" lang="en">Khairat (community meal)</div>
       </div>
     </div>
 
     <h2 class="sec-title reveal" id="s-count"><i></i><span>ملاقات کا انتظار</span><i></i></h2>
-    <div class="count reveal" id="count" role="timer" aria-label="تقریب تک باقی وقت">
+    <div class="count-panel reveal">
+    <div class="count-when">جمعرات 05 نومبر 2026، دوپہر 12 سے 2 بجے</div>
+    <div class="count" id="count" role="timer" aria-label="تقریب تک باقی وقت">
       <div class="unit"><svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><circle class="trk" cx="50" cy="50" r="44"/><circle class="arc" data-r="d" cx="50" cy="50" r="44"/></svg><div class="n" data-k="d">00</div><div class="u">دن</div></div>
       <div class="unit"><svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><circle class="trk" cx="50" cy="50" r="44"/><circle class="arc" data-r="h" cx="50" cy="50" r="44"/></svg><div class="n" data-k="h">00</div><div class="u">گھنٹے</div></div>
       <div class="unit"><svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><circle class="trk" cx="50" cy="50" r="44"/><circle class="arc" data-r="m" cx="50" cy="50" r="44"/></svg><div class="n" data-k="m">00</div><div class="u">منٹ</div></div>
       <div class="unit"><svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><circle class="trk" cx="50" cy="50" r="44"/><circle class="arc" data-r="s" cx="50" cy="50" r="44"/></svg><div class="n" data-k="s">00</div><div class="u">سیکنڈ</div></div>
     </div>
-    <div class="count-note reveal" id="countNote">ان شاء اللہ ملاقات تک باقی وقت</div>
-    <div class="rsvp reveal" id="rsvp">
+    <div class="count-note" id="countNote">ان شاء اللہ ملاقات تک باقی وقت</div>
+    <div class="rsvp" id="rsvp">
       <button class="btn primary rsvp-btn" type="button" id="rsvpBtn" data-rsvp-open aria-expanded="false" aria-controls="rsvpPick">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
         <span data-rsvp-lbl>شرکت کی تصدیق کریں</span>
@@ -622,13 +729,13 @@ html[lang="en"] .rdlg-t{font-size:26px;line-height:1.3;margin-bottom:8px}
         <div class="rsvp-msg">پیغام: «السلام علیکم! ان شاء اللہ ہم تقریبِ تکمیلِ عمرہ میں شرکت کریں گے۔»</div>
       </div>
     </div>
+    </div>
 
 {{LOCATION}}
     <h2 class="sec-title reveal" id="s-contact"><i></i><span>رابطہ</span><i></i></h2>
-    <div class="actions">
-
-
+    <div class="contacts">
       <div class="contact reveal">
+        <img class="mono" src="img/people/majid.jpg" alt="عبدالماجد" width="240" height="240" loading="lazy" decoding="async">
         <div class="who">عبدالماجد</div>
         <div class="num">0312 9100104</div>
         <div class="row">
@@ -637,6 +744,7 @@ html[lang="en"] .rdlg-t{font-size:26px;line-height:1.3;margin-bottom:8px}
         </div>
       </div>
       <div class="contact reveal d1">
+        <img class="mono" src="img/people/aimal.jpg" alt="ایمل خان" width="240" height="240" loading="lazy" decoding="async">
         <div class="who">ایمل خان</div>
         <div class="num">0312 0303434</div>
         <div class="row">
@@ -645,19 +753,14 @@ html[lang="en"] .rdlg-t{font-size:26px;line-height:1.3;margin-bottom:8px}
         </div>
       </div>
 
-      <a class="btn reveal" data-track="cal_google" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%D8%AA%D9%82%D8%B1%DB%8C%D8%A8%20%D8%AA%DA%A9%D9%85%DB%8C%D9%84%20%D8%B9%D9%85%D8%B1%DB%81%20%D8%A7%D9%88%D8%B1%20%D8%AE%DB%8C%D8%B1%D8%A7%D8%AA&amp;dates=20261105T070000Z/20261105T090000Z&amp;location=Marriage%20Hut%20Wedding%20Hall%2C%20Circular%20Road%2C%20near%20Haidri%20Petrol%20Pump%2C%20Peshawar" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>
-        گوگل کیلنڈر میں شامل کریں
-      </a>
-      <a class="btn reveal" data-track="cal_apple" id="icsBtn" download="umrah-dawat.ics" href="#">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
-        ایپل کیلنڈر میں شامل کریں
-      </a>
-      <button class="btn primary reveal d1" type="button" id="shareBtn" data-track="share">
+
+          </div>
+    <div class="share-row reveal">
+      <button class="btn primary" type="button" id="shareBtn" data-track="share">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg>
         دوسروں کو بھیجیں
       </button>
-      <button class="btn reveal d1" type="button" id="copyBtn" data-track="copy_text">
+      <button class="btn" type="button" id="copyBtn" data-track="copy_text">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
         دعوت کا متن کاپی کریں
       </button>
@@ -665,10 +768,18 @@ html[lang="en"] .rdlg-t{font-size:26px;line-height:1.3;margin-bottom:8px}
   </div>
 
   <footer>
-    <svg width="70" height="70" viewBox="0 0 80 80" aria-hidden="true" style="display:block;margin:0 auto 6px"><path d="M46 8 A32 32 0 1 0 72 50 A26 26 0 1 1 46 8 Z" fill="#C9A24B"/><path d="M60 14l2.6 5.4 5.9.9-4.3 4.1 1 5.9-5.2-2.8-5.3 2.8 1-5.9-4.2-4.1 5.9-.9z" fill="#E9CF8B"/></svg>
-    <p class="f1 reveal">آپ سے گزارش ہے کہ اس خیر کے کام میں ضرور شامل ہو کر دعاؤں میں ہمارا حصہ بنیں۔</p>
-    <div class="f2 goldtext reveal d1">جزاکم اللہ خیراً</div>
-    <div class="f3">Peshawar, 5 November 2026</div>
+    <div class="f-card reveal">
+      <svg width="70" height="70" viewBox="0 0 80 80" aria-hidden="true" style="display:block;margin:0 auto 6px"><path d="M46 8 A32 32 0 1 0 72 50 A26 26 0 1 1 46 8 Z" fill="#C9A24B"/><path d="M60 14l2.6 5.4 5.9.9-4.3 4.1 1 5.9-5.2-2.8-5.3 2.8 1-5.9-4.2-4.1 5.9-.9z" fill="#E9CF8B"/></svg>
+      <div class="verse" lang="ar" translate="no">رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ</div>
+      <div class="verse-tr">اے ہمارے رب! ہم سے قبول فرما، بیشک تو ہی سب کچھ سننے والا، سب کچھ جاننے والا ہے۔ (البقرہ: 127)</div>
+      <svg class="orn" width="200" height="22" viewBox="0 0 240 26" aria-hidden="true"><path d="M0 13H92M148 13H240" stroke="currentColor" stroke-width="1.2"/><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="110" y="3" width="20" height="20" transform="rotate(45 120 13)"/><circle cx="120" cy="13" r="4"/></g></svg>
+      <p class="f1">آپ سے گزارش ہے کہ اس خیر کے کام میں ضرور شامل ہو کر دعاؤں میں ہمارا حصہ بنیں۔</p>
+      <div class="f2 goldtext">جزاکم اللہ خیراً</div>
+      <p class="f4">جو مہمان اپنا قیمتی وقت نکال کر تشریف لائیں، اُن سب کا تہہ دل سے شکریہ۔ اللہ آپ کو جزائے خیر دے۔</p>
+      <div class="f3">Peshawar, 5 November 2026</div>
+    </div>
+    <p class="f5">اس طرح کے دعوت نامے اور مزید جدید سہولیات کے لیے رابطہ کریں<br>
+      <a class="f-link" href="https://shahzebrahman.com" target="_blank" rel="noopener" data-track="site_link" lang="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>shahzebrahman.com</a></p>
   </footer>
 </main>
 
@@ -743,7 +854,16 @@ function openGate(){
   burst();
   if(window.__petals){ __petals.shower(1.4,3500); setTimeout(function(){__petals.shower(0.12,22000);},3600); }
 }
-document.getElementById('openBtn').addEventListener('click',openGate);
+var unlocking=false;
+function startOpen(){
+  if(unlocking||gate.classList.contains('open')) return; unlocking=true;
+  if(reduce){ openGate(); return; }
+  gate.classList.add('unlocking');
+  setTimeout(openGate,1500);
+}
+document.getElementById('openBtn').addEventListener('click',startOpen);
+gate.addEventListener('click',startOpen);
+try{var gfn=new URLSearchParams(location.search).get('to');if(gfn){gfn=gfn.replace(/\s+/g,' ').trim().slice(0,40);if(gfn){document.getElementById('gateForName').textContent=gfn;document.getElementById('gateFor').removeAttribute('hidden');}}}catch(e){}
 if(reduce){ /* still show gate but open instantly on click */ }
 
 /* ---------- gold sparks on open ---------- */

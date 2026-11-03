@@ -103,11 +103,12 @@ button.mem-tile{cursor:pointer}
 /* travel companions: auto-moving, swipeable strip */
 .mem-friends{margin-top:26px}
 .mem-fr-title{font-size:24px}
-.mem-fr-sub{margin:0 0 12px;font-size:15px;line-height:1.8;color:rgba(247,241,227,.8)}
+.mem-fr-sub2{margin:-6px 0 12px;font-size:14px;line-height:1.8;color:rgba(233,207,139,.85)}
+.mem-fr-sub{margin:0 0 8px;font-size:15px;line-height:1.8;color:rgba(247,241,227,.8)}
 .mem-slider{position:relative;max-width:760px;margin:0 auto}
-.mem-grid{list-style:none;margin:0;padding:4px 2px 10px;display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.mem-grid{list-style:none;margin:0;padding:4px 2px 10px;display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .mem-grid::-webkit-scrollbar{display:none}
-.mem-grid li{flex:0 0 150px;margin:0;padding:0;scroll-snap-align:start}
+.mem-grid li{flex:0 0 150px;margin:0;padding:0}
 .mem-gi{display:block;width:100%;aspect-ratio:1/1;padding:0;margin:0;border:1px solid rgba(201,162,75,.5);border-radius:12px;overflow:hidden;background:var(--mem-night);cursor:pointer;-webkit-appearance:none;appearance:none;box-shadow:0 6px 16px rgba(0,0,0,.35)}
 .mem-gi img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s ease-out}
 @media (hover:hover){.mem-gi:hover img{transform:scale(1.05)}}
@@ -203,10 +204,16 @@ button.mem-tile{cursor:pointer}
       <span class="mem-line mem-line-l" aria-hidden="true"></span>
     </div>
     <p class="mem-fr-sub">وہ دوست جن کے ساتھ یہ مبارک سفر طے ہوا</p>
+    <p class="mem-fr-sub2">اور اُن سب کا شکریہ جو اپنا قیمتی وقت دے کر ہماری خوشی میں شریک ہوئے</p>
     <div class="mem-slider">
     <ul class="mem-grid" id="mem-grid" aria-label="سفر کے ساتھی کی تصاویر">
       <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="میقات ذوالحلیفہ پر، احرام میں" aria-label="میقات ذوالحلیفہ پر، احرام میں، تصویر بڑی کر کے دیکھیں"><img src="img/safar/01-t.jpg" data-full="img/safar/01.jpg" alt="میقات ذوالحلیفہ پر، احرام میں" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="عمرہ سے پہلے، احرام میں" aria-label="عمرہ سے پہلے، احرام میں، تصویر بڑی کر کے دیکھیں"><img src="img/safar/16-t.jpg" data-full="img/safar/16.jpg" alt="عمرہ سے پہلے، احرام میں" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="احرام میں، میقات پر" aria-label="احرام میں، میقات پر، تصویر بڑی کر کے دیکھیں"><img src="img/safar/15-t.jpg" data-full="img/safar/15.jpg" alt="احرام میں، میقات پر" width="420" height="420" loading="lazy" decoding="async"></button></li>
       <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="خانہ کعبہ کے سامنے، دوستوں کے ساتھ" aria-label="خانہ کعبہ کے سامنے، دوستوں کے ساتھ، تصویر بڑی کر کے دیکھیں"><img src="img/safar/02-t.jpg" data-full="img/safar/02.jpg" alt="خانہ کعبہ کے سامنے، دوستوں کے ساتھ" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="حرم میں، خانہ کعبہ کے سامنے" aria-label="حرم میں، خانہ کعبہ کے سامنے، تصویر بڑی کر کے دیکھیں"><img src="img/safar/12-t.jpg" data-full="img/safar/12.jpg" alt="حرم میں، خانہ کعبہ کے سامنے" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="حرم میں دوستوں کے ساتھ" aria-label="حرم میں دوستوں کے ساتھ، تصویر بڑی کر کے دیکھیں"><img src="img/safar/13-t.jpg" data-full="img/safar/13.jpg" alt="حرم میں دوستوں کے ساتھ" width="420" height="420" loading="lazy" decoding="async"></button></li>
+      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="خانہ کعبہ، شام کے وقت" aria-label="خانہ کعبہ، شام کے وقت، تصویر بڑی کر کے دیکھیں"><img src="img/safar/11-t.jpg" data-full="img/safar/11.jpg" alt="خانہ کعبہ، شام کے وقت" width="420" height="420" loading="lazy" decoding="async"></button></li>
       <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="جبلِ رحمت، عرفات" aria-label="جبلِ رحمت، عرفات، تصویر بڑی کر کے دیکھیں"><img src="img/safar/03-t.jpg" data-full="img/safar/03.jpg" alt="جبلِ رحمت، عرفات" width="420" height="420" loading="lazy" decoding="async"></button></li>
       <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="زیارات کے دوران" aria-label="زیارات کے دوران، تصویر بڑی کر کے دیکھیں"><img src="img/safar/04-t.jpg" data-full="img/safar/04.jpg" alt="زیارات کے دوران" width="420" height="420" loading="lazy" decoding="async"></button></li>
       <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="جبلِ نور اور غارِ حرا" aria-label="جبلِ نور اور غارِ حرا، تصویر بڑی کر کے دیکھیں"><img src="img/safar/05-t.jpg" data-full="img/safar/05.jpg" alt="جبلِ نور اور غارِ حرا" width="420" height="420" loading="lazy" decoding="async"></button></li>
@@ -215,11 +222,6 @@ button.mem-tile{cursor:pointer}
       <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="جبلِ نور سے شہرِ مکہ" aria-label="جبلِ نور سے شہرِ مکہ، تصویر بڑی کر کے دیکھیں"><img src="img/safar/08-t.jpg" data-full="img/safar/08.jpg" alt="جبلِ نور سے شہرِ مکہ" width="420" height="420" loading="lazy" decoding="async"></button></li>
       <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="جبلِ نور پر، پیچھے حرم کے مینار" aria-label="جبلِ نور پر، پیچھے حرم کے مینار، تصویر بڑی کر کے دیکھیں"><img src="img/safar/09-t.jpg" data-full="img/safar/09.jpg" alt="جبلِ نور پر، پیچھے حرم کے مینار" width="420" height="420" loading="lazy" decoding="async"></button></li>
       <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="غارِ حرا کے راستے میں" aria-label="غارِ حرا کے راستے میں، تصویر بڑی کر کے دیکھیں"><img src="img/safar/10-t.jpg" data-full="img/safar/10.jpg" alt="غارِ حرا کے راستے میں" width="420" height="420" loading="lazy" decoding="async"></button></li>
-      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="خانہ کعبہ، شام کے وقت" aria-label="خانہ کعبہ، شام کے وقت، تصویر بڑی کر کے دیکھیں"><img src="img/safar/11-t.jpg" data-full="img/safar/11.jpg" alt="خانہ کعبہ، شام کے وقت" width="420" height="420" loading="lazy" decoding="async"></button></li>
-      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="حرم میں، خانہ کعبہ کے سامنے" aria-label="حرم میں، خانہ کعبہ کے سامنے، تصویر بڑی کر کے دیکھیں"><img src="img/safar/12-t.jpg" data-full="img/safar/12.jpg" alt="حرم میں، خانہ کعبہ کے سامنے" width="420" height="420" loading="lazy" decoding="async"></button></li>
-      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="حرم میں دوستوں کے ساتھ" aria-label="حرم میں دوستوں کے ساتھ، تصویر بڑی کر کے دیکھیں"><img src="img/safar/13-t.jpg" data-full="img/safar/13.jpg" alt="حرم میں دوستوں کے ساتھ" width="420" height="420" loading="lazy" decoding="async"></button></li>
-      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="احرام میں، میقات پر" aria-label="احرام میں، میقات پر، تصویر بڑی کر کے دیکھیں"><img src="img/safar/15-t.jpg" data-full="img/safar/15.jpg" alt="احرام میں، میقات پر" width="420" height="420" loading="lazy" decoding="async"></button></li>
-      <li><button type="button" class="mem-gi" data-mem-open="1" data-cap="عمرہ سے پہلے، احرام میں" aria-label="عمرہ سے پہلے، احرام میں، تصویر بڑی کر کے دیکھیں"><img src="img/safar/16-t.jpg" data-full="img/safar/16.jpg" alt="عمرہ سے پہلے، احرام میں" width="420" height="420" loading="lazy" decoding="async"></button></li>
     </ul>
     <button type="button" class="mem-nav mem-prev" id="mem-prev" aria-label="پچھلی تصویر"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
     <button type="button" class="mem-nav mem-next" id="mem-next" aria-label="اگلی تصویر"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
@@ -313,32 +315,44 @@ button.mem-tile{cursor:pointer}
     if (e.key === 'Escape' || e.keyCode === 27) { closeLb(); }
   });
 
-  // Companion photos: auto-advance, swipe, buttons
+  // Companion photos: continuous glide that loops, swipe and buttons still work
   var grid = document.getElementById('mem-grid');
   if (grid) {
-    var paused = false, onScreen = false, resumeT = 0;
-    var dirSign = function () { return getComputedStyle(grid).direction === 'rtl' ? -1 : 1; };
-    var step = function () { var li = grid.querySelector('li'); return li ? li.getBoundingClientRect().width + 10 : 160; };
-    var atEnd = function () { return Math.abs(grid.scrollLeft) + grid.clientWidth >= grid.scrollWidth - 6; };
-    var atStart = function () { return Math.abs(grid.scrollLeft) < 6; };
-    var go = function (n) {
-      if (n > 0 && atEnd()) { grid.scrollTo({ left: 0 }); return; }
-      if (n < 0 && atStart()) { grid.scrollTo({ left: dirSign() * grid.scrollWidth }); return; }
-      grid.scrollBy({ left: dirSign() * n * step() });
-    };
+    var items = [].slice.call(grid.children);
+    items.forEach(function (li) {
+      var c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true');
+      var bt = c.querySelector('button'); if (bt) { bt.setAttribute('tabindex', '-1'); }
+      grid.appendChild(c);
+    });
+    var paused = false, onScreen = false, resumeT = 0, pos = 0, last = 0, self = false;
+    var sign = function () { return getComputedStyle(grid).direction === 'rtl' ? -1 : 1; };
+    var half = function () { return grid.scrollWidth / 2; };
     var hold = function () { paused = true; if (resumeT) { clearTimeout(resumeT); } };
-    var release = function () { if (resumeT) { clearTimeout(resumeT); } resumeT = setTimeout(function () { paused = false; }, 4000); };
+    var release = function () { if (resumeT) { clearTimeout(resumeT); } resumeT = setTimeout(function () { pos = Math.abs(grid.scrollLeft); paused = false; }, 2500); };
     ['pointerdown', 'touchstart', 'mouseenter', 'focusin', 'wheel'].forEach(function (ev) { grid.addEventListener(ev, hold, { passive: true }); });
-    ['pointerup', 'touchend', 'mouseleave', 'focusout'].forEach(function (ev) { grid.addEventListener(ev, release, { passive: true }); });
+    ['pointerup', 'touchend', 'touchcancel', 'mouseleave', 'focusout'].forEach(function (ev) { grid.addEventListener(ev, release, { passive: true }); });
+    grid.addEventListener('scroll', function () { if (self) { self = false; return; } if (paused) { pos = Math.abs(grid.scrollLeft); } }, { passive: true });
+    var stepBy = function (n) {
+      hold();
+      var li = grid.querySelector('li'); var w = li ? li.getBoundingClientRect().width + 10 : 160;
+      pos = Math.abs(grid.scrollLeft) + n * w; if (pos < 0) { pos += half(); } if (pos >= half()) { pos -= half(); }
+      grid.scrollTo({ left: sign() * pos, behavior: 'smooth' });
+      release();
+    };
     var prev = document.getElementById('mem-prev'), next = document.getElementById('mem-next');
-    if (prev) { prev.addEventListener('click', function () { hold(); go(-1); release(); }); }
-    if (next) { next.addEventListener('click', function () { hold(); go(1); release(); }); }
-    if ('IntersectionObserver' in window) { new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }, { threshold: 0.3 }).observe(grid); } else { onScreen = true; }
-    setInterval(function () {
-      if (paused || !onScreen || document.hidden || (rmq && rmq.matches)) { return; }
-      if (lb.className.indexOf('mem-open') > -1) { return; }
-      go(1);
-    }, 2800);
+    if (prev) { prev.addEventListener('click', function () { stepBy(-1); }); }
+    if (next) { next.addEventListener('click', function () { stepBy(1); }); }
+    if ('IntersectionObserver' in window) { new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }, { threshold: 0.05 }).observe(grid); } else { onScreen = true; }
+    var tick = function (t) {
+      var dt = last ? Math.min(64, t - last) : 16; last = t;
+      if (!paused && onScreen && !document.hidden && !(rmq && rmq.matches) && lb.className.indexOf('mem-open') < 0) {
+        pos += dt * 0.035;
+        var h = half(); if (h > 0 && pos >= h) { pos -= h; }
+        self = true; grid.scrollLeft = sign() * pos;
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }
 
   // Pause marquees while touched
