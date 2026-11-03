@@ -1,24 +1,23 @@
 <!-- LOCATION SECTION (fragment). Self-contained: markup + one style + one script. No external requests. -->
 <section class="loc-section" id="loc-root" dir="rtl" lang="ur" aria-labelledby="loc-title">
 <style>
-.loc-halo{paint-order:stroke fill;stroke:#06291F;stroke-width:6px;stroke-linejoin:round}
 .loc-section{
-  --loc-night:#04201A; --loc-em:#0E4B3B; --loc-gold:#C9A24B; --loc-gold2:#E9CF8B; --loc-ivory:#F7F1E3;
+  --loc-night:#04201A; --loc-em:#0E4B3B; --loc-gold:#C9A24B; --loc-gold2:#E9CF8B; --loc-gold3:#F2DC9C; --loc-ivory:#F7F1E3;
   --loc-deep:#03150F;
-  position:relative; direction:rtl; text-align:right; box-sizing:border-box;
-  width:100%; max-width:100%; padding:20px 16px 24px; overflow:hidden;
+  position:relative; direction:rtl; text-align:start; box-sizing:border-box;
+  width:100%; max-width:100%; padding:20px 16px 28px; overflow:hidden;
   font-family:"Naskh","Noto Naskh Arabic",serif; color:var(--loc-ivory);
   -webkit-text-size-adjust:100%;
 }
 .loc-section *,.loc-section *:before,.loc-section *:after{box-sizing:border-box}
-.loc-inner{position:relative;max-width:720px;margin:0 auto}
+.loc-inner{position:relative;max-width:760px;margin:0 auto}
 
 /* heading */
-.loc-head{display:grid;grid-template-columns:1fr auto 1fr;grid-column-gap:14px;column-gap:14px;align-items:center;margin:0 0 12px}
+.loc-head{display:grid;grid-template-columns:1fr auto 1fr;column-gap:14px;align-items:center;margin:0 0 10px}
 .loc-hl{height:1px;position:relative}
 .loc-hl-a{background:linear-gradient(270deg,rgba(201,162,75,0),#C9A24B)}
 .loc-hl-b{background:linear-gradient(90deg,rgba(201,162,75,0),#C9A24B)}
-.loc-hl:after{content:"";position:absolute;top:-3px;width:7px;height:7px;background:#C9A24B;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+.loc-hl:after{content:"";position:absolute;top:-3px;width:7px;height:7px;background:#C9A24B;transform:rotate(45deg)}
 .loc-hl-a:after{left:0}
 .loc-hl-b:after{right:0}
 .loc-title{
@@ -27,34 +26,41 @@
   text-shadow:0 0 24px rgba(233,207,139,.28);
 }
 
+/* one card: map on top, details below */
+.loc-card{
+  position:relative;border-radius:26px;overflow:hidden;
+  background:linear-gradient(180deg,#062C23 0%,#04201A 100%);
+  border:1px solid rgba(201,162,75,.5);
+  box-shadow:0 22px 50px rgba(0,0,0,.45),0 0 0 6px rgba(201,162,75,.06);
+}
+.loc-card:before{content:"";position:absolute;z-index:3;left:28px;right:28px;top:0;height:2px;pointer-events:none;background:linear-gradient(90deg,rgba(233,207,139,0),#F2DC9C,rgba(233,207,139,0))}
+
 /* map stage */
 .loc-stage{
-  position:relative;width:100%;height:0;padding-bottom:88%;overflow:hidden;
-  -webkit-perspective:950px;perspective:950px;-webkit-perspective-origin:50% 38%;perspective-origin:50% 38%;
-  border-radius:24px;border:1px solid rgba(201,162,75,.3);
-  background:radial-gradient(ellipse at 50% 55%,rgba(14,75,59,.75) 0%,rgba(4,32,26,.9) 55%,rgba(3,21,15,1) 100%);
+  position:relative;width:100%;height:0;padding-bottom:76%;overflow:hidden;
+  perspective:950px;perspective-origin:50% 36%;
+  background:radial-gradient(ellipse at 50% 55%,rgba(17,96,74,.7) 0%,rgba(4,32,26,.95) 58%,#03150F 100%);
   touch-action:pan-y;-webkit-tap-highlight-color:transparent;cursor:grab;
   -webkit-user-select:none;user-select:none;
 }
+.loc-stage:after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;pointer-events:none;background:linear-gradient(180deg,rgba(4,32,26,0),#04201A)}
 .loc-tilt{
-  position:absolute;left:50%;top:54%;width:84%;height:0;padding-bottom:84%;
-  -webkit-transform-style:preserve-3d;transform-style:preserve-3d;
-  -webkit-transform:translate(-50%,-50%) rotateX(50deg) rotateZ(-4deg);
+  position:absolute;left:50%;top:50%;width:84%;height:0;padding-bottom:84%;
+  transform-style:preserve-3d;
   transform:translate(-50%,-50%) rotateX(50deg) rotateZ(-4deg);
   will-change:transform;
 }
 .loc-slab{
   position:absolute;left:0;top:0;width:100%;height:100%;border-radius:28px;
   background:#02100c;border:2px solid rgba(201,162,75,.55);
-  -webkit-transform:translateZ(-18px);transform:translateZ(-18px);
-  box-shadow:0 40px 60px rgba(0,0,0,.55);
+  transform:translateZ(-18px);box-shadow:0 40px 60px rgba(0,0,0,.55);
 }
 .loc-plane{
   position:absolute;left:0;top:0;width:100%;height:100%;border-radius:26px;overflow:hidden;
   box-shadow:0 0 0 2px rgba(201,162,75,.7), inset 0 0 40px rgba(0,0,0,.45);
 }
 .loc-svg{display:block;width:100%;height:100%}
-.loc-svg text{font-family:"Nastaliq","Noto Nastaliq Urdu",serif;font-weight:700;fill:#F7F1E3;paint-order:stroke;stroke:#04201A;stroke-width:4px;stroke-linejoin:round}
+.loc-svg text{font-family:"Nastaliq","Noto Nastaliq Urdu",serif;font-weight:700;fill:#F7F1E3;paint-order:stroke fill;stroke:#06291F;stroke-width:6px;stroke-linejoin:round}
 .loc-svg .loc-t-gold{fill:#E9CF8B}
 .loc-route-glow{animation:loc-glow 2.4s ease-in-out infinite}
 .loc-route{animation:loc-dash 1.1s linear infinite}
@@ -62,8 +68,7 @@
 /* ground pulse rings + shadow (flat, inside plane) */
 .loc-ring{
   position:absolute;left:69.5%;top:40%;width:26%;height:0;padding-bottom:26%;margin-left:-13%;margin-top:-13%;
-  border-radius:50%;border:2px solid #E9CF8B;opacity:0;
-  -webkit-transform:scale(.15);transform:scale(.15);
+  border-radius:50%;border:2px solid #E9CF8B;opacity:0;transform:scale(.15);
   animation:loc-pulse 3s ease-out infinite;
 }
 .loc-ring-2{animation-delay:1s}
@@ -75,81 +80,115 @@
 }
 
 /* standing pin */
-.loc-pinpos{
-  position:absolute;left:69.5%;top:40%;width:0;height:0;
-  -webkit-transform-style:preserve-3d;transform-style:preserve-3d;
-  -webkit-transform:translateZ(2px);transform:translateZ(2px);
-}
+.loc-pinpos{position:absolute;left:69.5%;top:40%;width:0;height:0;transform-style:preserve-3d;transform:translateZ(2px)}
 .loc-pinbb{
   position:absolute;left:-23px;bottom:0;width:46px;height:68px;
-  -webkit-transform-origin:50% 100%;transform-origin:50% 100%;
-  -webkit-transform:rotateZ(4deg) rotateX(-50deg);transform:rotateZ(4deg) rotateX(-50deg);
+  transform-origin:50% 100%;transform:rotateZ(4deg) rotateX(-50deg);
 }
 .loc-pinbounce{width:100%;height:100%;animation:loc-bounce 1.8s ease-in-out infinite}
 .loc-pinbounce svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 6px rgba(0,0,0,.45))}
 
-.loc-caption{margin:12px 0 0;text-align:center;font-size:.92rem;line-height:1.9;color:rgba(247,241,227,.72)}
+/* map overlays (corners only, nothing over the map labels) */
+.loc-compass{
+  position:absolute;z-index:2;top:12px;left:12px;width:40px;height:40px;border-radius:50%;
+  background:rgba(4,32,26,.85);border:1px solid rgba(201,162,75,.55);pointer-events:none;
+}
+.loc-compass svg{display:block;width:100%;height:100%}
+.loc-caption{
+  position:absolute;z-index:2;right:12px;bottom:10px;margin:0;max-width:calc(100% - 24px);
+  display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:999px;
+  font-size:.78rem;line-height:1.9;color:rgba(247,241,227,.82);
+  background:rgba(4,32,26,.82);border:1px solid rgba(201,162,75,.35);pointer-events:none;
+}
+.loc-caption svg{flex:0 0 auto;width:13px;height:13px}
 
-/* info card */
-.loc-card{
-  position:relative;margin-top:22px;padding:26px 20px 22px;border-radius:24px;
-  background:linear-gradient(160deg,rgba(14,75,59,.62),rgba(4,32,26,.88));
-  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
-  border:1px solid rgba(201,162,75,.38);box-shadow:0 18px 40px rgba(0,0,0,.4);
-}
-.loc-card:before{content:"";position:absolute;left:24px;right:24px;top:0;height:2px;background:linear-gradient(90deg,rgba(201,162,75,0),#E9CF8B,rgba(201,162,75,0))}
-.loc-hall{margin:0 0 8px;text-align:center;font-family:"Nastaliq","Noto Nastaliq Urdu",serif;font-weight:700;font-size:1.9rem;line-height:2.4;color:var(--loc-gold);text-shadow:0 0 18px rgba(201,162,75,.25)}
-.loc-rows{margin:0 0 18px;padding:0;list-style:none}
-.loc-row{display:grid;grid-template-columns:34px 1fr;grid-column-gap:12px;column-gap:12px;align-items:start;padding:12px 0;border-top:1px solid rgba(201,162,75,.18)}
-.loc-ico{width:34px;height:34px;border-radius:50%;background:rgba(201,162,75,.14);border:1px solid rgba(201,162,75,.45);display:block;padding:7px}
+/* details */
+.loc-body{position:relative;padding:4px 18px 18px}
+.loc-namewrap{text-align:center;margin:0 0 6px}
+.loc-hall{margin:0;font-family:"Nastaliq","Noto Nastaliq Urdu",serif;font-weight:700;font-size:1.85rem;line-height:2.35;color:var(--loc-gold2);text-shadow:0 0 18px rgba(201,162,75,.22);overflow-wrap:break-word}
+.loc-en{margin:-6px 0 0;font-family:"Naskh","Noto Naskh Arabic",Georgia,serif;font-size:.8rem;line-height:1.6;letter-spacing:.12em;text-transform:uppercase;color:rgba(233,207,139,.72)}
+html[lang="en"] .loc-en{display:none}
+.loc-orn{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px auto 12px;max-width:260px}
+.loc-orn i{flex:1 1 auto;height:1px;background:linear-gradient(90deg,rgba(201,162,75,0),rgba(201,162,75,.7))}
+.loc-orn i:last-child{transform:scaleX(-1)}
+.loc-orn b{width:7px;height:7px;background:#C9A24B;transform:rotate(45deg)}
+
+.loc-addr{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:12px;align-items:start;padding:12px 14px;border-radius:18px;background:rgba(14,75,59,.38);border:1px solid rgba(201,162,75,.24)}
+.loc-ico{width:40px;height:40px;border-radius:50%;background:rgba(201,162,75,.14);border:1px solid rgba(201,162,75,.45);display:block;padding:9px;margin-top:4px}
 .loc-ico svg{display:block;width:100%;height:100%}
-.loc-lab{display:block;font-size:.8rem;line-height:1.7;color:var(--loc-gold);font-weight:600}
-.loc-val{display:block;font-size:1.08rem;line-height:2;font-weight:400;color:var(--loc-ivory);overflow-wrap:break-word;word-wrap:break-word}
+.loc-lab{display:block;font-size:.8rem;line-height:1.8;color:var(--loc-gold);font-weight:600}
+.loc-val{display:block;font-size:1.05rem;line-height:1.95;color:var(--loc-ivory);overflow-wrap:break-word}
+.loc-chip{
+  display:inline-flex;align-items:center;gap:7px;margin-top:6px;padding:2px 12px 2px 10px;border-radius:999px;
+  font-size:.85rem;line-height:1.95;font-weight:600;color:var(--loc-gold3);
+  background:rgba(201,162,75,.12);border:1px solid rgba(201,162,75,.5);max-width:100%;
+}
+.loc-chip svg{flex:0 0 auto;width:15px;height:15px}
+
+/* actions */
+.loc-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
 .loc-btn{
-  display:block;width:100%;text-align:center;text-decoration:none;cursor:pointer;
-  font-family:"Naskh","Noto Naskh Arabic",serif;font-weight:600;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:8px 10px;margin:0;
+  text-align:center;text-decoration:none;cursor:pointer;border-radius:14px;
+  font-family:"Naskh","Noto Naskh Arabic",serif;font-weight:600;font-size:.98rem;line-height:1.6;
   -webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;
+  transition:background-color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .15s ease;
 }
+.loc-btn svg{flex:0 0 auto;width:20px;height:20px}
+.loc-btn span{min-width:0;text-wrap:balance}
 .loc-btn-main{
-  min-height:60px;padding:14px 18px;font-size:1.2rem;line-height:1.9;color:#04201A;border:0;
-  background:linear-gradient(180deg,#F1DB9C 0%,#C9A24B 100%);
-  box-shadow:0 8px 22px rgba(201,162,75,.35),inset 0 1px 0 rgba(255,255,255,.5);
+  grid-column:1 / -1;min-height:56px;font-size:1.1rem;color:#1A1405;border:0;
+  background:linear-gradient(180deg,#F2DC9C 0%,#C9A24B 100%);
+  box-shadow:0 8px 22px rgba(201,162,75,.3),inset 0 1px 0 rgba(255,255,255,.5);
 }
-.loc-btn-sec{
-  margin-top:12px;min-height:52px;padding:10px 18px;font-size:1.05rem;line-height:1.9;color:var(--loc-gold2);
-  background:rgba(4,32,26,.5);border:1px solid rgba(201,162,75,.6);
+.loc-btn-sec{color:var(--loc-gold2);background:rgba(4,32,26,.6);border:1px solid rgba(201,162,75,.55)}
+.loc-btn-sec:hover{background:rgba(14,75,59,.75);border-color:#E9CF8B}
+.loc-btn-main:hover{box-shadow:0 10px 26px rgba(201,162,75,.42),inset 0 1px 0 rgba(255,255,255,.6)}
+.loc-btn:focus{outline:none}
+.loc-btn:focus-visible,.loc-apple:focus-visible{outline:3px solid #F2DC9C;outline-offset:3px}
+.loc-btn:active{transform:scale(.98)}
+.loc-copy .loc-i-done{display:none}
+.loc-copy.is-done .loc-i-copy{display:none}
+.loc-copy.is-done .loc-i-done{display:block}
+.loc-copy.is-done{border-color:#E9CF8B;background:rgba(14,75,59,.75)}
+
+.loc-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;column-gap:16px;margin-top:6px}
+.loc-apple{
+  display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 10px;border-radius:10px;
+  font-size:.9rem;line-height:1.8;color:rgba(233,207,139,.9);text-decoration:underline;text-decoration-color:rgba(201,162,75,.45);text-underline-offset:5px;
 }
-.loc-btn:focus{outline:2px solid #E9CF8B;outline-offset:3px}
-.loc-btn:active{-webkit-transform:scale(.985);transform:scale(.985)}
-.loc-status{min-height:2em;margin:12px 0 0;text-align:center;font-size:.95rem;line-height:2;color:var(--loc-gold2)}
+.loc-apple:hover{color:#F2DC9C;text-decoration-color:#F2DC9C}
+.loc-apple svg{width:15px;height:15px;flex:0 0 auto}
+.loc-status{min-height:1.9em;margin:0;text-align:center;font-size:.92rem;line-height:1.9;color:var(--loc-gold3)}
+.loc-status:empty{min-height:0}
 
 @media (min-width:600px){
-  .loc-section{padding:64px 24px 80px}
+  .loc-section{padding:56px 24px 72px}
   .loc-title{font-size:3rem}
-  .loc-stage{padding-bottom:70%}
-  .loc-tilt{width:68%;padding-bottom:68%;top:48%}
+  .loc-stage{padding-bottom:56%}
+  .loc-tilt{width:60%;padding-bottom:60%;top:50%}
   .loc-pinbb{left:-30px;width:60px;height:88px}
-  .loc-card{padding:30px 32px 26px}
+  .loc-compass{top:16px;left:16px;width:44px;height:44px}
+  .loc-caption{right:16px;bottom:14px}
+  .loc-body{padding:6px 32px 22px}
   .loc-hall{font-size:2.3rem}
-  .loc-btn-main{font-size:1.3rem;min-height:64px}
+  .loc-actions{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .loc-btn-main{grid-column:auto}
+  .loc-btn,.loc-btn-main{min-height:58px;font-size:1rem}
 }
 
-@-webkit-keyframes loc-dash{to{stroke-dashoffset:-24}}
 @keyframes loc-dash{to{stroke-dashoffset:-24}}
-@-webkit-keyframes loc-glow{0%,100%{opacity:.25}50%{opacity:.6}}
 @keyframes loc-glow{0%,100%{opacity:.25}50%{opacity:.6}}
-@-webkit-keyframes loc-bounce{0%,100%{-webkit-transform:translateY(0)}50%{-webkit-transform:translateY(-11px)}}
 @keyframes loc-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
-@-webkit-keyframes loc-shadow{0%,100%{-webkit-transform:scale(1);opacity:.9}50%{-webkit-transform:scale(.7);opacity:.55}}
 @keyframes loc-shadow{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(.7);opacity:.55}}
-@-webkit-keyframes loc-pulse{0%{-webkit-transform:scale(.15);opacity:.9}100%{-webkit-transform:scale(1);opacity:0}}
 @keyframes loc-pulse{0%{transform:scale(.15);opacity:.9}100%{transform:scale(1);opacity:0}}
 
 @media (prefers-reduced-motion:reduce){
-  .loc-section *,.loc-section *:before,.loc-section *:after{animation:none !important;-webkit-animation:none !important;transition:none !important}
-  .loc-ring{opacity:.5;-webkit-transform:scale(.6);transform:scale(.6)}
-  .loc-ring-2,.loc-ring-3{display:none}
+  .loc-section *,.loc-section *:before,.loc-section *:after{animation:none !important;transition:none !important}
+  .loc-ring{opacity:.5;transform:scale(.6)}
+  .loc-ring-2,.loc-ring-3,.loc-car{display:none}
   .loc-route-glow{opacity:.4}
+  .loc-btn:active{transform:none}
 }
 </style>
 
@@ -160,135 +199,167 @@
     <span class="loc-hl loc-hl-b" aria-hidden="true"></span>
   </div>
 
-  <div class="loc-stage" id="loc-stage" role="img" aria-label="تقریب کے مقام کا مصوّر نقشہ: سرکلر روڈ پر حیدری پیٹرول پمپ کے قریب میرج ہٹ ویڈنگ ہال، پشاور">
-    <div class="loc-tilt" id="loc-tilt" aria-hidden="true">
-      <div class="loc-slab"></div>
-      <div class="loc-plane">
-        <svg class="loc-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
-          <defs>
-            <radialGradient id="loc-g-bg" cx="50%" cy="50%" r="75%">
-              <stop offset="0" stop-color="#11604a"/>
-              <stop offset="1" stop-color="#05261e"/>
-            </radialGradient>
-            <pattern id="loc-g-grid" width="25" height="25" patternUnits="userSpaceOnUse">
-              <path d="M25 0H0V25" fill="none" stroke="#C9A24B" stroke-opacity=".07" stroke-width="1"/>
-            </pattern>
-            <linearGradient id="loc-g-venue" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#E9CF8B"/>
-              <stop offset="1" stop-color="#B68A32"/>
-            </linearGradient>
-          </defs>
-          <rect width="400" height="400" fill="url(#loc-g-bg)"/>
-          <rect width="400" height="400" fill="url(#loc-g-grid)"/>
+  <div class="loc-card reveal">
+    <div class="loc-stage" id="loc-stage" role="img" aria-label="تقریب کے مقام کا مصوّر نقشہ: سرکلر روڈ پر حیدری پیٹرول پمپ کے قریب میرج ہٹ ویڈنگ ہال، پشاور">
+      <div class="loc-tilt" id="loc-tilt" aria-hidden="true">
+        <div class="loc-slab"></div>
+        <div class="loc-plane">
+          <svg class="loc-svg" id="loc-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+            <defs>
+              <radialGradient id="loc-g-bg" cx="50%" cy="50%" r="75%">
+                <stop offset="0" stop-color="#11604a"/>
+                <stop offset="1" stop-color="#05261e"/>
+              </radialGradient>
+              <pattern id="loc-g-grid" width="25" height="25" patternUnits="userSpaceOnUse">
+                <path d="M25 0H0V25" fill="none" stroke="#C9A24B" stroke-opacity=".07" stroke-width="1"/>
+              </pattern>
+              <linearGradient id="loc-g-venue" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#E9CF8B"/>
+                <stop offset="1" stop-color="#B68A32"/>
+              </linearGradient>
+              <radialGradient id="loc-g-car" cx="50%" cy="50%" r="50%">
+                <stop offset="0" stop-color="#FFF3C9" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#FFF3C9" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="400" height="400" fill="url(#loc-g-bg)"/>
+            <rect width="400" height="400" fill="url(#loc-g-grid)"/>
 
-          <!-- old-city blocks -->
-          <g fill="#0A3A2E" stroke="#1B6B54" stroke-width="1.5" stroke-opacity=".8">
-            <rect x="70" y="80" width="45" height="60" rx="4"/>
-            <rect x="70" y="148" width="45" height="62" rx="4"/>
-            <rect x="135" y="80" width="55" height="60" rx="4"/>
-            <rect x="135" y="148" width="55" height="62" rx="4"/>
-            <rect x="212" y="78" width="40" height="38" rx="4"/>
-            <rect x="258" y="78" width="32" height="38" rx="4"/>
-            <rect x="296" y="78" width="36" height="38" rx="4"/>
-            <rect x="212" y="135" width="36" height="35" rx="4"/>
-            <rect x="306" y="135" width="26" height="35" rx="4"/>
-            <rect x="70" y="232" width="52" height="30" rx="4"/>
-            <rect x="128" y="232" width="60" height="30" rx="4"/>
-            <rect x="70" y="272" width="40" height="50" rx="4"/>
-            <rect x="116" y="272" width="34" height="50" rx="4"/>
-            <rect x="156" y="272" width="32" height="50" rx="4"/>
-            <rect x="212" y="232" width="34" height="30" rx="4"/>
-            <rect x="306" y="232" width="26" height="40" rx="4"/>
-          </g>
+            <!-- city blocks -->
+            <g fill="#0A3A2E" stroke="#1B6B54" stroke-width="1.5" stroke-opacity=".8">
+              <rect x="70" y="80" width="45" height="60" rx="4"/>
+              <rect x="70" y="148" width="45" height="62" rx="4"/>
+              <rect x="135" y="80" width="55" height="60" rx="4"/>
+              <rect x="135" y="148" width="55" height="62" rx="4"/>
+              <rect x="212" y="78" width="40" height="38" rx="4"/>
+              <rect x="258" y="78" width="32" height="38" rx="4"/>
+              <rect x="296" y="78" width="36" height="38" rx="4"/>
+              <rect x="212" y="135" width="36" height="35" rx="4"/>
+              <rect x="306" y="135" width="26" height="35" rx="4"/>
+              <rect x="70" y="232" width="52" height="30" rx="4"/>
+              <rect x="128" y="232" width="60" height="30" rx="4"/>
+              <rect x="70" y="272" width="40" height="50" rx="4"/>
+              <rect x="116" y="272" width="34" height="50" rx="4"/>
+              <rect x="156" y="272" width="32" height="50" rx="4"/>
+              <rect x="212" y="232" width="34" height="30" rx="4"/>
+              <rect x="306" y="232" width="26" height="40" rx="4"/>
+            </g>
 
-          <!-- side streets -->
-          <g stroke="#14503F" stroke-linecap="round" fill="none">
-            <path d="M200 60V340" stroke-width="10"/>
-            <path d="M50 218H350" stroke-width="9"/>
-            <path d="M125 60V218" stroke-width="8"/>
-            <path d="M200 125H350" stroke-width="8"/>
-            <path d="M200 340V400" stroke-width="14"/>
-          </g>
+            <!-- side streets -->
+            <g stroke="#14503F" stroke-linecap="round" fill="none">
+              <path d="M200 60V340" stroke-width="10"/>
+              <path d="M50 218H350" stroke-width="9"/>
+              <path d="M125 60V218" stroke-width="8"/>
+              <path d="M200 125H350" stroke-width="8"/>
+              <path d="M200 340V400" stroke-width="14"/>
+            </g>
 
-          <!-- ring road: Circular Road -->
-          <path d="M110 60H290Q350 60 350 120V280Q350 340 290 340H110Q50 340 50 280V120Q50 60 110 60Z" fill="none" stroke="#C9A24B" stroke-opacity=".4" stroke-width="27"/>
-          <path d="M110 60H290Q350 60 350 120V280Q350 340 290 340H110Q50 340 50 280V120Q50 60 110 60Z" fill="none" stroke="#17594A" stroke-width="24"/>
-          <path d="M110 60H290Q350 60 350 120V280Q350 340 290 340H110Q50 340 50 280V120Q50 60 110 60Z" fill="none" stroke="#F7F1E3" stroke-opacity=".28" stroke-width="1.5" stroke-dasharray="8 8"/>
+            <!-- ring road: Circular Road -->
+            <path d="M110 60H290Q350 60 350 120V280Q350 340 290 340H110Q50 340 50 280V120Q50 60 110 60Z" fill="none" stroke="#C9A24B" stroke-opacity=".4" stroke-width="27"/>
+            <path d="M110 60H290Q350 60 350 120V280Q350 340 290 340H110Q50 340 50 280V120Q50 60 110 60Z" fill="none" stroke="#17594A" stroke-width="24"/>
+            <path d="M110 60H290Q350 60 350 120V280Q350 340 290 340H110Q50 340 50 280V120Q50 60 110 60Z" fill="none" stroke="#F7F1E3" stroke-opacity=".28" stroke-width="1.5" stroke-dasharray="8 8"/>
 
-          <!-- route -->
-          <path class="loc-route-glow" d="M200 398V340H290Q350 340 350 280V125H278V148" fill="none" stroke="#E9CF8B" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
-          <path class="loc-route" d="M200 398V340H290Q350 340 350 280V125H278V148" fill="none" stroke="#FFF3C9" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5"/>
-          <circle cx="200" cy="394" r="6" fill="#F7F1E3" stroke="#C9A24B" stroke-width="2"/>
+            <!-- route -->
+            <path class="loc-route-glow" d="M200 398V340H290Q350 340 350 280V125H278V148" fill="none" stroke="#E9CF8B" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+            <path class="loc-route" d="M200 398V340H290Q350 340 350 280V125H278V148" fill="none" stroke="#FFF3C9" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5"/>
+            <circle cx="200" cy="392" r="7" fill="#F7F1E3" stroke="#C9A24B" stroke-width="2.5"/>
 
-          <!-- petrol pump landmark -->
-          <g>
-            <rect x="259" y="238" width="18" height="26" rx="3.5" fill="#C9A24B" stroke="#04201A" stroke-width="1.5"/>
-            <rect x="262" y="241" width="12" height="8" rx="1.5" fill="#04201A"/>
-            <path d="M277 244H282V256Q282 259 279 259" fill="none" stroke="#E9CF8B" stroke-width="2.2" stroke-linecap="round"/>
-            <rect x="255" y="264" width="26" height="4" rx="2" fill="#E9CF8B"/>
-          </g>
-          <text class="loc-t-gold loc-halo" x="268" y="298" text-anchor="middle" font-size="17">حیدری پیٹرول پمپ</text>
+            <!-- traveller dot moving along the route (paused under reduced motion) -->
+            <g class="loc-car">
+              <circle r="14" fill="url(#loc-g-car)"/>
+              <circle r="5" fill="#FFF8E1" stroke="#8E6A1D" stroke-width="1.5"/>
+              <animateMotion id="loc-move" dur="6s" repeatCount="indefinite" calcMode="linear" path="M200 398V340H290Q350 340 350 280V125H278V148"/>
+            </g>
 
-          <!-- venue building -->
-          <circle cx="278" cy="160" r="26" fill="#C9A24B" fill-opacity=".16" stroke="#E9CF8B" stroke-opacity=".6" stroke-width="1.5"/>
-          <rect x="260" y="150" width="36" height="22" rx="3" fill="url(#loc-g-venue)" stroke="#04201A" stroke-width="1.5"/>
-          <path d="M268 150Q278 134 288 150Z" fill="#E9CF8B" stroke="#04201A" stroke-width="1.5"/>
-          <path d="M274 172V162Q278 157 282 162V172Z" fill="#04201A"/>
+            <!-- petrol pump landmark -->
+            <g>
+              <rect x="259" y="238" width="18" height="26" rx="3.5" fill="#C9A24B" stroke="#04201A" stroke-width="1.5"/>
+              <rect x="262" y="241" width="12" height="8" rx="1.5" fill="#04201A"/>
+              <path d="M277 244H282V256Q282 259 279 259" fill="none" stroke="#E9CF8B" stroke-width="2.2" stroke-linecap="round"/>
+              <rect x="255" y="264" width="26" height="4" rx="2" fill="#E9CF8B"/>
+            </g>
+            <text class="loc-t-gold" x="268" y="298" text-anchor="middle" font-size="17">حیدری پیٹرول پمپ</text>
 
-          <!-- labels -->
-          <text x="278" y="204" text-anchor="middle" font-size="16" class="loc-t-gold loc-halo">میرج ہٹ ویڈنگ ہال</text>
-          <text class="loc-halo" x="120" y="372" text-anchor="middle" font-size="17">سرکلر روڈ</text>
-        </svg>
-        <div class="loc-shadow"></div>
-        <div class="loc-ring"></div>
-        <div class="loc-ring loc-ring-2"></div>
-        <div class="loc-ring loc-ring-3"></div>
-      </div>
+            <!-- venue building -->
+            <circle cx="278" cy="160" r="26" fill="#C9A24B" fill-opacity=".16" stroke="#E9CF8B" stroke-opacity=".6" stroke-width="1.5"/>
+            <rect x="260" y="150" width="36" height="22" rx="3" fill="url(#loc-g-venue)" stroke="#04201A" stroke-width="1.5"/>
+            <path d="M268 150Q278 134 288 150Z" fill="#E9CF8B" stroke="#04201A" stroke-width="1.5"/>
+            <path d="M274 172V162Q278 157 282 162V172Z" fill="#04201A"/>
 
-      <div class="loc-pinpos">
-        <div class="loc-pinbb" id="loc-pinbb">
-          <div class="loc-pinbounce">
-            <svg viewBox="0 0 48 70" xmlns="http://www.w3.org/2000/svg" focusable="false">
-              <defs>
-                <linearGradient id="loc-pg-a" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stop-color="#8E6A1D"/>
-                  <stop offset=".45" stop-color="#C9A24B"/>
-                  <stop offset="1" stop-color="#F6E4A6"/>
-                </linearGradient>
-                <radialGradient id="loc-pg-b" cx="35%" cy="28%" r="60%">
-                  <stop offset="0" stop-color="#FFF6D4" stop-opacity=".95"/>
-                  <stop offset="1" stop-color="#FFF6D4" stop-opacity="0"/>
-                </radialGradient>
-                <radialGradient id="loc-pg-c" cx="50%" cy="40%" r="60%">
-                  <stop offset="0" stop-color="#0E4B3B"/>
-                  <stop offset="1" stop-color="#03150F"/>
-                </radialGradient>
-              </defs>
-              <path d="M24 68C24 68 4 43 4 24A20 20 0 0 1 44 24C44 43 24 68 24 68Z" fill="url(#loc-pg-a)" stroke="#6E4E12" stroke-width="1.2"/>
-              <path d="M24 68C24 68 44 43 44 24A20 20 0 0 0 24 4Z" fill="#8E6A1D" fill-opacity=".28"/>
-              <path d="M24 68C24 68 4 43 4 24A20 20 0 0 1 44 24C44 43 24 68 24 68Z" fill="url(#loc-pg-b)"/>
-              <circle cx="24" cy="24" r="10" fill="url(#loc-pg-c)" stroke="#F6E4A6" stroke-width="2"/>
-              <path d="M24 17.5l2 4.6 5 .5-3.8 3.3 1.2 4.9-4.4-2.6-4.4 2.6 1.2-4.9-3.8-3.3 5-.5z" fill="#E9CF8B"/>
-              <ellipse cx="14.5" cy="15" rx="3.2" ry="6" transform="rotate(35 14.5 15)" fill="#fff" fill-opacity=".45"/>
-            </svg>
+            <!-- labels -->
+            <text x="278" y="204" text-anchor="middle" font-size="16" class="loc-t-gold">میرج ہٹ ویڈنگ ہال</text>
+            <text x="120" y="372" text-anchor="middle" font-size="17">سرکلر روڈ</text>
+          </svg>
+          <div class="loc-shadow"></div>
+          <div class="loc-ring"></div>
+          <div class="loc-ring loc-ring-2"></div>
+          <div class="loc-ring loc-ring-3"></div>
+        </div>
+
+        <div class="loc-pinpos">
+          <div class="loc-pinbb" id="loc-pinbb">
+            <div class="loc-pinbounce">
+              <svg viewBox="0 0 48 70" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <defs>
+                  <linearGradient id="loc-pg-a" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#8E6A1D"/>
+                    <stop offset=".45" stop-color="#C9A24B"/>
+                    <stop offset="1" stop-color="#F6E4A6"/>
+                  </linearGradient>
+                  <radialGradient id="loc-pg-b" cx="35%" cy="28%" r="60%">
+                    <stop offset="0" stop-color="#FFF6D4" stop-opacity=".95"/>
+                    <stop offset="1" stop-color="#FFF6D4" stop-opacity="0"/>
+                  </radialGradient>
+                  <radialGradient id="loc-pg-c" cx="50%" cy="40%" r="60%">
+                    <stop offset="0" stop-color="#0E4B3B"/>
+                    <stop offset="1" stop-color="#03150F"/>
+                  </radialGradient>
+                </defs>
+                <path d="M24 68C24 68 4 43 4 24A20 20 0 0 1 44 24C44 43 24 68 24 68Z" fill="url(#loc-pg-a)" stroke="#6E4E12" stroke-width="1.2"/>
+                <path d="M24 68C24 68 44 43 44 24A20 20 0 0 0 24 4Z" fill="#8E6A1D" fill-opacity=".28"/>
+                <path d="M24 68C24 68 4 43 4 24A20 20 0 0 1 44 24C44 43 24 68 24 68Z" fill="url(#loc-pg-b)"/>
+                <circle cx="24" cy="24" r="10" fill="url(#loc-pg-c)" stroke="#F6E4A6" stroke-width="2"/>
+                <path d="M24 17.5l2 4.6 5 .5-3.8 3.3 1.2 4.9-4.4-2.6-4.4 2.6 1.2-4.9-3.8-3.3 5-.5z" fill="#E9CF8B"/>
+                <ellipse cx="14.5" cy="15" rx="3.2" ry="6" transform="rotate(35 14.5 15)" fill="#fff" fill-opacity=".45"/>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <p class="loc-caption">نقشہ صرف رہنمائی کے لیے ہے</p>
 
-  <div class="loc-card">
-    <h3 class="loc-hall">میرج ہٹ ویڈنگ ہال</h3>
-    <ul class="loc-rows">
-      <li class="loc-row">
-        <span class="loc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22C12 22 4.5 14.5 4.5 9.5a7.5 7.5 0 0 1 15 0C19.5 14.5 12 22 12 22Z" fill="none" stroke="#E9CF8B" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.6" fill="#E9CF8B"/></svg></span>
-        <span><span class="loc-lab">پتہ</span><span class="loc-val" id="loc-address">سرکلر روڈ، نزد حیدری پیٹرول پمپ، پشاور</span></span>
-      </li>
-    </ul>
-    <a class="loc-btn loc-btn-main" id="loc-go" data-track="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Marriage+Hut+Wedding+Hall+Circular+Road+Peshawar" target="_blank" rel="noopener">گوگل میپس پر راستہ دیکھیں</a>
-    <button class="loc-btn loc-btn-sec" id="loc-copy" type="button" data-track="copy_address">پتہ کاپی کریں</button>
-    <p class="loc-status" id="loc-status" role="status" aria-live="polite"></p>
+      <span class="loc-compass" aria-hidden="true">
+        <svg viewBox="0 0 44 44" focusable="false"><circle cx="22" cy="22" r="15" fill="none" stroke="#C9A24B" stroke-opacity=".45" stroke-width="1"/><path d="M22 8l5 14h-10z" fill="#E9CF8B"/><path d="M22 36l-5-14h10z" fill="#E9CF8B" fill-opacity=".3"/><circle cx="22" cy="22" r="2" fill="#04201A" stroke="#E9CF8B" stroke-width="1.2"/></svg>
+      </span>
+      <p class="loc-caption"><svg viewBox="0 0 24 24" fill="none" stroke="#E9CF8B" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><span>نقشہ صرف رہنمائی کے لیے ہے</span></p>
+    </div>
+
+    <div class="loc-body">
+      <div class="loc-namewrap">
+        <h3 class="loc-hall">میرج ہٹ ویڈنگ ہال</h3>
+        <p class="loc-en" lang="en" dir="ltr">Marriage Hut Wedding Hall</p>
+      </div>
+      <div class="loc-orn" aria-hidden="true"><i></i><b></b><i></i></div>
+
+      <div class="loc-addr">
+        <span class="loc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 22C12 22 4.5 14.5 4.5 9.5a7.5 7.5 0 0 1 15 0C19.5 14.5 12 22 12 22Z" fill="none" stroke="#E9CF8B" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.6" fill="#E9CF8B"/></svg></span>
+        <div>
+          <span class="loc-lab">پتہ</span>
+          <span class="loc-val" id="loc-address">سرکلر روڈ، نزد حیدری پیٹرول پمپ، پشاور</span>
+          <span class="loc-chip"><svg viewBox="0 0 24 24" fill="none" stroke="#E9CF8B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16M3 21h13M6.5 7h6v4h-6zM15 9h2.5a1.5 1.5 0 0 1 1.5 1.5V17a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg><span>نزد حیدری پیٹرول پمپ</span></span>
+        </div>
+      </div>
+
+      <div class="loc-actions">
+        <a class="loc-btn loc-btn-main" id="loc-go" data-track="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Marriage+Hut+Wedding+Hall+Circular+Road+Peshawar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.5l9.5 9.5-9.5 9.5L2.5 12z"/><path d="M9 14v-2.5a1.5 1.5 0 0 1 1.5-1.5H15M13 8l2 2-2 2"/></svg><span>گوگل میپس پر راستہ دیکھیں</span></a>
+        <a class="loc-btn loc-btn-sec" id="loc-share" data-track="share_location" href="https://wa.me/?text=%D8%AA%D9%82%D8%B1%DB%8C%D8%A8%D9%90%20%D8%AA%DA%A9%D9%85%DB%8C%D9%84%D9%90%20%D8%B9%D9%85%D8%B1%DB%81%20%DA%A9%D8%A7%20%D9%85%D9%82%D8%A7%D9%85%0A%D9%85%DB%8C%D8%B1%D8%AC%20%DB%81%D9%B9%20%D9%88%DB%8C%DA%88%D9%86%DA%AF%20%DB%81%D8%A7%D9%84%D8%8C%20%D8%B3%D8%B1%DA%A9%D9%84%D8%B1%20%D8%B1%D9%88%DA%88%D8%8C%20%D9%86%D8%B2%D8%AF%20%D8%AD%DB%8C%D8%AF%D8%B1%DB%8C%20%D9%BE%DB%8C%D9%B9%D8%B1%D9%88%D9%84%20%D9%BE%D9%85%D9%BE%D8%8C%20%D9%BE%D8%B4%D8%A7%D9%88%D8%B1%0A%DA%AF%D9%88%DA%AF%D9%84%20%D9%85%DB%8C%D9%BE%D8%B3%3A%20https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DMarriage%2BHut%2BWedding%2BHall%2BCircular%2BRoad%2BPeshawar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 0 1 2.16 11.9c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.88 9.89zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.49-8.41z"/></svg><span>واٹس ایپ پر مقام بھیجیں</span></a>
+        <button class="loc-btn loc-btn-sec loc-copy" id="loc-copy" type="button" data-track="copy_address"><svg class="loc-i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></svg><svg class="loc-i-done" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 12.5l5 5 10-11"/></svg><span>پتہ کاپی کریں</span></button>
+      </div>
+
+      <div class="loc-foot">
+        <a class="loc-apple" id="loc-apple" data-track="apple_maps" href="https://maps.apple.com/?q=Marriage+Hut+Wedding+Hall+Circular+Road+Peshawar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 4L3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></svg><span>ایپل میپس میں کھولیں</span></a>
+      </div>
+      <p class="loc-status" id="loc-status" role="status" aria-live="polite"></p>
+    </div>
   </div>
 </div>
 
@@ -300,11 +371,28 @@
   var tilt = document.getElementById('loc-tilt');
   var pin = document.getElementById('loc-pinbb');
   var copyBtn = document.getElementById('loc-copy');
+  var shareA = document.getElementById('loc-share');
   var statusEl = document.getElementById('loc-status');
   var addrEl = document.getElementById('loc-address');
+  var mapSvg = document.getElementById('loc-svg');
+  var tr = function (s) { return (typeof window.T === 'function') ? window.T(s) : s; };
+
+  /* ---------- WhatsApp share text (follows the page language) ---------- */
+  var MAPS = 'https://www.google.com/maps/search/?api=1&query=Marriage+Hut+Wedding+Hall+Circular+Road+Peshawar';
+  var SHARE_UR = 'تقریبِ تکمیلِ عمرہ کا مقام\nمیرج ہٹ ویڈنگ ہال، سرکلر روڈ، نزد حیدری پیٹرول پمپ، پشاور\nگوگل میپس: ' + MAPS;
+  var SHARE_EN = 'Venue of the Umrah completion celebration\nMarriage Hut Wedding Hall, Circular Road, near Haidri Petrol Pump, Peshawar\nGoogle Maps: ' + MAPS;
+  function setShare() {
+    if (!shareA) { return; }
+    var en = typeof window.UMRAH_LANG === 'function' && window.UMRAH_LANG() === 'en';
+    shareA.setAttribute('href', 'https://wa.me/?text=' + encodeURIComponent(en ? SHARE_EN : SHARE_UR));
+  }
+  if (shareA) {
+    shareA.addEventListener('click', setShare);
+    window.addEventListener('umrah-lang', setShare);
+  }
 
   /* ---------- copy address ---------- */
-  var statusTimer = 0;
+  var statusTimer = 0, doneTimer = 0;
   function say(msg) {
     statusEl.textContent = msg;
     if (statusTimer) { clearTimeout(statusTimer); }
@@ -329,9 +417,14 @@
   }
   copyBtn.addEventListener('click', function () {
     var text = addrEl.textContent.replace(/^\s+|\s+$/g, '');
-    var done = function () { say(T('پتہ کاپی ہو گیا')); };
+    var done = function () {
+      say(tr('پتہ کاپی ہو گیا'));
+      copyBtn.classList.add('is-done');
+      if (doneTimer) { clearTimeout(doneTimer); }
+      doneTimer = setTimeout(function () { copyBtn.classList.remove('is-done'); }, 2500);
+    };
     var fail = function () {
-      if (legacyCopy(text)) { done(); } else { say(T('کاپی نہیں ہو سکا، براہِ کرم پتہ خود نقل کر لیں')); }
+      if (legacyCopy(text)) { done(); } else { say(tr('کاپی نہیں ہو سکا، براہِ کرم پتہ خود نقل کر لیں')); }
     };
     try {
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -343,6 +436,10 @@
   /* ---------- tilt / sway ---------- */
   var reduce = false;
   try { reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e3) {}
+
+  function pauseSvg() { try { if (mapSvg && mapSvg.pauseAnimations) { mapSvg.pauseAnimations(); } } catch (e5) {} }
+  function playSvg() { try { if (mapSvg && mapSvg.unpauseAnimations) { mapSvg.unpauseAnimations(); } } catch (e6) {} }
+  if (reduce) { pauseSvg(); }
 
   var BASE_RX = 50, BASE_RZ = -4;
   var MIN_RX = 42, MAX_RX = 58, MAX_RZ = 16;
@@ -376,10 +473,12 @@
   function start() {
     if (reduce || running || !visible) { return; }
     running = true;
+    playSvg();
     raf = window.requestAnimationFrame(frame);
   }
   function stop() {
     running = false;
+    pauseSvg();
     if (raf) { window.cancelAnimationFrame(raf); raf = 0; }
   }
 
