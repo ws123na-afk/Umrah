@@ -6,6 +6,8 @@
     'تقریبِ تکمیلِ عمرہ': 'Umrah Completion Celebration',
     'دعوت نامہ کھولیں': 'Open the invitation',
     'کھولنے کے لیے دبائیں': 'Tap to open',
+    'یہاں دبائیں اور دعوت نامہ دیکھیں': 'Tap here to open your invitation',
+    'محترم': 'Dear',
     'منظر کو چھوئیں یا گھمائیں': 'Drag to rotate the scene',
     'اور خیرات کا پروگرام': 'and Khairat Program',
     'جمعرات 05 نومبر 2026، دوپہر 12 سے 2 بجے': 'Thu, 05 Nov 2026, 12 to 2 PM',

@@ -431,6 +431,32 @@ html[lang="en"] .card .hall.goldtext,html[lang="en"] .loc-hall{line-height:1.35;
 html[lang="en"] .rdlg-t{font-size:26px;line-height:1.3;margin-bottom:8px}
 @media (max-width:360px){.rdlg-t{font-size:23px;line-height:1.8;padding:0 46px}}
 @media (prefers-reduced-motion:reduce){.rdlg[open]{animation:none}}
+
+/* gate: make opening obvious */
+#gate{cursor:pointer}
+.seal{width:max-content;max-width:94vw}
+.hint{white-space:nowrap}
+@media (max-width:360px){.hint{font-size:14px;padding:5px 12px}.openbtn{font-size:19px;padding:0 28px}}
+.gate-glow{position:absolute;top:0;bottom:0;left:50%;width:180px;transform:translateX(-50%);z-index:2;pointer-events:none;
+  background:linear-gradient(90deg,rgba(233,207,139,0) 0%,rgba(255,236,170,.22) 38%,rgba(255,246,210,.75) 50%,rgba(255,236,170,.22) 62%,rgba(233,207,139,0) 100%);
+  animation:seam 2.8s ease-in-out infinite}
+#gate.open .gate-glow{opacity:0;transition:opacity .4s ease}
+@keyframes seam{0%,100%{opacity:.55}50%{opacity:1}}
+.openbtn{font-size:21px;min-height:60px;padding:0 40px;animation:pulse 2.4s ease-in-out infinite}
+.openbtn:hover{filter:brightness(1.06)}
+.hint{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:600;color:#F2DC9C;background:rgba(4,32,26,.9);border:1px solid rgba(201,162,75,.65);padding:6px 16px;border-radius:24px;line-height:1.8;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.hint .tap{flex:0 0 auto;animation:tapbob 1.3s ease-in-out infinite}
+@keyframes tapbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.gate-for{font-size:17px;font-weight:600;color:#F2DC9C;background:rgba(4,32,26,.88);border:1px solid rgba(201,162,75,.6);border-radius:22px;padding:4px 18px;line-height:1.9;max-width:80vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gate-for .gf-n{font-family:"Nastaliq";font-weight:700}
+html[lang="en"] .gate-for .gf-n{font-family:inherit}
+@media (min-width:900px){
+  .medal{width:230px;height:230px}
+  .medal .t{font-size:38px}
+  .openbtn{font-size:23px;min-height:64px;padding:0 48px}
+  .hint{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){.gate-glow,.openbtn,.hint .tap{animation:none}}
 </style>
 </head>
 <body class="locked">
@@ -441,19 +467,21 @@ html[lang="en"] .rdlg-t{font-size:26px;line-height:1.3;margin-bottom:8px}
 </button>
 
 <!-- ================= GATE ================= -->
-<div id="gate" aria-label="دعوت نامہ">
+<div id="gate" aria-label="دعوت نامہ" data-track="open_invite">
+  <div class="gate-glow" aria-hidden="true"></div>
   <div class="door l" aria-hidden="true"><div class="dpanel"><svg class="arch" viewBox="0 0 100 100" preserveAspectRatio="none"><use href="#archArt" xlink:href="#archArt"/></svg><svg class="dmed" viewBox="-50 -50 100 100"><use href="#medArt" xlink:href="#medArt"/></svg><svg class="dmed2" viewBox="-50 -50 100 100"><use href="#medArt" xlink:href="#medArt"/></svg><span class="handle"></span></div></div>
   <div class="door r" aria-hidden="true"><div class="dpanel"><svg class="arch" viewBox="0 0 100 100" preserveAspectRatio="none"><use href="#archArt" xlink:href="#archArt"/></svg><svg class="dmed" viewBox="-50 -50 100 100"><use href="#medArt" xlink:href="#medArt"/></svg><svg class="dmed2" viewBox="-50 -50 100 100"><use href="#medArt" xlink:href="#medArt"/></svg><span class="handle"></span></div></div>
   <div class="seal">
+    <div class="gate-for" id="gateFor" hidden><span class="gf-l">محترم</span> <span class="gf-n" id="gateForName" translate="no"></span></div>
     <div class="medal">
       <div class="t goldtext">دعوت نامہ</div>
       <div class="s">تقریبِ تکمیلِ عمرہ</div>
     </div>
-    <button class="openbtn" id="openBtn" type="button" data-track="open_invite">
+    <button class="openbtn" id="openBtn" type="button">
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M10 21v-6h4v6"/></svg>
       دعوت نامہ کھولیں
     </button>
-    <div class="hint">کھولنے کے لیے دبائیں</div>
+    <div class="hint"><svg class="tap" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V4.5a1.5 1.5 0 0 1 3 0V10"/><path d="M12 9.5a1.5 1.5 0 0 1 3 0V11"/><path d="M15 10.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.2a5 5 0 0 1-4-2L4 15.5a1.6 1.6 0 0 1 2.4-2.1L9 15"/></svg><span>یہاں دبائیں اور دعوت نامہ دیکھیں</span></div>
   </div>
 </div>
 
@@ -744,6 +772,8 @@ function openGate(){
   if(window.__petals){ __petals.shower(1.4,3500); setTimeout(function(){__petals.shower(0.12,22000);},3600); }
 }
 document.getElementById('openBtn').addEventListener('click',openGate);
+gate.addEventListener('click',function(){ if(!gate.classList.contains('open')) openGate(); });
+try{var gfn=new URLSearchParams(location.search).get('to');if(gfn){gfn=gfn.replace(/\s+/g,' ').trim().slice(0,40);if(gfn){document.getElementById('gateForName').textContent=gfn;document.getElementById('gateFor').removeAttribute('hidden');}}}catch(e){}
 if(reduce){ /* still show gate but open instantly on click */ }
 
 /* ---------- gold sparks on open ---------- */
