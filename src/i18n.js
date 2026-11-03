@@ -33,6 +33,8 @@
     'مسجدِ قباء': 'Masjid Quba',
     'حرمین شریفین': 'The Two Holy Mosques',
     'مدینہ منورہ': 'Madinah Munawwarah',
+    'مکہ مکرمہ اور مدینہ منورہ': 'Makkah and Madinah',
+    'خانہ کعبہ اور مسجدِ نبوی ﷺ': 'The Kaaba and Masjid an-Nabawi ﷺ',
     'مسجدِ نبوی ﷺ اور گنبدِ خضریٰ': 'Masjid an-Nabawi ﷺ and the Green Dome',
     'تفصیلات': 'Details',
     'تاریخ': 'Date',
@@ -226,7 +228,8 @@
 
   function init() {
     var want = 'ur';
-    try { var q = new URLSearchParams(location.search).get('lang'); if (q === 'en' || q === 'ur') { want = q; } else { var s = localStorage.getItem('umrah-lang'); if (s === 'en' || s === 'ur') { want = s; } } } catch (e) {}
+    /* Urdu is always the default; only an explicit ?lang=en link opens in English. */
+    try { var q = new URLSearchParams(location.search).get('lang'); if (q === 'en') { want = 'en'; } } catch (e) {}
     var b = document.getElementById('langBtn');
     if (b) { b.addEventListener('click', function () { apply(lang === 'en' ? 'ur' : 'en', true); }); }
     if (want === 'en') { apply('en', false); } else { document.documentElement.setAttribute('data-i18n-ready', '1'); setToggle(false); }
