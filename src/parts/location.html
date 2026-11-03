@@ -5,7 +5,7 @@
   --loc-night:#04201A; --loc-em:#0E4B3B; --loc-gold:#C9A24B; --loc-gold2:#E9CF8B; --loc-gold3:#F2DC9C; --loc-ivory:#F7F1E3;
   --loc-deep:#03150F;
   position:relative; direction:rtl; text-align:start; box-sizing:border-box;
-  width:100%; max-width:100%; padding:20px 16px 28px; overflow:hidden;
+  width:100%; max-width:100%; padding:20px 0 28px; overflow:hidden;
   font-family:"Naskh","Noto Naskh Arabic",serif; color:var(--loc-ivory);
   -webkit-text-size-adjust:100%;
 }
@@ -94,18 +94,13 @@
   background:rgba(4,32,26,.85);border:1px solid rgba(201,162,75,.55);pointer-events:none;
 }
 .loc-compass svg{display:block;width:100%;height:100%}
-.loc-caption{
-  position:absolute;z-index:2;right:12px;bottom:10px;margin:0;max-width:calc(100% - 24px);
-  display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:999px;
-  font-size:.78rem;line-height:1.9;color:rgba(247,241,227,.82);
-  background:rgba(4,32,26,.82);border:1px solid rgba(201,162,75,.35);pointer-events:none;
-}
-.loc-caption svg{flex:0 0 auto;width:13px;height:13px}
+.loc-caption{display:inline-flex;align-items:center;gap:6px;margin:0;padding:0 4px;min-height:44px;font-size:.82rem;line-height:1.8;color:rgba(247,241,227,.7)}
+.loc-caption svg{flex:0 0 auto;width:14px;height:14px}
 
 /* details */
-.loc-body{position:relative;padding:4px 18px 18px}
+.loc-body{position:relative;padding:2px 14px 14px}
 .loc-namewrap{text-align:center;margin:0 0 6px}
-.loc-hall{margin:0;font-family:"Nastaliq","Noto Nastaliq Urdu",serif;font-weight:700;font-size:1.85rem;line-height:2.35;color:var(--loc-gold2);text-shadow:0 0 18px rgba(201,162,75,.22);overflow-wrap:break-word}
+.loc-hall{margin:0;font-family:"Nastaliq","Noto Nastaliq Urdu",serif;font-weight:700;font-size:clamp(1.45rem,7.4vw,2.4rem);line-height:2.35;color:var(--loc-gold2);text-shadow:0 0 18px rgba(201,162,75,.22);overflow-wrap:break-word}
 .loc-en{margin:-6px 0 0;font-family:"Naskh","Noto Naskh Arabic",Georgia,serif;font-size:.8rem;line-height:1.6;letter-spacing:.12em;text-transform:uppercase;color:rgba(233,207,139,.72)}
 html[lang="en"] .loc-en{display:none}
 .loc-orn{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px auto 12px;max-width:260px}
@@ -113,7 +108,7 @@ html[lang="en"] .loc-en{display:none}
 .loc-orn i:last-child{transform:scaleX(-1)}
 .loc-orn b{width:7px;height:7px;background:#C9A24B;transform:rotate(45deg)}
 
-.loc-addr{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:12px;align-items:start;padding:12px 14px;border-radius:18px;background:rgba(14,75,59,.38);border:1px solid rgba(201,162,75,.24)}
+.loc-addr{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:12px;align-items:start;padding:10px 12px 12px;border-radius:18px;background:rgba(14,75,59,.38);border:1px solid rgba(201,162,75,.24)}
 .loc-ico{width:40px;height:40px;border-radius:50%;background:rgba(201,162,75,.14);border:1px solid rgba(201,162,75,.45);display:block;padding:9px;margin-top:4px}
 .loc-ico svg{display:block;width:100%;height:100%}
 .loc-lab{display:block;font-size:.8rem;line-height:1.8;color:var(--loc-gold);font-weight:600}
@@ -126,7 +121,7 @@ html[lang="en"] .loc-en{display:none}
 .loc-chip svg{flex:0 0 auto;width:15px;height:15px}
 
 /* actions */
-.loc-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.loc-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:14px}
 .loc-btn{
   display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:8px 10px;margin:0;
   text-align:center;text-decoration:none;cursor:pointer;border-radius:14px;
@@ -162,16 +157,18 @@ html[lang="en"] .loc-en{display:none}
 .loc-status{min-height:1.9em;margin:0;text-align:center;font-size:.92rem;line-height:1.9;color:var(--loc-gold3)}
 .loc-status:empty{min-height:0}
 
+@media (min-width:420px){
+  .loc-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .loc-body{padding:4px 18px 16px}
+}
 @media (min-width:600px){
-  .loc-section{padding:56px 24px 72px}
+  .loc-section{padding:48px 0 64px}
   .loc-title{font-size:3rem}
   .loc-stage{padding-bottom:56%}
   .loc-tilt{width:60%;padding-bottom:60%;top:50%}
   .loc-pinbb{left:-30px;width:60px;height:88px}
   .loc-compass{top:16px;left:16px;width:44px;height:44px}
-  .loc-caption{right:16px;bottom:14px}
   .loc-body{padding:6px 32px 22px}
-  .loc-hall{font-size:2.3rem}
   .loc-actions{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
   .loc-btn-main{grid-column:auto}
   .loc-btn,.loc-btn-main{min-height:58px;font-size:1rem}
@@ -330,7 +327,6 @@ html[lang="en"] .loc-en{display:none}
       <span class="loc-compass" aria-hidden="true">
         <svg viewBox="0 0 44 44" focusable="false"><circle cx="22" cy="22" r="15" fill="none" stroke="#C9A24B" stroke-opacity=".45" stroke-width="1"/><path d="M22 8l5 14h-10z" fill="#E9CF8B"/><path d="M22 36l-5-14h10z" fill="#E9CF8B" fill-opacity=".3"/><circle cx="22" cy="22" r="2" fill="#04201A" stroke="#E9CF8B" stroke-width="1.2"/></svg>
       </span>
-      <p class="loc-caption"><svg viewBox="0 0 24 24" fill="none" stroke="#E9CF8B" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><span>نقشہ صرف رہنمائی کے لیے ہے</span></p>
     </div>
 
     <div class="loc-body">
@@ -357,6 +353,7 @@ html[lang="en"] .loc-en{display:none}
 
       <div class="loc-foot">
         <a class="loc-apple" id="loc-apple" data-track="apple_maps" href="https://maps.apple.com/?q=Marriage+Hut+Wedding+Hall+Circular+Road+Peshawar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 4L3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></svg><span>ایپل میپس میں کھولیں</span></a>
+        <p class="loc-caption"><svg viewBox="0 0 24 24" fill="none" stroke="#E9CF8B" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><span>نقشہ صرف رہنمائی کے لیے ہے</span></p>
       </div>
       <p class="loc-status" id="loc-status" role="status" aria-live="polite"></p>
     </div>
