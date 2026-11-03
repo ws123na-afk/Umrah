@@ -207,8 +207,8 @@ button.mem-tile{cursor:pointer}
     var im = from && from.querySelector ? from.querySelector('img') : null;
     var cap = from && from.getAttribute ? from.getAttribute('data-cap') : null;
     lbImg.setAttribute('src', im && im.getAttribute('src') ? im.getAttribute('src') : src);
-    if (lbCap) { lbCap.textContent = cap || 'حرمِ مکی، خانہ کعبہ کے سامنے'; }
-    lbImg.setAttribute('alt', cap || 'سفرِ عمرہ کی یاد');
+    if (lbCap) { lbCap.textContent = cap || T('حرمِ مکی، خانہ کعبہ کے سامنے'); }
+    lbImg.setAttribute('alt', cap || T('سفرِ عمرہ کی یاد'));
     lb.className = 'mem-lb mem-open';
     prevOverflow = document.documentElement.style.overflow;
     document.documentElement.style.overflow = 'hidden';

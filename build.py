@@ -13,5 +13,6 @@ img=os.path.join(S,'img','p')
 s=s.replace('{{M1}}',b64(os.path.join(img,'M.jpg')))
 for f in glob.glob(os.path.join(img,'*.jpg')):
     s=s.replace('{{P_'+os.path.basename(f)[0]+'}}',b64(f))
+s=s.replace('{{TW}}',rd(os.path.join(S,'tw.css'))).replace('{{I18N}}',rd(os.path.join(S,'i18n.js')))
 s=s.replace('{{SCENES}}',rd(os.path.join(S,'scenes.js'))).replace('{{THREE}}',rd(os.path.join(S,'vendor','three.min.js')))
 open(os.path.join(R,'index.html'),'w',encoding='utf-8').write(s); print('index.html',len(s),'bytes')

@@ -1,0 +1,11 @@
+{
+  "name": "umrah-invitation",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i src/tw-input.css -o src/tw.css --minify",
+    "build": "npm run build:css && python3 build.py"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

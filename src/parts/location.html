@@ -329,9 +329,9 @@
   }
   copyBtn.addEventListener('click', function () {
     var text = addrEl.textContent.replace(/^\s+|\s+$/g, '');
-    var done = function () { say('پتہ کاپی ہو گیا'); };
+    var done = function () { say(T('پتہ کاپی ہو گیا')); };
     var fail = function () {
-      if (legacyCopy(text)) { done(); } else { say('کاپی نہیں ہو سکا، براہِ کرم پتہ خود نقل کر لیں'); }
+      if (legacyCopy(text)) { done(); } else { say(T('کاپی نہیں ہو سکا، براہِ کرم پتہ خود نقل کر لیں')); }
     };
     try {
       if (navigator.clipboard && navigator.clipboard.writeText) {
