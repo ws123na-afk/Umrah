@@ -23,8 +23,12 @@ for f in glob.glob(os.path.join(img,'*.jpg')):
     s=s.replace('{{P_'+os.path.basename(f)[0]+'}}',b64(f))
 import re
 cfg=rd(os.path.join(S,'config.js'))
+_snd=os.path.join(S,'audio','nasheed.mp3')
+if os.path.exists(_snd):
+    import shutil as _sh; os.makedirs(os.path.join(R,'audio'),exist_ok=True); _sh.copy(_snd,os.path.join(R,'audio','nasheed.mp3'))
+    cfg=cfg.replace('sound: { enabled: true,',"sound: { enabled: true, file: 'audio/nasheed.mp3',")
 SITE=re.search(r"siteUrl:\s*'([^']+)'",cfg).group(1).rstrip('/')
-s=s.replace('{{CONFIG}}',cfg).replace('{{RSVP}}',rd(os.path.join(S,'rsvp.js'))).replace('{{FX}}',rd(os.path.join(S,'fx.js'))).replace('{{SITE}}',SITE)
+s=s.replace('{{CONFIG}}',cfg).replace('{{RSVP}}',rd(os.path.join(S,'rsvp.js'))).replace('{{FX}}',rd(os.path.join(S,'fx.js'))).replace('{{SOUND}}',rd(os.path.join(S,'sound.js'))).replace('{{SITE}}',SITE)
 s=s.replace('{{TW}}',rd(os.path.join(S,'tw.css'))).replace('{{I18N}}',rd(os.path.join(S,'i18n.js')))
 s=s.replace('{{SCENES}}',rd(os.path.join(S,'scenes.js'))).replace('{{THREE}}',rd(os.path.join(S,'vendor','three.min.js')))
 open(os.path.join(R,'index.html'),'w',encoding='utf-8').write(s); print('index.html',len(s),'bytes')

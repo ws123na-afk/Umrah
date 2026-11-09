@@ -17,6 +17,10 @@ window.UMRAH_CONFIG = {
   /* Count anonymous clicks (visits, calls, WhatsApp, maps…).   */
   tracking: true,
 
+  /* Background sound. enabled:false removes it and its button.
+     Put a recording at src/audio/nasheed.mp3 to play it instead of the generated hum. */
+  sound: { enabled: true, volume: 0.5 },
+
   /* Attendance reply.
      mode: 'form'     → guests fill a short form, saved for your report
            'whatsapp' → old behaviour: guest picks a host on WhatsApp

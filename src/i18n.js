@@ -8,6 +8,8 @@
     'کھولنے کے لیے دبائیں': 'Tap to open',
     'یہاں دبائیں اور دعوت نامہ دیکھیں': 'Tap here to open your invitation',
     'محترم': 'Dear',
+    'آواز بند کریں': 'Turn sound off',
+    'آواز چلائیں': 'Turn sound on',
     'واٹس ایپ پر مقام بھیجیں': 'Send location on WhatsApp',
     'نزد حیدری پیٹرول پمپ': 'Near Haidri Petrol Pump',
     'ایپل میپس میں کھولیں': 'Open in Apple Maps',
