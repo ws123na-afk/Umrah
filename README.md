@@ -16,7 +16,7 @@ If you change Tailwind classes, run `npm install` once and then `npm run site` (
 - `thumbnails/`: share images (square for WhatsApp, wide for Facebook)
 
 - `src/config.js`: **all switches**: site address, Supabase key, tracking, reply form
-- `src/rsvp.js`: reply form + click counting; `src/i18n.js` – Urdu/English text
+- `src/rsvp.js`: reply form + click counting; `src/i18n.js`: Urdu/English text
 - `report.html` (built from `src/report.html`): your private report
 - `supabase/umrah.sql`: one-time database setup
 
