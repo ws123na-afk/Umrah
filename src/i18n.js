@@ -23,7 +23,7 @@
     'حرم میں، خانہ کعبہ کے سامنے': 'In the Haram, in front of the Kaaba',
     'منظر کو چھوئیں یا گھمائیں': 'Drag to rotate the scene',
     'اور خیرات کا پروگرام': 'and Khairat Program',
-    'جمعرات 05 نومبر 2026، دوپہر 12 سے 2 بجے': 'Thu, 05 Nov 2026, 12 to 2 PM',
+    'بدھ 11 نومبر 2026، دوپہر 12 سے 2 بجے': 'Wed, 11 Nov 2026, 12 to 2 PM',
     'میرج ہٹ ویڈنگ ہال، پشاور': 'Marriage Hut Wedding Hall, Peshawar',
     'شرکت کی تصدیق کریں': 'Confirm attendance',
     'معزز مہمان': 'Honoured guest',
@@ -55,6 +55,7 @@
     'تاریخ': 'Date',
     'نومبر 2026': 'November 2026',
     'جمعرات': 'Thursday',
+    'بدھ': 'Wednesday',
     'وقت': 'Time',
     'دوپہر': 'Afternoon',
     '12:00 بجے سے': 'From 12:00 PM',
@@ -147,7 +148,7 @@
     'تصویر بڑی کر کے دیکھیں': 'View larger',
     'سفرِ عمرہ کی یاد': 'A memory of the Umrah journey',
     'یادوں کی قطار': 'Row of memories',
-    'جمعرات 05 نومبر 2026': 'Thursday, 05 November 2026',
+    'بدھ 11 نومبر 2026': 'Wednesday, 11 November 2026',
     'دوپہر 12 سے 2 بجے تک': 'Afternoon, 12 to 2 PM',
     'تقریب تک باقی وقت': 'Time remaining until the event',
     'تقریب کے مقام کا مصوّر نقشہ: سرکلر روڈ پر حیدری پیٹرول پمپ کے قریب میرج ہٹ ویڈنگ ہال، پشاور':
@@ -164,10 +165,10 @@
     'کاپی نہیں ہو سکا': 'Could not copy',
     'پتہ کاپی ہو گیا': 'Address copied',
     'کاپی نہیں ہو سکا، براہِ کرم پتہ خود نقل کر لیں': 'Could not copy. Please copy the address manually',
-    'تقریبِ تکمیلِ عمرہ اور خیرات کا پروگرام، جمعرات 05 نومبر 2026، دوپہر 12 سے 2 بجے، میرج ہٹ ویڈنگ ہال، پشاور':
-      'Umrah completion celebration and khairat program, Thursday 05 November 2026, 12 to 2 PM, Marriage Hut Wedding Hall, Peshawar',
-    'جمعرات 05 نومبر 2026، دوپہر 12 سے 2 بجے، میرج ہٹ ویڈنگ ہال، سرکلر روڈ، پشاور':
-      'Thursday 05 November 2026, 12 to 2 PM, Marriage Hut Wedding Hall, Circular Road, Peshawar'
+    'تقریبِ تکمیلِ عمرہ اور خیرات کا پروگرام، بدھ 11 نومبر 2026، دوپہر 12 سے 2 بجے، میرج ہٹ ویڈنگ ہال، پشاور':
+      'Umrah completion celebration and khairat program, Wednesday 11 November 2026, 12 to 2 PM, Marriage Hut Wedding Hall, Peshawar',
+    'بدھ 11 نومبر 2026، دوپہر 12 سے 2 بجے، میرج ہٹ ویڈنگ ہال، سرکلر روڈ، پشاور':
+      'Wednesday 11 November 2026, 12 to 2 PM, Marriage Hut Wedding Hall, Circular Road, Peshawar'
   };
   var WA_EN = 'Assalamu alaikum! In sha Allah we will attend the Umrah completion celebration.';
   var lang = 'ur';
