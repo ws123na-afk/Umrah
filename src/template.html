@@ -556,6 +556,17 @@ html[lang="en"] .verse-tr{line-height:1.6}
 .snd .mute{display:none}.snd.off .on{display:none}.snd.off .mute{display:block}
 .snd:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .snd:active{transform:scale(.95)}
+
+/* kalam: Spotify player card */
+.kalam{max-width:620px;margin:22px auto 0;padding:16px 14px 14px;border-radius:22px;border:1px solid rgba(201,162,75,.55);background:radial-gradient(ellipse at 50% 0%,rgba(201,162,75,.16),rgba(201,162,75,0) 60%),linear-gradient(180deg,rgba(14,75,59,.5),rgba(4,32,26,.6));box-shadow:0 16px 36px rgba(0,0,0,.4)}
+.kalam-head{display:flex;align-items:center;justify-content:center;gap:10px;color:#E9CF8B}
+.kalam-head h3{margin:0;font-family:"Nastaliq";font-weight:700;font-size:clamp(24px,6vw,32px);line-height:2;color:#F2DC9C}
+.kalam-sub{margin:-4px 0 12px;font-size:15px;line-height:1.8;color:rgba(247,241,227,.82)}
+.kalam-frame{border-radius:14px;overflow:hidden;background:#04201A;min-height:152px;box-shadow:0 0 0 1px rgba(201,162,75,.4)}
+.kalam-frame iframe{display:block;border:0}
+.kalam-link{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;padding:4px 14px;font-size:15px;font-weight:600;color:#E9CF8B;text-decoration:underline;text-underline-offset:4px}
+.kalam-link:focus-visible{outline:2px solid #F2DC9C;outline-offset:2px;border-radius:8px}
+html[lang="en"] .kalam-head h3{font-family:inherit;line-height:1.4}
 </style>
 </head>
 <body class="locked">
@@ -690,6 +701,18 @@ html[lang="en"] .verse-tr{line-height:1.6}
         <div class="c2">خانہ کعبہ اور مسجدِ نبوی ﷺ</div>
       </figcaption>
     </figure>
+
+    <section class="kalam reveal" aria-labelledby="kalamT">
+      <div class="kalam-head">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <h3 id="kalamT">جا دس دے ماہی نوں</h3>
+      </div>
+      <p class="kalam-sub">اس سفر کی یاد میں ایک کلام، سننے کے لیے چلائیں</p>
+      <div class="kalam-frame">
+        <iframe title="جا دس دے ماہی نوں، Spotify" src="https://open.spotify.com/embed/album/36WtPUH8LJyZaDtUSGpPs6?utm_source=generator&amp;theme=0" width="100%" height="152" frameborder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      </div>
+      <a class="kalam-link" href="https://open.spotify.com/album/36WtPUH8LJyZaDtUSGpPs6" target="_blank" rel="noopener" data-track="spotify_open">Spotify پر مکمل سنیں</a>
+    </section>
 
     <h2 class="sec-title reveal" id="s-details"><i></i><span>تفصیلات</span><i></i></h2>
     <div class="ticket reveal">
