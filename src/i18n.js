@@ -8,6 +8,7 @@
     'کھولنے کے لیے دبائیں': 'Tap to open',
     'یہاں دبائیں اور دعوت نامہ دیکھیں': 'Tap here to open your invitation',
     'محترم': 'Dear',
+    'مکہ مکرمہ': 'Makkah',
     'آواز بند کریں': 'Turn sound off',
     'آواز چلائیں': 'Turn sound on',
     'واٹس ایپ پر مقام بھیجیں': 'Send location on WhatsApp',
