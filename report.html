@@ -186,7 +186,7 @@ window.UMRAH_CONFIG = {
     wa_majid: 'WhatsApp: Abdul Majid', call_majid: 'Called Abdul Majid', wa_aimal: 'WhatsApp: Aimal Khan', call_aimal: 'Called Aimal Khan',
     rsvp_wa_majid: 'Replied by WhatsApp to Abdul Majid', rsvp_wa_aimal: 'Replied by WhatsApp to Aimal Khan',
     maps: 'Opened directions', copy_address: 'Copied the address', cal_google: 'Added to Google Calendar', cal_apple: 'Added to Apple Calendar',
-    share: 'Shared the invitation', copy_text: 'Copied the invitation text', lang_switch: 'Switched language', photo_open: 'Viewed a photo', site_link: 'Opened shahzebrahman.com', spotify_open: 'Opened the song on Spotify', sound_toggle: 'Turned sound on or off', share_location: 'Sent the location on WhatsApp', apple_maps: 'Opened Apple Maps'
+    share: 'Shared the invitation', copy_text: 'Copied the invitation text', lang_switch: 'Switched language', photo_open: 'Viewed a photo', site_link: 'Opened shahzebrahman.com', sound_toggle: 'Turned sound on or off', share_location: 'Sent the location on WhatsApp', apple_maps: 'Opened Apple Maps'
   };
   function store(k, v) { try { if (v === undefined) { return localStorage.getItem(k); } if (v === null) { localStorage.removeItem(k); } else { localStorage.setItem(k, v); } } catch (e) { return null; } }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
