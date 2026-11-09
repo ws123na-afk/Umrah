@@ -79,6 +79,7 @@ window.UMRAH_CONFIG = {
     'کھولنے کے لیے دبائیں': 'Tap to open',
     'یہاں دبائیں اور دعوت نامہ دیکھیں': 'Tap here to open your invitation',
     'محترم': 'Dear',
+    'مکہ مکرمہ': 'Makkah',
     'آواز بند کریں': 'Turn sound off',
     'آواز چلائیں': 'Turn sound on',
     'واٹس ایپ پر مقام بھیجیں': 'Send location on WhatsApp',
@@ -707,6 +708,8 @@ html[lang="en"] .card .hall.goldtext,html[lang="en"] .loc-hall{line-height:1.35;
 .madina-pics{display:grid;grid-template-columns:1fr}
 .madina-pics.two{grid-template-columns:1fr 1fr;gap:2px}
 .madina-pics.two .madina-photo{aspect-ratio:3/4}
+.mp-tag{position:absolute;bottom:8px;inset-inline-start:8px;z-index:2;padding:2px 12px;border-radius:14px;background:rgba(4,32,26,.85);border:1px solid rgba(201,162,75,.6);color:#F2DC9C;font-family:"Nastaliq";font-weight:700;font-size:14px;line-height:2}
+html[lang="en"] .mp-tag{font-family:inherit;line-height:1.6}
 .madina-pics.three{grid-template-columns:1fr 1fr;gap:2px}
 .madina-pics.three .madina-photo{aspect-ratio:3/4}
 .madina-pics.three .madina-photo:first-child{grid-column:1 / -1;aspect-ratio:16/10}
@@ -1380,12 +1383,14 @@ button.mem-tile{cursor:pointer}
     <h2 class="sec-title reveal" id="s-madina"><i></i><span>حرمین شریفین</span><i></i></h2>
     <figure class="madina reveal" style="margin-left:0;margin-right:0">
       <div class="madina-pics two">
-        <div class="madina-photo"><img src="img/haramain/1.jpg" alt="مسجدِ نبوی ﷺ، گنبدِ خضریٰ کے سامنے" loading="lazy" decoding="async" style="object-position:50% 60%"></div>
-        <div class="madina-photo"><img src="img/haramain/2.jpg" alt="مسجدِ نبوی ﷺ کے صحن میں" loading="lazy" decoding="async" style="object-position:40% 55%"></div>
+        <div class="madina-photo"><img src="img/p/M.jpg" alt="حرمِ مکی، خانہ کعبہ کے سامنے" loading="lazy" decoding="async" style="object-position:40% 45%"><span class="mp-tag">مکہ مکرمہ</span></div>
+        <div class="madina-photo"><img src="img/p/L.jpg" alt="مطاف میں، خانہ کعبہ کے سامنے" loading="lazy" decoding="async" style="object-position:55% 35%"><span class="mp-tag">مکہ مکرمہ</span></div>
+        <div class="madina-photo"><img src="img/haramain/1.jpg" alt="مسجدِ نبوی ﷺ، گنبدِ خضریٰ کے سامنے" loading="lazy" decoding="async" style="object-position:50% 60%"><span class="mp-tag">مدینہ منورہ</span></div>
+        <div class="madina-photo"><img src="img/haramain/2.jpg" alt="مسجدِ نبوی ﷺ کے صحن میں" loading="lazy" decoding="async" style="object-position:40% 55%"><span class="mp-tag">مدینہ منورہ</span></div>
       </div>
       <figcaption class="cap">
-        <div class="c1 goldtext">مدینہ منورہ</div>
-        <div class="c2">مسجدِ نبوی ﷺ اور گنبدِ خضریٰ</div>
+        <div class="c1 goldtext">مکہ مکرمہ اور مدینہ منورہ</div>
+        <div class="c2">خانہ کعبہ اور مسجدِ نبوی ﷺ</div>
       </figcaption>
     </figure>
 
